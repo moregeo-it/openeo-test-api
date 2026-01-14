@@ -9,12 +9,8 @@ export default class UsersAPI {
 	}
 
 	beforeServerStart(server) {
-		if (this.context.serviceAccountCredentialsFile) {
-			server.addEndpoint('get', '/credentials/basic', this.getCredentialsBasic.bind(this));
-		}
-		if (this.context.googleAuthClients) {
-			server.addEndpoint('get', '/credentials/oidc', this.getCredentialsOidc.bind(this));
-		}
+		server.addEndpoint('get', '/credentials/basic', this.getCredentialsBasic.bind(this));
+		server.addEndpoint('get', '/credentials/oidc', this.getCredentialsOidc.bind(this));
 		server.addEndpoint('get', '/me', this.getUserInfo.bind(this));
 
 		return Promise.resolve();
@@ -56,10 +52,10 @@ export default class UsersAPI {
 	}
 
 	async getCredentialsBasic(req, res) {
-		if (!this.context.serviceAccountCredentialsFile) {
-			throw new Errors.FeatureUnsupported();
-		}
-		else if (!req.authorization.scheme) {
+		//if (!this.context.serviceAccountCredentialsFile) {
+		//	throw new Errors.FeatureUnsupported();
+		//}else 
+		if (!req.authorization.scheme) {
 			throw new Errors.AuthenticationRequired();
 		}
 		else if (req.authorization.scheme !== 'Basic') {

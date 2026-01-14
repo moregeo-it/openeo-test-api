@@ -16,11 +16,11 @@ export default class UserStore {
 		this.tokenValidity = 24*60*60;
 
 		this.oidcUserInfoEndpoint = null;
-		this.oidcIssuer = 'https://accounts.google.com';
+		this.oidcIssuer = 'https://oidc.dummy.foobar';
 		this.oidcScopes = [
 			"openid",
 			"email",
-			"https://www.googleapis.com/auth/earthengine",
+			"https://oidc.dummy.foobar/auth/earthengine",
 			// "https://www.googleapis.com/auth/cloud-platform",
 			// "https://www.googleapis.com/auth/devstorage.full_control"
 		];
