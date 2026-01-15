@@ -12,6 +12,78 @@ const sortPropertyMap = {
 
 export default class Data {
 
+ 	exampleFeatures = [
+		{
+	      "type": "Feature",
+	      "id": "sample-point-001",
+	      "stac_version": "1.0.0",
+	      "stac_extensions": [
+	        "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+	      ],
+	      "bbox": [102.0, 0.5, 102.0, 0.5],
+	      "geometry": {
+	        "type": "Point",
+	        "coordinates": [102.0, 0.5]
+	      },
+	      "properties": {
+	        "datetime": "2024-06-01T12:00:00Z",
+	        "name": "Sample Point",
+	        "description": "This is a sample point."
+	      },
+	      "assets": {}
+	    },
+	    {
+	      "type": "Feature",
+	      "id": "sample-linestring-001",
+	      "stac_version": "1.0.0",
+	      "stac_extensions": [
+	        "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+	      ],
+	      "bbox": [102.0, 0.0, 105.0, 1.0],
+	      "geometry": {
+	        "type": "LineString",
+	        "coordinates": [
+	          [102.0, 0.0],
+	          [103.0, 1.0],
+	          [104.0, 0.0],
+	          [105.0, 1.0]
+	        ]
+	      },
+	      "properties": {
+	        "datetime": "2024-06-02T12:00:00Z",
+	        "name": "Sample LineString",
+	        "description": "This is a sample line."
+	      },
+	      "assets": {}
+	    },
+	    {
+	      "type": "Feature",
+	      "id": "sample-polygon-001",
+	      "stac_version": "1.0.0",
+	      "stac_extensions": [
+	        "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+	      ],
+	      "bbox": [100.0, 0.0, 101.0, 1.0],
+	      "geometry": {
+	        "type": "Polygon",
+	        "coordinates": [
+	          [
+	            [100.0, 0.0],
+	            [101.0, 0.0],
+	            [101.0, 1.0],
+	            [100.0, 1.0],
+	            [100.0, 0.0]
+	          ]
+	        ]
+	      },
+	      "properties": {
+	        "datetime": "2024-06-03T12:00:00Z",
+	        "name": "Sample Polygon",
+	        "description": "This is a sample polygon."
+	      },
+	      "assets": {}
+	    }]
+
 	constructor(context) {
 		this.context = context;
 		this.catalog = context.collections();
@@ -65,6 +137,7 @@ export default class Data {
 				links: c.links
 			};
 		});
+
 
 		res.json({
 			collections: data,
@@ -138,106 +211,6 @@ export default class Data {
 			id = req.params['*'].replace(/\/items$/, '');
 		}
 
-		const collection = this.catalog.getData(id, true);
-		if (collection === null) {
-			throw new Errors.CollectionNotFound();
-		}
-
-		const limit = parseInt(req.query.limit, 10) || 10;
-		const offset = parseInt(req.query.offset, 10) || 0;
-
-		// todo: migrate to ee.data.listImages?
-		// Load the collection
-		let ic = this.ee.ImageCollection(id);
-
-		// Filter by datetime
-		const datetime = req.query.datetime || null;
-		if (Utils.hasText(datetime)) {
-			let datetimes = datetime.split('/');
-			if (datetimes.length === 1) {
-				ic = ic.filterDate(datetimes[0]);
-			}
-			else if (datetimes.length === 2) {
-				datetimes = datetimes.map(dt => (['..', ''].includes(dt) ? null : dt));
-				ic = ic.filterDate(
-					datetimes[0] || '0000-01-01',
-					datetimes[1] || '9999-12-31'
-				);
-			}
-			else {
-				throw new Errors.ParameterValueInvalid({parameter: "datetime", reason: "Invalid number of timestamps."});
-			}
-		}
-
-		// Filter by bbox
-		const bboxCrs = req.query['bbox-crs'] || null;
-		if (bboxCrs) {
-			throw new Errors.ParameterValueUnsupported({parameter: "bbox-crs", reason: "Bounding Box with CRS is not supported."});
-		}
-		const bbox = req.query.bbox || null;
-		if (Utils.hasText(bbox)) {
-			let c = bbox.split(',');
-			if (c.length === 6) {
-				// Ignore z axis
-				c = [c[0], c[1], c[3], c[4]];
-			}
-
-			if (c.length === 4) {
-				c = c.map(dt => parseFloat(dt));
-				if (c.some(coord => isNaN(coord))) {
-					throw new Errors.ParameterValueInvalid({parameter: "bbox", reason: "Invalid coordinate value(s)."});
-				}
-				let geom = this.ee.Geometry(Utils.bboxToGeoJson(c));
-				ic = ic.filterBounds(geom);
-			}
-			else {
-				throw new Errors.ParameterValueInvalid({parameter: "bbox", reason: "Invalid number of coordinates."});
-			}
-		}
-
-		// Sort
-		const sortby = req.query.sortby;
-		if (Utils.hasText(sortby)) {
-			const fields = sortby.split(',');
-			if (fields.length > 1) {
-				throw new Errors.ParameterValueUnsupported({parameter: "sortby", reason: "Can only sort by one field."});
-			}
-			let field = fields[0];
-			let order = !field.startsWith('-');
-			if (['-', '+'].includes(field[0])) {
-				field = field.substring(1);
-			}
-			const prop = sortPropertyMap[field];
-			if (!prop) {
-				throw new Errors.ParameterValueUnsupported({parameter: "sortby", reason: "Selected field can't be sorted by."});
-			}
-			ic = ic.sort(prop, order);
-		}
-
-		// Limit
-		const icList = ic.toList(limit + 1, offset);
-
-		// Retrieve the items
-		let items;
-		try {
-			items = await GeeProcessing.evaluate(icList);
-		} catch (e) {
-			throw new Errors.Internal({message: e.message});
-		}
-
-		let hasNextPage = false;
-		// We requested one additional image to check if there is a next page
-		if (items.length > limit) {
-			hasNextPage = true;
-			items.pop();
-		}
-
-		Promise.all(items.map(item => this.catalog.itemCache.addItem(item)))
-			.then(() => this.catalog.itemCache.removeOutdated())
-			.catch(console.error);
-
-		// Convert to STAC
-		const features = items.map(item => this.catalog.convertImageToStac(item, collection));
 		// Add links
 		const links = [
 			{
@@ -256,32 +229,13 @@ export default class Data {
 				type: "application/json"
 			}
 		]
-		if (offset > 0) {
-			links.push({
-				rel: "first",
-				href: API.getUrl(`/collections/${id}/items?limit=${limit}&offset=0`),
-				type: "application/geo+json"
-			});
-			links.push({
-				rel: "prev",
-				href: API.getUrl(`/collections/${id}/items?limit=${limit}&offset=${Math.max(0, offset - limit)}`),
-				type: "application/geo+json"
-			});
-		}
-		if (hasNextPage) {
-			links.push({
-				rel: "next",
-				href: API.getUrl(`/collections/${id}/items?limit=${limit}&offset=${offset + limit}`),
-				type: "application/geo+json"
-			});
-		}
 
 		res.json({
 			type: "FeatureCollection",
-			features,
+			features: this.exampleFeatures,
 			links,
 			timeStamp: Utils.toISODate(Date.now()),
-			numberReturned: features.length
+			numberReturned: this.exampleFeatures.length
 		});
 	}
 
@@ -295,24 +249,36 @@ export default class Data {
 			id = match[2];
 		}
 
-		const collection = this.catalog.getData(cid, true);
-		if (collection === null) {
-			throw new Errors.CollectionNotFound();
+		const features = this.exampleFeatures.filter(f => f.id === id);
+		if (features.length === 0) {
+			throw new Errors.ItemNotFound();
 		}
 
-		const fullId = `${cid}/${id}`;
-		let metadata = await this.catalog.itemCache.getItem(fullId);
-		if (!metadata) {
-			const img = this.ee.Image(fullId);
-			try {
-				metadata = await GeeProcessing.evaluate(img);
-				this.catalog.itemCache.addItem(metadata).catch(console.error);
-			} catch (e) {
-				throw new Errors.Internal({message: e.message});
+		const feature = features[0];
+		feature.links = [
+			{
+				rel: "self",
+				href: API.getUrl(`/collections/${cid}/items/${id}`),
+				type: "application/geo+json"
+			},
+			{
+				rel: "root",
+				href: API.getUrl(`/`),
+				type: "application/json"
+			},
+			{
+				rel: "parent",
+				href: API.getUrl(`/collections/${cid}`),
+				type: "application/json"
+			},
+			{
+				rel: "collection",
+				href: API.getUrl(`/collections/${cid}`),
+				type: "application/json"
 			}
-		}
+		]
 
-		res.json(this.catalog.convertImageToStac(metadata, collection));
+		res.json(feature);
 	}
 
 	async getThumbnailById(req, res) {
