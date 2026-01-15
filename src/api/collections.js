@@ -45,12 +45,7 @@ export default class Data {
 		const a = Date.now();
 		const num = await this.catalog.loadCatalog();
 		console.log(`Loaded ${num} collections (${Date.now()-a} ms)`);
-
-		const b = Date.now();
-		const pContext = this.context.processingContext();
-		//this.ee = await pContext.connectGee(true);
-		console.log(`Established connection to GEE for STAC (${Date.now()-b} ms)`);
-
+;
 		return num;
 	}
 

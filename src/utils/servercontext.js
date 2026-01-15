@@ -3,6 +3,7 @@ import GeeProcessRegistry from '../processgraph/registry.js';
 import ProcessingContext from './processingcontext.js';
 import Utils from './utils.js';
 
+import DataCatalog from '../models/catalog.js';
 import ProcessGraphStore from '../models/processgraphstore.js';
 import FileWorkspace from '../models/workspace.js';
 import JobStore from '../models/jobstore.js';
@@ -14,6 +15,7 @@ export default class ServerContext extends Config {
 	constructor() {
 		super();
 		this.processRegistry = new GeeProcessRegistry(this);
+		this.dataCatalog = new DataCatalog(this);
 		this.processGraphStore = new ProcessGraphStore();
 		this.fileWorkspace = new FileWorkspace();
 		this.jobStore = new JobStore();
@@ -34,6 +36,10 @@ export default class ServerContext extends Config {
 
 	storedProcessGraphs() {
 		return this.processGraphStore;
+	}
+	
+	collections() {
+		return this.dataCatalog;
 	}
 
 	users() {
