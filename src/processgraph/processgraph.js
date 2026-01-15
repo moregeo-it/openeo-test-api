@@ -3,6 +3,7 @@ import GeeJsonSchemaValidator from './jsonschema.js';
 import GeeProcessGraphNode from './node.js';
 import Errors from '../utils/errors.js';
 import Utils from '../utils/utils.js';
+import DataCube from '../datacube/datacube.js';
 const epsg = Utils.require('epsg-index/all.json');
 
 export default class GeeProcessGraph extends ProcessGraph {
@@ -65,7 +66,28 @@ export default class GeeProcessGraph extends ProcessGraph {
 		if (this.parentNode === null) {
 			await this.context.connectGee();
 		}
-		return await super.execute(args);
+
+		this.allowUndefinedParameters(false);
+		this.setArguments(args);
+		await this.validate();
+		this.reset();
+		//await this.executeNodes(this.getStartNodes());
+
+		// Create a dummy DataCube result for testing
+		const dummyDataCube = new DataCube(this.context.ee, null);
+		dummyDataCube.setOutputFormat('JPEG');
+
+		const dummyResultNode = new GeeProcessGraphNode(
+			{
+				process_id: 'dummy_result',
+				arguments: {},
+				result: 1,
+			},
+			'dummy_result',
+			this
+		);
+		dummyResultNode.setResult(dummyDataCube);
+		return dummyResultNode;
 	}
 
 	async executeNode(node) {
