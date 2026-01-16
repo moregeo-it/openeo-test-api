@@ -1,10 +1,9 @@
 import GeeProcess from '../processgraph/process.js';
-import GeeProcessing from './utils/processing.js';
 
 export default class add extends GeeProcess {
 
 	executeSync(node) {
-		return GeeProcessing.applyBinaryNumericalFunction(node, (x, y) => x.add(y));
+		return true
 	}
 
 }
