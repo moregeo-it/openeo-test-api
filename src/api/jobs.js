@@ -7,6 +7,8 @@ import Logs from '../models/logs.js';
 import runBatchJob from './worker/batchjob.js';
 import fse from 'fs-extra';
 import { Readable } from 'stream';
+import runSync, { getResultLogs } from './worker/sync.js';
+import path from 'path';
 
 export default class JobsAPI {
 
@@ -336,10 +338,10 @@ export default class JobsAPI {
 		const id = Utils.timeId();
     	const log_level = Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel);
 
-		//const response = await runSync(this.context, req.user, id, req.body.process, log_level);
+		const response = await runSync(this.context, req.user, id, req.body.process, log_level);
 		
 		// Create dummy response for testing
-		const dummyStream = new Readable();
+		/* const dummyStream = new Readable();
 		dummyStream.push(Buffer.from('dummy image data for testing'));
 		dummyStream.push(null);
 		
@@ -348,7 +350,7 @@ export default class JobsAPI {
 			headers: {
 				'content-type': 'image/jpeg'
 			}
-		};
+		}; */
 		
 		res.header('Content-Type', response?.headers?.['content-type'] || 'application/octet-stream');
 		res.header('OpenEO-Costs', 0);
@@ -376,11 +378,4 @@ export default class JobsAPI {
 		return response;
 	}
 
-}
-
-export async function getResultLogs(user_id, id, log_level) {
-  const file = path.normalize(path.join('./storage/user_files/', user_id, 'sync_logs' , id + '.logs.db'));
-  const logs = new Logs(file, API.getUrl('/result/logs/' + id), log_level);
-  await logs.init();
-  return logs;
 }

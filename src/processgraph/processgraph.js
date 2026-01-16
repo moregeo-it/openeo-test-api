@@ -1,4 +1,4 @@
-import { ProcessGraph } from '@openeo/js-processgraphs';
+import { ProcessGraph, ProcessGraphError } from '@openeo/js-processgraphs';
 import GeeJsonSchemaValidator from './jsonschema.js';
 import GeeProcessGraphNode from './node.js';
 import Errors from '../utils/errors.js';
@@ -71,8 +71,12 @@ export default class GeeProcessGraph extends ProcessGraph {
 		this.setArguments(args);
 		await this.validate();
 		this.reset();
-		//await this.executeNodes(this.getStartNodes());
+		await this.executeNodes(this.getStartNodes());
+		return this.getResultNode();
 
+	}
+
+	getDummyResultNode(){
 		// Create a dummy DataCube result for testing
 		const dummyDataCube = new DataCube(this.context.ee, null);
 		dummyDataCube.setOutputFormat('JPEG');
