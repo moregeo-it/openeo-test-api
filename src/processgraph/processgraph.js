@@ -71,24 +71,6 @@ export default class GeeProcessGraph extends ProcessGraph {
 		return this.getResultNode();
 	}
 
-	getDummyResultNode(){
-		// Create a dummy DataCube result for testing
-		const dummyDataCube = new DataCube(this.context.ee, null);
-		dummyDataCube.setOutputFormat('JPEG');
-
-		const dummyResultNode = new GeeProcessGraphNode(
-			{
-				process_id: 'dummy_result',
-				arguments: {},
-				result: 1,
-			},
-			'dummy_result',
-			this
-		);
-		dummyResultNode.setResult(dummyDataCube);
-		return dummyResultNode;
-	}
-
 	async executeNode(node) {
 		node.debug(`Executing node ${node.id}`);
 		const process = this.getProcess(node);
