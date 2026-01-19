@@ -2,7 +2,6 @@ import Utils from '../utils/utils.js';
 import fse from 'fs-extra';
 import path from 'path';
 import ItemStore from './itemstore.js';
-import { Storage } from '@google-cloud/storage';
 import API from '../utils/API.js';
 
 const STAC_EXTENSIONS = {
