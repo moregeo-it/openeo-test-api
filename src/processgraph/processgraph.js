@@ -63,9 +63,6 @@ export default class GeeProcessGraph extends ProcessGraph {
 	}
 
 	async execute(args = null) {
-		if (this.parentNode === null) {
-			await this.context.connectGee();
-		}
 		return this.getDummyResultNode();
 	}
 

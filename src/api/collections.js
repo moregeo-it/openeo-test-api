@@ -1,14 +1,6 @@
 import API from '../utils/API.js';
 import Utils from '../utils/utils.js';
 import Errors from '../utils/errors.js';
-import GeeProcessing from '../processes/utils/processing.js';
-import HttpUtils from '../utils/http.js';
-
-const sortPropertyMap = {
-	'properties.datetime': 'system:time_start',
-	'id': 'system:index',
-	'properties.title': 'system:index'
-};
 
 export default class Data {
 
@@ -281,80 +273,13 @@ export default class Data {
 	}
 
 	async getThumbnailById(req, res) {
-		const id = req.params['*'];
-		const filepath = this.catalog.itemCache.getThumbPath(id);
-
-		if (await this.catalog.itemCache.hasThumb(id)) {
-			await HttpUtils.sendFile(filepath, res);
-		}
-		else {
-			const idParts = id.split('/');
-			idParts.pop();
-			const cid = idParts.join('/');
-
-			const vis = this.catalog.getImageVisualization(cid);
-			if (vis === null) {
-				throw new Errors.Internal({message: 'No visualization parameters found.'});
-			}
-
-			const img = this.ee.Image(id);
-			const geeURL = await new Promise((resolve, reject) => {
-				img.visualize(vis.band_vis).getThumbURL({
-					dimensions: 600,
-					crs: 'EPSG:3857',
-					format: 'png'
-				}, (geeUrl, err) => {
-					if (typeof err === 'string') {
-						reject(new Errors.Internal({message: err}));
-					}
-					else if (typeof geeUrl !== 'string' || geeUrl.length === 0) {
-						reject(new Errors.Internal({message: 'Download URL provided by Google Earth Engine is empty.'}));
-					}
-					else {
-						resolve(geeUrl);
-					}
-				});
-			});
-
-			await HttpUtils.streamToFile(geeURL, filepath, res);
-		}
+		// GEE integration removed - thumbnail generation via Google Earth Engine is no longer available
+		throw new Errors.Internal({message: 'GEE integration has been removed. Thumbnail generation is not available.'});
 	}
 
 	async getAssetById(req, res) {
-		const id = req.params['*'];
-		const band = req.query.band || null;
-
-		let img = this.ee.Image(id);
-		if (band) {
-			img = img.select(band);
-		}
-		const geeURL = await new Promise((resolve, reject) => {
-			img.getDownloadURL({
-				dimensions: this.context.stacAssetDownloadSize,
-				filePerBand: false,
-				format: 'GEO_TIFF'
-			}, (url, err) => {
-				if (typeof err === 'string') {
-					reject(new Errors.Internal({message: err}));
-				}
-				else if (typeof url !== 'string' || url.length === 0) {
-					reject(new Errors.Internal({message: 'Download URL provided by Google Earth Engine is empty.'}));
-				}
-				else {
-					resolve(url);
-				}
-			});
-		});
-
-		const filename = id.replace(/\//g, '_') + (band ? '_' + band: '') + '.tiff';
-		const response = await HttpUtils.stream(geeURL, 'download_stac_asset');
-		if (response?.headers?.['content-length']) {
-			res.header('Content-Length', response?.headers?.['content-length']);
-		}
-		res.header('Content-Type', response?.headers?.['content-type'] || 'application/octet-stream');
-		res.header('Content-Disposition', `attachment; filename="${filename}"`);
-		response.data.pipe(res);
-
+		// GEE integration removed - asset download via Google Earth Engine is no longer available
+		throw new Errors.Internal({message: 'GEE integration has been removed. Asset download is not available.'});
 	}
 
 }

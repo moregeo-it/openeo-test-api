@@ -11,7 +11,9 @@ export default class GeeProcessGraphNode extends ProcessGraphNode {
 	}
 
 	get ee() {
-		return this.processGraph.getContext().ee;
+		throw new Errors.Internal({
+			message: 'Google Earth Engine (GEE) integration has been removed from this project. GEE-dependent operations are no longer available.'
+		});
 	}
 
 	getLogger() {
