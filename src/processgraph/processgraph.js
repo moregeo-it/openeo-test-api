@@ -63,7 +63,12 @@ export default class GeeProcessGraph extends ProcessGraph {
 	}
 
 	async execute(args = null) {
-		return this.getDummyResultNode();
+		this.allowUndefinedParameters(false);
+		this.setArguments(args);
+		await this.validate();
+		this.reset();
+		await this.executeNodes(this.getStartNodes());
+		return this.getResultNode();
 	}
 
 	getDummyResultNode(){

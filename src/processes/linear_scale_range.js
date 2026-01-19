@@ -5,15 +5,16 @@ import clip from './clip.js';
 export default class linear_scale_range extends GeeProcess {
 
   executeSync(node) {
-    const ee = node.ee;
-    const inputMin = node.getArgumentAsNumberEE('inputMin');
-    const inputMax = node.getArgumentAsNumberEE('inputMax');
-    const outputMin = node.getArgumentAsNumberEE('outputMin', 0);
-    const outputMax = node.getArgumentAsNumberEE('outputMax', 1);
+    const inputMin = node.getArgument('inputMin');
+    const inputMax = node.getArgument('inputMax');
+    const outputMin = node.getArgument('outputMin', 0);
+    const outputMax = node.getArgument('outputMax', 1);
     return GeeProcessing.applyUnaryNumericalFunction(node, data => {
-      const clipped = clip.process(ee, data, inputMin, inputMax);
-      return clipped.subtract(inputMin).divide(inputMax.subtract(inputMin)).multiply(outputMax.subtract(outputMin)).add(outputMin);
-  });
+      const clipped = clip.process(data, inputMin, inputMax);
+      // Linear scale: ((x - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin
+      const scaled = ((clipped - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin;
+      return scaled;
+    });
   }
 
 }

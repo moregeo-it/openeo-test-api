@@ -3,21 +3,21 @@ import GeeProcessing from './utils/processing.js';
 
 export default class clip extends GeeProcess {
 
-  static process(ee, data, min, max) {
-    if (data instanceof ee.Array) {
-      // see https://issuetracker.google.com/issues/325432958
-      return data.min(max).max(min);
-    }
-    else {
-      return data.clamp(min, max);
-    }
+  static process(data, min, max) {
+    // Helper function to clamp a value between min and max
+    const clamp = (value) => {
+      if (Array.isArray(value)) {
+        return value.map(v => clamp(v));
+      }
+      return Math.max(min, Math.min(max, value));
+    };
+    return clamp(data);
   }
 
   executeSync(node) {
-    const ee = node.ee;
-    const min = node.getArgumentAsNumberEE('min');
-    const max = node.getArgumentAsNumberEE('max');
-		return GeeProcessing.applyUnaryNumericalFunction(node, data => clip.process(ee, data, min, max));
+    const min = node.getArgument('min');
+    const max = node.getArgument('max');
+    return GeeProcessing.applyUnaryNumericalFunction(node, data => clip.process(data, min, max));
   }
 
 }

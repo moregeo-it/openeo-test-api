@@ -12,7 +12,7 @@ export default class GeeProcessGraphNode extends ProcessGraphNode {
 
 	get ee() {
 		throw new Errors.Internal({
-			message: 'Google Earth Engine (GEE) integration has been removed from this project. GEE-dependent operations are no longer available.'
+		message: 'Google Earth Engine (GEE) integration has been removed from this project. GEE-dependent operations are no longer available.'
 		});
 	}
 
@@ -63,7 +63,7 @@ export default class GeeProcessGraphNode extends ProcessGraphNode {
 	}
 
 	getDataCube(name, defaultValue = undefined) {
-		return new DataCube(this.ee, this.getArgument(name, defaultValue));
+		return new DataCube(null, this.getArgument(name, defaultValue));
 	}
 
 	getDataCubeWithEE(name, defaultValue = undefined) {

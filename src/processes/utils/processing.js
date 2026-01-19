@@ -1,5 +1,3 @@
-import GeeTypes from "./types.js";
-
 export function copyProps(ee, img, source) {
 	// copyProperties returns a ComputedObject, so cast back to ee.Image
 	// See: https://issuetracker.google.com/issues/341002190
@@ -28,190 +26,134 @@ const GeeProcessing = {
 			collectionA = collectionA.sort(sortBy)
 			collectionB = collectionB.sort(sortBy);
 		}
-		let counter = ee.Number(0);
+		let counter = 0;
 		return collectionA.map(imgA => {
 			const imgB = collectionB.toList(1, counter).get(0);
-			counter = counter.add(1);
+			counter = counter + 1;
 			return func(imgA, imgB);
 		});
 	},
 
+	/**
+	 * Apply a binary numerical function to two numeric values/arrays.
+	 * Works with standard JS data types instead of GEE objects.
+	 */
 	applyBinaryNumericalFunction(node, func, xParameter = "x", yParameter = "y", xDefault = undefined, yDefault = undefined) {
-		const ee = node.ee;
+		let x = node.getArgument(xParameter, xDefault);
+		let y = node.getArgument(yParameter, yDefault);
 
-		let x = node.getArgumentAsEE(xParameter, xDefault);
-		if (!xParameter) {
-			xParameter = 'n/a';
-		}
-		let y = node.getArgumentAsEE(yParameter, yDefault);
-		if (!yParameter) {
-			yParameter = 'n/a';
-		}
-
-		const convertToList = (x instanceof ee.List || y instanceof ee.List) && !(x instanceof ee.Array || y instanceof ee.Array);
-		if (x instanceof ee.List) {
-			x = GeeTypes.toArray(ee, x);
-		}
-		if (y instanceof ee.List) {
-			y = GeeTypes.toArray(ee, y);
-		}
-
-		const eeFunc = (a, b) => {
-			if (GeeTypes.isSameNumType(ee, a, b) || (GeeTypes.isNumType(ee, a) && b instanceof ee.Number)) {
-				let result = func(a, b);
-				if (a instanceof ee.Image) {
-					result = copyProps(ee, result, a);
-				}
-				return result;
-			}
-			else if (a instanceof ee.Image) {
-				return copyProps(ee, func(a, ee.Image(b)), a);
-			}
-			else if (a instanceof ee.Array) {
-				return func(a, b.toArray());
-			}
-			else if (a instanceof ee.Number && b instanceof ee.Image) {
-				// If the first argument is a number and the second an image, we have to
-				// rename the bands as the band in the result image may be named "constant"
-				return copyProps(ee, func(ee.Image(a), b), b).rename(b.bandNames());
-			}
-			else if (a instanceof ee.Number && b instanceof ee.Array) {
-				a = GeeTypes.toArray(ee, ee.List.repeat(a, b.toList().length()));
+		// Helper function to apply operation element-wise
+		const applyFunc = (a, b) => {
+			// Both are numbers
+			if (typeof a === 'number' && typeof b === 'number') {
 				return func(a, b);
 			}
-
-			throw node.invalidArgument(yParameter, "Combination of unsupported data types.");
+			// Both are arrays
+			if (Array.isArray(a) && Array.isArray(b)) {
+				if (a.length !== b.length) {
+					throw node.invalidArgument(yParameter, "Arrays must have the same length");
+				}
+				return a.map((val, i) => applyFunc(val, b[i]));
+			}
+			// One is number, one is array
+			if (typeof a === 'number' && Array.isArray(b)) {
+				return b.map(val => applyFunc(a, val));
+			}
+			if (Array.isArray(a) && typeof b === 'number') {
+				return a.map(val => applyFunc(val, b));
+			}
+			throw node.invalidArgument(yParameter, "Unsupported data type combination");
 		};
 
-		let result;
-		if (x instanceof ee.ImageCollection && y instanceof ee.ImageCollection) {
-			const executionContext = node.getExecutionContext();
-			if (executionContext && executionContext.type === "reducer") {
-				const dimType = executionContext.dimension.getType();
-				if (dimType === "bands") {
-					// result = GeeProcessing.iterateInParallel(ee, x, y, eeFunc);
-					return x.combine(y).map(img => {
-						const bands = img.bandNames();
-						const imgA = img.select([bands.get(0)]);
-						const imgB = img.select([bands.get(1)]);
-						return eeFunc(imgA, imgB);
-					});
-				}
-				// todo: implement for temporal dimension?
-			}
-			throw node.invalidArgument(yParameter, "Can't apply binary function to two image collections.");
-		}
-		else if (x instanceof ee.ImageCollection && GeeTypes.isNumType(ee, y)) {
-			result = x.map(img => eeFunc(img, y));
-		}
-		else if (GeeTypes.isNumType(ee, x) && y instanceof ee.ImageCollection) {
-			result = y.map(img => eeFunc(x, img));
-		}
-		else if (GeeTypes.isNumType(ee, x) && GeeTypes.isNumType(ee, y)) {
-			result = eeFunc(x, y);
-		}
-		else {
-			const param = GeeTypes.isNumType(ee, x) ? yParameter : xParameter;
-			throw node.invalidArgument(param, "Combination of unsupported data types.");
-		}
-
-		if (convertToList) {
-			return result.toList();
-		}
-		else {
-			return result;
-		}
+		return applyFunc(x, y);
 	},
 
+	/**
+	 * Apply a unary numerical function to numeric values/arrays.
+	 * Works with standard JS data types instead of GEE objects.
+	 */
 	applyUnaryNumericalFunction(node, func, dataParameter = "x") {
-		const ee = node.ee;
-		const data = node.getArgumentAsEE(dataParameter);
-		if (data instanceof ee.List) {
-			return func(GeeTypes.toArray(ee, data)).toList();
-		}
-		else if (data instanceof ee.ImageCollection) {
-			return data.map(img => copyProps(ee, func(img), img));
-		}
-		else if (data instanceof ee.Image) {
-			return copyProps(ee, func(data), data);
-		}
-		else if (GeeTypes.isNumType(ee, data)) {
-			return func(data);
-		}
+		const data = node.getArgument(dataParameter);
+		
+		const applyFunc = (value) => {
+			if (typeof value === 'number') {
+				return func(value);
+			}
+			if (Array.isArray(value)) {
+				return value.map(v => applyFunc(v));
+			}
+			throw node.invalidArgument(dataParameter, "Unsupported data type");
+		};
 
-		throw node.invalidArgument(dataParameter, "Unsupported data type.");
+		return applyFunc(data);
 	},
 
+	/**
+	 * Reduce numerical data using a reducer function.
+	 * Works with standard JS data types instead of GEE objects.
+	 */
 	reduceNumericalFunction(node, reducerSpec, binaryFunc = null, dataParameter = "data") {
 		let reducerName;
-		let bandSuffix;
 		if (Array.isArray(reducerSpec)) {
 			reducerName = reducerSpec[0];
-			bandSuffix = reducerSpec[1];
 		}
 		else {
 			reducerName = reducerSpec;
-			bandSuffix = reducerSpec
 		}
 
-		const ee = node.ee;
-		let data;
+		let data = node.getArgument(dataParameter);
 
-		// If the data is an array that contains other results, we likely can't use
-		// the GEE reducers and must use the alternative "binary" GEE operations.
-		// For example, we can use `add` instead of `sum`.
-		if (binaryFunc) {
-			data = node.getArgument(dataParameter);
-			if (Array.isArray(data) && data.some(x => typeof x !== 'number')) {
-				return data.reduce((a, b) => GeeProcessing.applyBinaryNumericalFunction(node, binaryFunc, null, null, a, b), 0);
-			}
+		// If data is not an array, wrap it
+		if (!Array.isArray(data)) {
+			data = [data];
 		}
 
-		data = node.getArgumentAsEE(dataParameter);
-		const executionContext = node.getExecutionContext();
-		const reducer = ee.Reducer[reducerName]();
-		if (data instanceof ee.List) {
-			return ee.List(data.reduce(reducer));
-		}
-		else if (data instanceof ee.Array) {
-			// We assume ee.Array is always one-dimensional (similar to ee.List)
-			return ee.Array(data.reduce(reducer, [0]));
-		}
-		else if (executionContext && executionContext.type === "reducer") {
-			const dimType = executionContext.dimension.getType();
-			if (dimType === "bands") {
-				const imgReducer = img => copyProps(ee, ee.Image(img.reduce(reducer)), img);
-				if (data instanceof ee.ImageCollection) {
-					return data.map(imgReducer);
-				}
-				else if (data instanceof ee.Image) {
-					return imgReducer(data);
-				}
-				throw node.invalidArgument(dataParameter, "Unsupported data type for band reducer.");
+		// Apply the appropriate reducer
+		let result;
+		switch (reducerName.toLowerCase()) {
+			case 'sum':
+				result = data.reduce((a, b) => a + b, 0);
+				break;
+			case 'min': {
+				result = Math.min(...data);
+				break;
 			}
-			else if (dimType === "temporal") {
-				if (data instanceof ee.ImageCollection) {
-					// Most reducers are available as functions on the ImageCollection class,
-					// which don't rename the bands. So this is preferred.
-					if (typeof data[reducerName] === "function") {
-						return data[reducerName]();
-					}
-					// In all other cases we need to use the reduce function and rename the bands
-					// The bands are named <band name>_<reducer name>
-					else {
-						return ee.ImageCollection(data.reduce(reducer))
-							.map(img => img.regexpRename(`^(.+)_${bandSuffix}$`, "$1"));
-					}
+			case 'max': {
+				result = Math.max(...data);
+				break;
+			}
+			case 'mean':
+			case 'avg':
+			case 'average': {
+				result = data.reduce((a, b) => a + b, 0) / data.length;
+				break;
+			}
+			case 'count':
+				result = data.length;
+				break;
+			case 'median': {
+				const sorted = [...data].sort((a, b) => a - b);
+				const mid = Math.floor(sorted.length / 2);
+				result = sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+				break;
+			}
+			case 'stddev':
+			case 'std': {
+				const mean = data.reduce((a, b) => a + b, 0) / data.length;
+				const variance = data.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / data.length;
+				result = Math.sqrt(variance);
+				break;
+			}
+			default:
+				// Try to use binaryFunc if provided
+				if (binaryFunc && data.length > 0) {
+					result = data.reduce((a, b) => binaryFunc(a, b));
+				} else {
+					throw node.invalidArgument(dataParameter, `Unsupported reducer: ${reducerName}`);
 				}
-				throw node.invalidArgument(dataParameter, "Unsupported data type for temporal reducer.");
-			}
-			else {
-				throw node.invalidArgument(executionContext.parameter, "Unsupported dimension type: " + dimType);
-			}
 		}
-		else {
-			throw node.invalidArgument(dataParameter, "Unsupported data type.");
-		}
+
+		return result;
 	}
 
 };

@@ -1,6 +1,3 @@
-import Utils from './utils.js';
-import fse from 'fs-extra';
-
 export default class ProcessingContext {
 
 	constructor(serverContext, user = null) {
@@ -11,7 +8,7 @@ export default class ProcessingContext {
 		this.eePrivateKey = null;
 	}
 
-	async connectGee(forcePrivateKey = false) {
+	async connectGee() {
 		// GEE integration removed - this method is no longer functional
 		console.warn("connectGee() called but GEE integration has been removed");
 		return null;
