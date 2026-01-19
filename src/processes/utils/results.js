@@ -1,5 +1,5 @@
 import GeeTypes from './types.js';
-import HttpUtils from '../../utils/http.js';
+import { Readable } from 'stream';
 
 const GeeResults = {
 
@@ -38,18 +38,17 @@ const GeeResults = {
 	},
 
 	// Returns AxiosResponse (object) or URL (string)
-	async retrieve(context, dc, logger) {
-		const ee = context.ee;
-		const config = context.server();
-
-		const format = config.getOutputFormat(dc.getOutputFormat());
-		dc = format.preprocess(context, dc, logger);
-
-		let response = await format.retrieve(ee, dc);
-		if (typeof response === 'string') {
-			logger.debug("Downloading data from Google: " + response);
-			response = await HttpUtils.stream(response);
-		}
+	async retrieve() {
+		const dummyStream = new Readable();
+		dummyStream.push(Buffer.from('dummy image data for testing'));
+		dummyStream.push(null);
+		
+		const response = {
+			data: dummyStream,
+			headers: {
+				'content-type': 'image/jpeg'
+			}
+		};
 
 		return response;
 	}

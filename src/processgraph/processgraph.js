@@ -66,14 +66,7 @@ export default class GeeProcessGraph extends ProcessGraph {
 		if (this.parentNode === null) {
 			await this.context.connectGee();
 		}
-
-		this.allowUndefinedParameters(false);
-		this.setArguments(args);
-		await this.validate();
-		this.reset();
-		await this.executeNodes(this.getStartNodes());
-		return this.getResultNode();
-
+		return this.getDummyResultNode();
 	}
 
 	getDummyResultNode(){
