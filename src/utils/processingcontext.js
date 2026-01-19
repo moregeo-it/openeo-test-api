@@ -4,8 +4,6 @@ export default class ProcessingContext {
 		this.serverContext = serverContext;
 		this.user = user;
 		this.userId = user ? user._id : null;
-		this.ee = null;
-		this.eePrivateKey = null;
 	}
 
 	async connectGee() {
