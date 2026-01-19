@@ -90,10 +90,6 @@ export default class FileFormat {
     };
   }
 
-  preprocess(context, dc/*, logger*/) {
-    return dc;
-  }
-
   async retrieve(/*ee, dc*/) {
     throw new Error('Not implemented');
   }

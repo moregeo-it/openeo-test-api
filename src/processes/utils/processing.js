@@ -1,10 +1,3 @@
-export function copyProps(ee, img, source) {
-	// copyProperties returns a ComputedObject, so cast back to ee.Image
-	// See: https://issuetracker.google.com/issues/341002190
-	// Once fixed the ee parameter can be removed
-	return ee.Image(img.copyProperties(source, source.propertyNames()));
-}
-
 const GeeProcessing = {
 
 	BAND_PLACEHOLDER: "#",
@@ -18,19 +11,6 @@ const GeeProcessing = {
 					return reject(failure);
 				}
 			});
-		});
-	},
-
-	iterateInParallel(ee, collectionA, collectionB, func, sortBy = null) {
-		if (sortBy !== null) {
-			collectionA = collectionA.sort(sortBy)
-			collectionB = collectionB.sort(sortBy);
-		}
-		let counter = 0;
-		return collectionA.map(imgA => {
-			const imgB = collectionB.toList(1, counter).get(0);
-			counter = counter + 1;
-			return func(imgA, imgB);
 		});
 	},
 

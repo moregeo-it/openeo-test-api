@@ -22,20 +22,7 @@ export default class GTiffFormat extends FileFormat {
   getFileExtension(parameters) {
     return parameters.zipped ? '.zip' : '.tiff';
   }
-
-  preprocess(context, dc, logger) {
-    const ee = context.ee;
-		const parameters = dc.getOutputFormatParameters();
-    const dc2 = new DataCube(ee, dc);
-		if (dc2.hasXY() && parameters.epsgCode >= 1000) {
-      dc2.setCrs(parameters.epsgCode);
-    }
-    if (dc2.hasT()) {
-      dc2.dimT().drop();
-    }
-    return dc2.setData(GeeResults.toImageOrCollection(ee, logger, dc.getData()));
-  }
-
+  
   async retrieve(ee, dc) {
 		const parameters = dc.getOutputFormatParameters();
 
