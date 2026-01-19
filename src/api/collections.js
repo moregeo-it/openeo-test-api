@@ -117,7 +117,6 @@ export default class Data {
 		const a = Date.now();
 		const num = await this.catalog.loadCatalog();
 		console.log(`Loaded ${num} collections (${Date.now()-a} ms)`);
-;
 		return num;
 	}
 
