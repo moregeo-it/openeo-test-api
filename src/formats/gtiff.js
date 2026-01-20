@@ -21,44 +21,8 @@ export default class GTiffFormat extends FileFormat {
     return parameters.zipped ? '.zip' : '.tiff';
   }
   
-  async retrieve(ee, dc) {
-		const parameters = dc.getOutputFormatParameters();
-
-		let region = null;
-		let crs = null;
-		if (dc.hasXY()) {
-			region = Utils.bboxToGeoJson(dc.getSpatialExtent());
-			crs = Utils.crsToString(dc.getCrs());
-		}
-
-    const format = parameters.zipped ? 'ZIPPED_GEO_TIFF' : 'GEO_TIFF';
-
-    const data = dc.getData();
-    if (data instanceof ee.ImageCollection) {
-      // todo: implement
-    }
-    else if (data instanceof ee.Image) {
-      const eeOpts = {
-        scale: parameters.scale || 100,
-        region,
-        crs,
-        format
-      };
-      return await new Promise((resolve, reject) => {
-        data.getDownloadURL(eeOpts, (url, err) => {
-          if (err) {
-            reject(err);
-          }
-          else if (typeof url !== 'string' || url.length === 0) {
-            reject('Download URL provided by Google Earth Engine is empty.');
-          }
-          else {
-            resolve(url);
-          }
-        });
-      });
-    }
-
+  async retrieve(dc) {
+		return true;
   }
 
 }

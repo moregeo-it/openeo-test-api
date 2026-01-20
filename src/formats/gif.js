@@ -26,37 +26,8 @@ export default class GifFormat extends BitmapLike {
     return true;
   }
 
-  async retrieve(ee, dc) {
-		const parameters = dc.getOutputFormatParameters();
-    const img = ee.ImageCollection(dc.getData());
-
-		let region = null;
-		let crs = null;
-		if (dc.hasXY()) {
-			region = Utils.bboxToGeoJson(dc.getSpatialExtent());
-			crs = Utils.crsToString(dc.getCrs());
-		}
-
-    const eeOpts = {
-      format: this.getFormatCode(),
-      dimensions: parameters.size || 1000,
-      region,
-      crs,
-      framesPerSecond: parameters.framesPerSecond || 1
-    };
-    return await new Promise((resolve, reject) => {
-      img.getVideoThumbURL(eeOpts, (url, err) => {
-        if (err) {
-          reject(err);
-        }
-        else if (typeof url !== 'string' || url.length === 0) {
-          reject('Download URL provided by Google Earth Engine is empty.');
-        }
-        else {
-          resolve(url);
-        }
-      });
-    });
+  async retrieve(dc) {
+    return true;
   }
 
 }

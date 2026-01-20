@@ -15,7 +15,7 @@ export default class JsonFormat extends FileFormat {
     return ['vector', 'table', 'other'];
   }
 
-  async retrieve(ee, dc) {
+  async retrieve(dc) {
     let data = dc.getData();
     if (typeof data === 'undefined' || data === null) {
       throw new Error.DataCubeEmpty();

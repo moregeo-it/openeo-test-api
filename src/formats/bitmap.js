@@ -93,37 +93,8 @@ export default class BitmapLike extends FileFormat {
     return renderer === 'filmstrip';
   }
 
-  async retrieve(ee, dc) {
-		const parameters = dc.getOutputFormatParameters();
-    const img = dc.getData();
-
-		let region = null;
-		let crs = null;
-		if (dc.hasXY()) {
-			region = Utils.bboxToGeoJson(dc.getSpatialExtent());
-			crs = Utils.crsToString(dc.getCrs());
-		}
-
-    const eeOpts = {
-      format: this.getFormatCode(),
-      dimensions: parameters.size || 1000,
-      region,
-      crs
-    };
-    const urlFunc = (img instanceof ee.ImageCollection) ? 'getFilmstripThumbURL' : 'getThumbURL';
-    return await new Promise((resolve, reject) => {
-      img[urlFunc](eeOpts, (url, err) => {
-        if (err) {
-          reject(err);
-        }
-        else if (typeof url !== 'string' || url.length === 0) {
-          reject('Download URL provided by Google Earth Engine is empty.');
-        }
-        else {
-          resolve(url);
-        }
-      });
-    });
+  async retrieve(dc) {
+    return true
   }
 
 }
