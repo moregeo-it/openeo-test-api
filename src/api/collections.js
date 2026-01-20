@@ -1,80 +1,9 @@
 import API from '../utils/API.js';
 import Utils from '../utils/utils.js';
 import Errors from '../utils/errors.js';
+import exampleItems from '../../storage/collectionItems.js';
 
 export default class Data {
-
- 	exampleFeatures = [
-		{
-	      "type": "Feature",
-	      "id": "sample-point-001",
-	      "stac_version": "1.0.0",
-	      "stac_extensions": [
-	        "https://stac-extensions.github.io/version/v1.0.0/schema.json"
-	      ],
-	      "bbox": [102.0, 0.5, 102.0, 0.5],
-	      "geometry": {
-	        "type": "Point",
-	        "coordinates": [102.0, 0.5]
-	      },
-	      "properties": {
-	        "datetime": "2024-06-01T12:00:00Z",
-	        "name": "Sample Point",
-	        "description": "This is a sample point."
-	      },
-	      "assets": {}
-	    },
-	    {
-	      "type": "Feature",
-	      "id": "sample-linestring-001",
-	      "stac_version": "1.0.0",
-	      "stac_extensions": [
-	        "https://stac-extensions.github.io/version/v1.0.0/schema.json"
-	      ],
-	      "bbox": [102.0, 0.0, 105.0, 1.0],
-	      "geometry": {
-	        "type": "LineString",
-	        "coordinates": [
-	          [102.0, 0.0],
-	          [103.0, 1.0],
-	          [104.0, 0.0],
-	          [105.0, 1.0]
-	        ]
-	      },
-	      "properties": {
-	        "datetime": "2024-06-02T12:00:00Z",
-	        "name": "Sample LineString",
-	        "description": "This is a sample line."
-	      },
-	      "assets": {}
-	    },
-	    {
-	      "type": "Feature",
-	      "id": "sample-polygon-001",
-	      "stac_version": "1.0.0",
-	      "stac_extensions": [
-	        "https://stac-extensions.github.io/version/v1.0.0/schema.json"
-	      ],
-	      "bbox": [100.0, 0.0, 101.0, 1.0],
-	      "geometry": {
-	        "type": "Polygon",
-	        "coordinates": [
-	          [
-	            [100.0, 0.0],
-	            [101.0, 0.0],
-	            [101.0, 1.0],
-	            [100.0, 1.0],
-	            [100.0, 0.0]
-	          ]
-	        ]
-	      },
-	      "properties": {
-	        "datetime": "2024-06-03T12:00:00Z",
-	        "name": "Sample Polygon",
-	        "description": "This is a sample polygon."
-	      },
-	      "assets": {}
-	    }]
 
 	constructor(context) {
 		this.context = context;
@@ -196,11 +125,40 @@ export default class Data {
 	}
 
 	async getCollectionItems(req, res) {
+		let exampleFeatures = exampleItems.features; // Use imported example features
 		let id = req.params.collection_id;
 		// Get the ID if this was a redirect from the /collections/{collection_id} endpoint
 		if (req.params['*'] && !id) {
 			id = req.params['*'].replace(/\/items$/, '');
 		}
+
+		// Replace links in example features to have correct IDs
+		exampleFeatures = exampleFeatures.map(f => {
+			const newFeature = Object.assign({}, f);
+			newFeature.links = [
+				{
+					rel: "self",
+					href: API.getUrl(`/collections/${id}/items/${f.id}`),
+					type: "application/geo+json"
+				},
+				{
+					rel: "root",
+					href: API.getUrl(`/`),
+					type: "application/json"
+				},
+				{
+					rel: "parent",
+					href: API.getUrl(`/collections/${id}`),
+					type: "application/json"
+				},
+				{
+					rel: "collection",
+					href: API.getUrl(`/collections/${id}`),
+					type: "application/json"
+				}
+			];
+			return newFeature;
+		});
 
 		// Add links
 		const links = [
@@ -223,10 +181,10 @@ export default class Data {
 
 		res.json({
 			type: "FeatureCollection",
-			features: this.exampleFeatures,
+			features: exampleFeatures,
 			links,
 			timeStamp: Utils.toISODate(Date.now()),
-			numberReturned: this.exampleFeatures.length
+			numberReturned: exampleFeatures.length
 		});
 	}
 
