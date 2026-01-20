@@ -2,7 +2,6 @@ import DataCube from '../datacube/datacube.js';
 import { ProcessGraphNode } from '@openeo/js-processgraphs';
 import Errors from '../utils/errors.js';
 import ProcessGraph from '../processgraph/processgraph.js';
-import GeeTypes from '../processes/utils/types.js';
 
 export default class GeeProcessGraphNode extends ProcessGraphNode {
 
@@ -63,7 +62,7 @@ export default class GeeProcessGraphNode extends ProcessGraphNode {
 	}
 
 	getDataCube(name, defaultValue = undefined) {
-		return new DataCube(null, this.getArgument(name, defaultValue));
+		return new DataCube(this.getArgument(name, defaultValue));
 	}
 
 	getCallback(name) {

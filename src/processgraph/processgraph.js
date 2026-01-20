@@ -3,7 +3,6 @@ import GeeJsonSchemaValidator from './jsonschema.js';
 import GeeProcessGraphNode from './node.js';
 import Errors from '../utils/errors.js';
 import Utils from '../utils/utils.js';
-import DataCube from '../datacube/datacube.js';
 const epsg = Utils.require('epsg-index/all.json');
 
 export default class GeeProcessGraph extends ProcessGraph {

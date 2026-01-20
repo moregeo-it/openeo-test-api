@@ -1,5 +1,3 @@
-import GeeResults from "../processes/utils/results.js";
-import DataCube from "../datacube/datacube.js";
 import Utils from "../utils/utils.js";
 import FileFormat, { EPSGCODE_PARAMETER, SCALE_PARAMETER } from "./fileformat.js";
 

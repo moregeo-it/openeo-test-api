@@ -5,8 +5,7 @@ import Errors from '../utils/errors.js';
 
 export default class DataCube {
 
-	constructor(ee, data = undefined) {
-		this.ee = ee;
+	constructor(data = undefined) {
 		// Cache the data type for less overhead, especially for ee.ComputedObject
 		this.dimensions = {};
 		this.output = {
