@@ -1,0 +1,284 @@
+{
+  "description": "The In Situ TAC is a distributed centre organized around 7 oceanographic\nregions: the global ocean and the 6 EUROGOOS regional alliances. It involves\n14 partners from 11 countries in Europe. It doesn't deploy any observing\nsystem and relies on data, exclusively funded by other sources than\nCopernicus Marine Service.\n\nThis dataset contains sea surface current observations from High-Frequency\n(HF) radars. Sea surface currents measured by HF radar are an average over\nthe top 0.3-2.5 m of the water column, depending on the operating central\nfrequency.\n\nThis dataset provides radial velocity components. It comprises gridded maps\nof radial velocity fields of the surface current averaged over a time\ninterval. Radial velocities are measured on a polar grid and then remapped\nonto a Cartesian grid. The final product is a map of the zonal and\nmeridional components of the radial ocean currents on a regular grid in the\narea covered by the individual radar stations.\n\nFor more details refer to this\n[user manual](https://documentation.marine.copernicus.eu/PUM/CMEMS-INS-PUM-013-048.pdf)\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2025-03-28T00:00:00Z",
+          null
+        ]
+      ]
+    }
+  },
+  "gee:bq_table_name": "earth-engine-public-data.insitu_nrt_currents.radar_radial_latest",
+  "gee:categories": [
+    "oceans"
+  ],
+  "gee:skip_featureview_generation": true,
+  "gee:terms_of_use": "The data is provided free of charge by the Copernicus Marine Service.\nUsers must acknowledge the Copernicus Marine Service as the data source\nwhen using the data. More details on the terms of use can be found on\nthe [Copernicus Marine Service website](https://marine.copernicus.eu/user-corner/service-commitments-and-licence).\n",
+  "gee:type": "bigquery_table",
+  "id": "COPERNICUS/MARINE/INSITU_MULTI_4KM/RADAR_RADIAL",
+  "keywords": [
+    "copernicus",
+    "currents",
+    "insitu",
+    "marine",
+    "ocean",
+    "oceans",
+    "radar"
+  ],
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_MARINE_INSITU_MULTI_4KM_RADAR_RADIAL.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_MARINE_INSITU_MULTI_4KM_RADAR_RADIAL",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/MARINE/INSITU_MULTI_4KM/RADAR_RADIAL in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_MARINE_INSITU_MULTI_4KM_RADAR_RADIAL_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_INSITU_MULTI_4KM_RADAR_RADIAL#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Copernicus",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://marine.copernicus.eu/"
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_INSITU_MULTI_4KM_RADAR_RADIAL"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "gee:schema": [
+      {
+        "description": "Datetime of the observation",
+        "name": "TIME",
+        "type": "DATETIME"
+      },
+      {
+        "description": "Latitude of the observation",
+        "name": "LATITUDE",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Longitude of the observation",
+        "name": "LONGITUDE",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Number of depth levels",
+        "name": "DEPTH",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Range (away from the instrument) of the measurement (km)",
+        "name": "RNGE",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Bearing (away from the instrument) of the measurement (degrees)\n",
+        "name": "BEAR",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Depth of the observation (m)",
+        "name": "DEPH",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Radial Standard Deviation of Current Velocity over the Scatter\nPatch (m/s)\n",
+        "name": "ESPC",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Radial Standard Deviation of Current Velocity over the Coverage\nPeriod (m/s)\n",
+        "name": "ETMP",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Maximum velocity",
+        "name": "MAXV",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Minimum velocity",
+        "name": "MINV",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Radial surface current error",
+        "name": "ERSC",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Total radial current error",
+        "name": "ERTC",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Distance in X-direction from radar site",
+        "name": "XDST",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Distance in Y-direction from radar site",
+        "name": "YDST",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Spectral peakiness",
+        "name": "SPRC",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for OWTR.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "OWTR_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Quality control flag for CSPD.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "CSPD_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Quality control flag for VART.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "VART_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Quality control flag for MDFL.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "MDFL_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Quality control flag for AVRB.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "AVRB_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Quality control flag for RDCT.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "RDCT_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Overall quality flag\n\nNote: a value of 1 here indicates that all data in that row's source\nfile was good, but because each row has QC bits for individual fields,\na value other than 1 here does not necessarily mean that a row cannot\nor should not be used.\n",
+        "name": "QCflag",
+        "type": "INT"
+      },
+      {
+        "description": "Direction of Radial Sea Water Velocity away From Instrument (degrees)\n",
+        "name": "DRVA",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Radial Sea Water Velocity Away From Instrument (m/s)\n",
+        "name": "RDVA",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Surface Eastward Sea Water Velocity (m/s)",
+        "name": "EWCT",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Surface Northward Sea Water Velocity (m/s)",
+        "name": "NSCT",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for POSITION.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "POSITION_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Station identifier",
+        "name": "SDN_STATION",
+        "type": "STRING"
+      },
+      {
+        "description": "Quality control flag for TIME.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "TIME_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Quality control flag for DEPH.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "DEPH_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Geographic location of the observation",
+        "name": "geometry",
+        "type": "GEOMETRY"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "Global INSITU Radar Radial RDVA",
+        "image_visualization": {
+          "band_names": [
+            "RDVA"
+          ],
+          "max": 1,
+          "min": -1,
+          "palette": [
+            "a50026",
+            "d73027",
+            "333333",
+            "4575b4",
+            "313695"
+          ]
+        },
+        "lookat": {
+          "lat": 42.76,
+          "lon": -9.46,
+          "zoom": 8
+        }
+      }
+    ]
+  },
+  "title": "Copernicus Global In-situ Observations of Ocean Currents - Radar Radial",
+  "type": "Collection",
+  "gee:status": "ready"
+}

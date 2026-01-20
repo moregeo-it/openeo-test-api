@@ -1,0 +1,236 @@
+{
+  "description": "Copernicus Marine Physics 2D Daily Mean Fields\n(cmems_mod_glo_phy_anfc_0.083deg_P1D-m) deliver global daily-averaged ocean\nsurface and bottom variables at 8km resolution.\n\nThe Operational Mercator global ocean analysis and forecast system is\nproviding 10 days of 2D global ocean forecasts updated daily.\nThe time series is aggregated in time in order to reach a two full year's\ntime series sliding window. This product includes daily mean\nfiles of temperature, salinity, currents, sea level, mixed layer depth and\nice parameters from the top to the bottom over the global ocean.\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-06-01T00:00:00Z",
+          "2026-01-22T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "gee:categories": [
+    "oceans"
+  ],
+  "gee:interval": {
+    "interval": 1,
+    "type": "cadence",
+    "unit": "day"
+  },
+  "gee:terms_of_use": "This dataset is released for use under Service Level Agreement (SLA),\nusing the acronym \"CMEMS\" or the shortened name \"Copernicus Marine Service\"\nboth denote the E.U. Copernicus Marine Environment Monitoring Service.\nHighlights and key features of the licence are provided in this document\n[License](https://marine.copernicus.eu/user-corner/service-commitments-and-licence)\n",
+  "gee:type": "image_collection",
+  "id": "COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_PHY_DAILY",
+  "keywords": [
+    "copernicus",
+    "daily",
+    "forecast",
+    "marine",
+    "oceans"
+  ],
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_PHY_DAILY.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_PHY_DAILY",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_PHY_DAILY in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_PHY_DAILY_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_PHY_DAILY#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Marine Service",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://data.marine.copernicus.eu/product/GLOBAL_ANALYSISFORECAST_PHY_001_024/description"
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_PHY_DAILY"
+    }
+  ],
+  "sci:citation": "E.U. Copernicus Marine Service Information (2024). Global Ocean Physics Analysis and Forecast.\n[doi:10.48670/moi-00016](https://doi.org/10.48670/moi-00016)\n",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "eo:bands": [
+      {
+        "description": "Mean albedo over sea ice",
+        "gee:units": "%",
+        "name": "sialb"
+      },
+      {
+        "description": "Mean sea ice age",
+        "gee:units": "y",
+        "name": "siage"
+      },
+      {
+        "description": "Sea Ice Concentration",
+        "gee:units": "Dimensionless",
+        "name": "siconc"
+      },
+      {
+        "description": "Sea Ice Surface Temperature",
+        "gee:units": "&deg;C",
+        "name": "ist"
+      },
+      {
+        "description": "Sea Ice Velocity",
+        "gee:units": "m/s",
+        "name": "sivelo"
+      },
+      {
+        "description": "Sea Ice Thickness",
+        "gee:units": "m",
+        "name": "sithick"
+      },
+      {
+        "description": "Sea Ice Surface Snow Thickness",
+        "gee:units": "m",
+        "name": "sisnthick"
+      },
+      {
+        "description": "Mixed Layer Depth",
+        "gee:units": "m",
+        "name": "mlotst"
+      },
+      {
+        "description": "Sea Water Pressure at Sea floor",
+        "gee:units": "Pa",
+        "name": "pbo"
+      },
+      {
+        "description": "Sea Bottom Salinity",
+        "gee:units": "psu",
+        "name": "sob"
+      },
+      {
+        "description": "Sea Surface Height",
+        "gee:units": "m",
+        "name": "zos"
+      },
+      {
+        "description": "Sea Bottom Temperature",
+        "gee:units": "&deg;C",
+        "name": "tob"
+      },
+      {
+        "description": "Sea Ice Eastward Velocity",
+        "gee:units": "m/s",
+        "name": "usi"
+      },
+      {
+        "description": "Sea Ice Northward Velocity",
+        "gee:units": "m/s",
+        "name": "vsi"
+      }
+    ],
+    "gee:schema": [
+      {
+        "description": "For observations in the past, the number of hours between the\nobservation and run times.\n",
+        "name": "lag_hours",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "For observations in the future, the number of hours between the\nobservation and run times.\n",
+        "name": "forecast_hours",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "The valid time of the observation, in milliseconds.",
+        "name": "observation_time",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Observation type:\n\n*   **forecast**: Future model prediction\n*   **hindcast**: Past model reconstruction\n*   **nowcast**: Best estimate of the current state\n",
+        "name": "observation_type",
+        "type": "STRING"
+      },
+      {
+        "description": "The time the observation was produced, in milliseconds.",
+        "name": "run_time",
+        "type": "DOUBLE"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "Sea Surface Height",
+        "image_visualization": {
+          "band_vis": {
+            "bands": [
+              "zos"
+            ],
+            "max": [
+              1.5
+            ],
+            "min": [
+              -2
+            ],
+            "palette": [
+              "0000ff",
+              "00ffff",
+              "ffff00",
+              "ff0000",
+              "ffffff"
+            ]
+          }
+        },
+        "lookat": {
+          "lat": 52.2,
+          "lon": -140.5,
+          "zoom": 2
+        }
+      }
+    ],
+    "gsd": [
+      9276.62
+    ]
+  },
+  "title": "Global Ocean Physics Analysis and Forecast Daily",
+  "type": "Collection",
+  "gee:status": "ready"
+}

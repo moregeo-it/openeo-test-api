@@ -1,5 +1,4 @@
 /node_modules/
-/storage/collections/
 /storage/database/*.db
 /storage/user_files/
 /storage/temp_files/

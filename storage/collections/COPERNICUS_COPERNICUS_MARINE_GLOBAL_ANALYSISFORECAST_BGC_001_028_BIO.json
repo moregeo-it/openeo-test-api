@@ -1,0 +1,1142 @@
+{
+  "description": "The Operational Mercator Ocean biogeochemical global ocean analysis and\nforecast system at 1/4 degree is providing 10 days of 3D global ocean\nforecasts updated weekly. The time series is aggregated in time, in order\nto reach a two full year's time series sliding window. This product\nincludes daily and monthly mean files of biogeochemical parameters\n(chlorophyll, nitrate, phosphate, silicate, dissolved oxygen, dissolved\niron, primary production, phytoplankton, zooplankton, PH, and surface\npartial pressure of carbon dioxide) over the global ocean. The global\nocean output files are displayed with a 1/4 degree horizontal resolution\nwith regular longitude/latitude equirectangular projection.\nThese products are provided on 50 vertical levels with\ndepths ranging from 0.49m to 5727.92m.\n<br><br> This dataset mainly consists of total primary\nproduction of phytos, and dissolved oxygen.\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-01-01T00:00:00Z",
+          "2025-09-19T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "gee:categories": [
+    "oceans"
+  ],
+  "gee:interval": {
+    "interval": 1,
+    "type": "cadence",
+    "unit": "day"
+  },
+  "gee:terms_of_use": "The data is provided free of charge by the Copernicus Marine Service.\nUsers must acknowledge the Copernicus Marine Service as the data source\nwhen using the data. More details on the terms of use can be found on\nthe [Copernicus Marine Service website](https://marine.copernicus.eu/user-corner/service-commitments-and-licence).\n",
+  "gee:type": "image_collection",
+  "id": "COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_BGC_001_028/BIO",
+  "keywords": [
+    "copernicus",
+    "daily",
+    "forecast",
+    "marine",
+    "ocean",
+    "oceans"
+  ],
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_BIO.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_BIO",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_BGC_001_028/BIO in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_BIO_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_BIO#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Copernicus",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://marine.copernicus.eu/"
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_BIO"
+    }
+  ],
+  "sci:citation": "E.U. Copernicus Marine Service Information.\n[https://doi.org/10.48670/moi-00015](https://doi.org/10.48670/moi-00015)\n",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "eo:bands": [
+      {
+        "description": "Total Primary Production of Phyto (depth 1, 0.4940m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth1"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 2, 1.5414m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth2"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 3, 2.6457m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth3"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 4, 3.8195m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth4"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 5, 5.0782m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth5"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 6, 6.4406m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth6"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 7, 7.9296m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth7"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 8, 9.5730m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth8"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 9, 11.4050m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth9"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 10, 13.4671m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth10"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 11, 15.8101m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth11"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 12, 18.4956m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth12"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 13, 21.5988m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth13"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 14, 25.2114m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth14"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 15, 29.4447m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth15"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 16, 34.4342m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth16"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 17, 40.3441m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth17"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 18, 47.3737m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth18"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 19, 55.7643m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth19"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 20, 65.8073m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth20"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 21, 77.8539m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth21"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 22, 92.3261m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth22"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 23, 109.7293m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth23"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 24, 130.6660m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth24"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 25, 155.8507m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth25"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 26, 186.1256m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth26"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 27, 222.4752m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth27"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 28, 266.0403m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth28"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 29, 318.1274m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth29"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 30, 380.2130m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth30"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 31, 453.9377m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth31"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 32, 541.0889m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth32"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 33, 643.5668m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth33"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 34, 763.3331m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth34"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 35, 902.3393m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth35"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 36, 1062.4397m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth36"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 37, 1245.2911m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth37"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 38, 1452.2510m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth38"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 39, 1684.2844m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth39"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 40, 1941.8934m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth40"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 41, 2225.0779m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth41"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 42, 2533.3362m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth42"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 43, 2865.7026m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth43"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 44, 3220.8203m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth44"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 45, 3597.0320m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth45"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 46, 3992.4839m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth46"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 47, 4405.2241m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth47"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 48, 4833.2905m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth48"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 49, 5274.7842m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth49"
+      },
+      {
+        "description": "Total Primary Production of Phyto (depth 50, 5727.9165m)",
+        "gee:units": "mg/m^3/day",
+        "name": "nppv_depth50"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 1, 0.4940m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth1"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 2, 1.5414m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth2"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 3, 2.6457m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth3"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 4, 3.8195m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth4"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 5, 5.0782m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth5"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 6, 6.4406m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth6"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 7, 7.9296m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth7"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 8, 9.5730m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth8"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 9, 11.4050m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth9"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 10, 13.4671m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth10"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 11, 15.8101m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth11"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 12, 18.4956m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth12"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 13, 21.5988m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth13"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 14, 25.2114m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth14"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 15, 29.4447m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth15"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 16, 34.4342m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth16"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 17, 40.3441m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth17"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 18, 47.3737m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth18"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 19, 55.7643m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth19"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 20, 65.8073m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth20"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 21, 77.8539m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth21"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 22, 92.3261m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth22"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 23, 109.7293m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth23"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 24, 130.6660m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth24"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 25, 155.8507m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth25"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 26, 186.1256m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth26"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 27, 222.4752m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth27"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 28, 266.0403m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth28"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 29, 318.1274m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth29"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 30, 380.2130m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth30"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 31, 453.9377m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth31"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 32, 541.0889m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth32"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 33, 643.5668m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth33"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 34, 763.3331m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth34"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 35, 902.3393m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth35"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 36, 1062.4397m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth36"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 37, 1245.2911m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth37"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 38, 1452.2510m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth38"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 39, 1684.2844m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth39"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 40, 1941.8934m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth40"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 41, 2225.0779m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth41"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 42, 2533.3362m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth42"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 43, 2865.7026m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth43"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 44, 3220.8203m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth44"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 45, 3597.0320m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth45"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 46, 3992.4839m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth46"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 47, 4405.2241m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth47"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 48, 4833.2905m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth48"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 49, 5274.7842m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth49"
+      },
+      {
+        "description": "Dissolved Oxygen (depth 50, 5727.9165m)",
+        "gee:units": "mmol/m^3",
+        "name": "o2_depth50"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "Global BGC BIO Forecast",
+        "image_visualization": {
+          "band_vis": {
+            "bands": [
+              "nppv_depth1"
+            ],
+            "max": [
+              50
+            ],
+            "min": [
+              1
+            ],
+            "palette": [
+              "black",
+              "blue",
+              "cyan",
+              "green",
+              "yellow",
+              "red",
+              "white"
+            ]
+          }
+        },
+        "lookat": {
+          "lat": 73.63,
+          "lon": -140.5,
+          "zoom": 2
+        }
+      }
+    ],
+    "gsd": [
+      27750
+    ],
+    "nppv_depth1": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth10": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth11": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth12": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth13": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth14": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth15": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth16": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth17": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth18": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth19": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth2": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth20": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth21": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth22": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth23": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth24": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth25": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth26": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth27": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth28": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth29": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth3": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth30": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth31": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth32": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth33": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth34": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth35": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth36": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth37": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth38": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth39": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth4": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth40": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth41": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth42": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth43": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth44": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth45": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth46": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth47": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth48": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth49": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth5": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth50": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth6": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth7": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth8": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "nppv_depth9": {
+      "gee:estimated_range": true,
+      "maximum": 2729.2,
+      "minimum": 0
+    },
+    "o2_depth1": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth10": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth11": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth12": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth13": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth14": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth15": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth16": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth17": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth18": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth19": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth2": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth20": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth21": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth22": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth23": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth24": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth25": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth26": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth27": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth28": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth29": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth3": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth30": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth31": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth32": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth33": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth34": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth35": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth36": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth37": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth38": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth39": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth4": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth40": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth41": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth42": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth43": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth44": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth45": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth46": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth47": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth48": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth49": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth5": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth50": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth6": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth7": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth8": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    },
+    "o2_depth9": {
+      "gee:estimated_range": true,
+      "maximum": 516.16,
+      "minimum": 0.1
+    }
+  },
+  "title": "Copernicus Global Ocean Bio-Geo-Chemical Forecast - BIO",
+  "type": "Collection",
+  "gee:status": "ready"
+}

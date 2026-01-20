@@ -1,0 +1,336 @@
+{
+  "description": "This dataset provides global daily estimates of ocean surface chlorophyll-a\nconcentration and remote sensing reflectance derived from multiple satellite\nsensors.\n\nRemote-sensing reflectance (or Rrs) is defined as the ratio of water-leaving\nradiance to downwelling irradiance and serves as the main input to\nalgorithms used to derive other ocean colour products. Chlorophyll-a (Chl-a)\nis the main photosynthetic pigment found in phytoplankton, which form the\nbase of the marine food-web and are responsible for approximately half of\nthe global photosynthesis. Chl-a can be estimated from Rrs data using\ndifferent algorithms (see details in the Documentation). Here, we provide a\nblended Chl-a estimate from multiple algorithms, where blending is based on\nthe suitability of each candidate algorithm to the optical typology of a\ngiven pixel. This approach provides the best estimates of global Chl-a\nacross a range of water types.\n\nThe files from this dataset contain global daily composites of merged sensor\nproducts: SeaWiFS, MERIS, MODIS Aqua, VIIRS, and (from version 5.0 onward)\nOLCI. Note that Rrs and Chl-a data are only available over cloud- and\nice-free areas. As a result, more complete spatial coverage (as shown in the\nmap in the upper-right corner) can be achieved by aggregating data over\nlonger time periods.\n\nThis dataset is produced using the processing chain software developed by\nthe Ocean Colour component of the European Space Agency Climate Change\nInitiative project (ESA OC-CCI). More details are available in the dataset\n[documentation](https://dast.copernicus-climate.eu/documents/satellite-ocean-colour/v6.0/WP2-FDDP-2022-04_C3S2-Lot3_PUGS-of-v6.0-OceanColour-product_v1.1_FINAL.pdf).\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1997-01-01T00:00:00Z",
+          "2024-12-31T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "gee:categories": [
+    "oceans"
+  ],
+  "gee:interval": {
+    "interval": 1,
+    "type": "cadence",
+    "unit": "day"
+  },
+  "gee:terms_of_use": "This dataset is released for use under the CC-BY licence. Highlights and\nkey features of the licence are provided in this document. [License](https://creativecommons.org/licenses/by/4.0/).\n",
+  "gee:type": "image_collection",
+  "id": "COPERNICUS/MARINE/SATELLITE_OCEAN_COLOR/V6",
+  "keywords": [
+    "chlorophyll-a",
+    "copernicus",
+    "daily",
+    "marine",
+    "oceans"
+  ],
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_MARINE_SATELLITE_OCEAN_COLOR_V6.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_MARINE_SATELLITE_OCEAN_COLOR_V6",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/MARINE/SATELLITE_OCEAN_COLOR/V6 in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_MARINE_SATELLITE_OCEAN_COLOR_V6_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_SATELLITE_OCEAN_COLOR_V6#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Copernicus",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://doi.org/10.24381/cds.f85b319d "
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_SATELLITE_OCEAN_COLOR_V6"
+    }
+  ],
+  "sci:citation": "Copernicus Climate Change Service (2019): Ocean colour daily data from 1997\nto present derived from satellite observations. Copernicus Climate Change\nService (C3S) Climate Data Store (CDS). \n[doi:10.24381/cds.f85b319d](https://doi.org/10.24381/cds.f85b319d)\n",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "MERIS_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 135.55,
+      "minimum": 0.11
+    },
+    "MODISA_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 126.33,
+      "minimum": 0.11
+    },
+    "OLCI-A_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 121,
+      "minimum": 0.11
+    },
+    "OLCI-B_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 121,
+      "minimum": 0.11
+    },
+    "Rrs_412": {
+      "gee:estimated_range": false,
+      "maximum": 0.26,
+      "minimum": 0
+    },
+    "Rrs_443": {
+      "gee:estimated_range": false,
+      "maximum": 0.28,
+      "minimum": 0
+    },
+    "Rrs_490": {
+      "gee:estimated_range": false,
+      "maximum": 0.38,
+      "minimum": 0
+    },
+    "Rrs_510": {
+      "gee:estimated_range": false,
+      "maximum": 0.39,
+      "minimum": 0
+    },
+    "Rrs_560": {
+      "gee:estimated_range": false,
+      "maximum": 0.402,
+      "minimum": 0
+    },
+    "Rrs_665": {
+      "gee:estimated_range": false,
+      "maximum": 0.21,
+      "minimum": 0
+    },
+    "Rrs_MERIS_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 135.55,
+      "minimum": 0.11
+    },
+    "Rrs_MODISA_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 126.33,
+      "minimum": 0.11
+    },
+    "Rrs_OLCI-A_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 121,
+      "minimum": 0.11
+    },
+    "Rrs_OLCI-B_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 121,
+      "minimum": 0.11
+    },
+    "Rrs_SeaWiFS_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 61.77,
+      "minimum": 0.11
+    },
+    "Rrs_VIIRS_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 236.44,
+      "minimum": 0.11
+    },
+    "Rrs_total_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 329.77,
+      "minimum": 0.11
+    },
+    "SeaWiFS_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 61.77,
+      "minimum": 0.11
+    },
+    "VIIRS_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 236.44,
+      "minimum": 0.11
+    },
+    "chlor_a": {
+      "gee:estimated_range": false,
+      "maximum": 99.9,
+      "minimum": 0
+    },
+    "eo:bands": [
+      {
+        "description": "Number of observations from MERIS sensor",
+        "name": "MERIS_nobs"
+      },
+      {
+        "description": "Number of observations from MODIS-A sensor",
+        "name": "MODISA_nobs"
+      },
+      {
+        "description": "Number of observations from OLCI-A sensor",
+        "name": "OLCI-A_nobs"
+      },
+      {
+        "description": "Number of observations from OLCI-B sensor",
+        "name": "OLCI-B_nobs"
+      },
+      {
+        "description": "Number of observations from SeaWiFS sensor",
+        "name": "SeaWiFS_nobs"
+      },
+      {
+        "description": "Number of observations from VIIRS sensor",
+        "name": "VIIRS_nobs"
+      },
+      {
+        "description": "Chlorophyll-a concentration",
+        "gee:units": "mg/m^3",
+        "name": "chlor_a"
+      },
+      {
+        "description": "Total number of observations",
+        "name": "total_nobs"
+      },
+      {
+        "description": "Remote sensing reflectance at 412 nm",
+        "gee:units": "sr^-1",
+        "name": "Rrs_412"
+      },
+      {
+        "description": "Remote sensing reflectance at 443 nm",
+        "gee:units": "sr^-1",
+        "name": "Rrs_443"
+      },
+      {
+        "description": "Remote sensing reflectance at 490 nm",
+        "gee:units": "sr^-1",
+        "name": "Rrs_490"
+      },
+      {
+        "description": "Remote sensing reflectance at 510 nm",
+        "gee:units": "sr^-1",
+        "name": "Rrs_510"
+      },
+      {
+        "description": "Remote sensing reflectance at 560 nm",
+        "gee:units": "sr^-1",
+        "name": "Rrs_560"
+      },
+      {
+        "description": "Remote sensing reflectance at 665 nm",
+        "gee:units": "sr^-1",
+        "name": "Rrs_665"
+      },
+      {
+        "description": "Number of observations from MERIS sensor",
+        "name": "Rrs_MERIS_nobs"
+      },
+      {
+        "description": "Number of observations from MODIS-A sensor",
+        "name": "Rrs_MODISA_nobs"
+      },
+      {
+        "description": "Number of observations from OLCI-A sensor",
+        "name": "Rrs_OLCI-A_nobs"
+      },
+      {
+        "description": "Number of observations from OLCI-B sensor",
+        "name": "Rrs_OLCI-B_nobs"
+      },
+      {
+        "description": "Number of observations from SeaWiFS sensor",
+        "name": "Rrs_SeaWiFS_nobs"
+      },
+      {
+        "description": "Number of observations from VIIRS sensor",
+        "name": "Rrs_VIIRS_nobs"
+      },
+      {
+        "description": "Total number of observations from RRS sensors",
+        "name": "Rrs_total_nobs"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "Chlorophyll-a concentration",
+        "image_visualization": {
+          "band_vis": {
+            "bands": [
+              "chlor_a"
+            ],
+            "max": [
+              1
+            ],
+            "min": [
+              0
+            ],
+            "palette": [
+              "blue",
+              "purple",
+              "cyan",
+              "green",
+              "yellow",
+              "red"
+            ]
+          }
+        },
+        "lookat": {
+          "lat": 52,
+          "lon": 71,
+          "zoom": 2
+        }
+      }
+    ],
+    "gsd": [
+      4000
+    ],
+    "total_nobs": {
+      "gee:estimated_range": false,
+      "maximum": 329.77,
+      "minimum": 0.11
+    }
+  },
+  "title": "Copernicus Satellite Ocean Color Daily Data",
+  "type": "Collection",
+  "gee:status": "ready"
+}

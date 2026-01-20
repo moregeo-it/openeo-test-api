@@ -1,0 +1,148 @@
+{
+  "description": "The S2 cloud probability is created with the\n[sentinel2-cloud-detector](https://github.com/sentinel-hub/sentinel2-cloud-detector)\nlibrary (using [LightGBM](https://github.com/microsoft/LightGBM)).\nAll bands are upsampled using bilinear interpolation to 10m resolution\nbefore the gradient boost base algorithm is applied.  The resulting\n`0..1` floating point probability is scaled to `0..100` and stored as\nan UINT8.  Areas missing any or all of the bands are masked out.\nHigher values are more likely to be clouds or highly reflective surfaces\n(e.g. roof tops or snow).\n\nSentinel-2 is a wide-swath, high-resolution, multi-spectral\nimaging mission supporting Copernicus Land Monitoring studies,\nincluding the monitoring of vegetation, soil and water cover,\nas well as observation of inland waterways and coastal areas.\n\nThe Level-2 data can be found in the collection\n[COPERNICUS/S2_SR_HARMONIZED](COPERNICUS_S2_SR_HARMONIZED).  The Level-1B data can be found in the collection\n[COPERNICUS/S2_HARMONIZED](COPERNICUS_S2_HARMONIZED).  Additional metadata is available on assets in those\ncollections.\n\nSee\n[this tutorial](https://developers.google.com/earth-engine/tutorials/community/sentinel-2-s2cloudless)\nexplaining how to apply the cloud mask.\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -56,
+          180,
+          83
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2015-06-27T00:00:00Z",
+          "2026-01-14T06:22:09Z"
+        ]
+      ]
+    }
+  },
+  "gee:categories": [
+    "satellite-imagery"
+  ],
+  "gee:interval": {
+    "interval": 5,
+    "type": "revisit_interval",
+    "unit": "day"
+  },
+  "gee:terms_of_use": "The use of Sentinel data is governed by the [Copernicus\nSentinel Data Terms and Conditions.](https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf)\n",
+  "gee:type": "image_collection",
+  "id": "COPERNICUS/S2_CLOUD_PROBABILITY",
+  "keywords": [
+    "cloud",
+    "copernicus",
+    "esa",
+    "eu",
+    "msi",
+    "radiance",
+    "satellite-imagery",
+    "sentinel",
+    "sentinelhub"
+  ],
+  "license": "proprietary",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_S2_CLOUD_PROBABILITY.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_S2_CLOUD_PROBABILITY",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/S2_CLOUD_PROBABILITY in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_S2_CLOUD_PROBABILITY_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_CLOUD_PROBABILITY#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "European Union/ESA/Copernicus/SentinelHub",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/processing-levels/level-1"
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_CLOUD_PROBABILITY"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "eo:bands": [
+      {
+        "description": "Probability that the pixel is cloudy.",
+        "gsd": 10,
+        "name": "probability"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "RGB",
+        "image_visualization": {
+          "band_vis": {
+            "bands": [
+              "probability"
+            ],
+            "max": [
+              100
+            ],
+            "min": [
+              0
+            ]
+          }
+        },
+        "lookat": {
+          "lat": 51.4191,
+          "lon": 4.1968,
+          "zoom": 12
+        }
+      }
+    ],
+    "instruments": [
+      "MSI"
+    ],
+    "platform": [
+      "Sentinel-2A",
+      "Sentinel-2B"
+    ],
+    "probability": {
+      "gee:estimated_range": false,
+      "maximum": 100,
+      "minimum": 0
+    }
+  },
+  "title": "Sentinel-2: Cloud Probability",
+  "type": "Collection",
+  "gee:status": "ready"
+}

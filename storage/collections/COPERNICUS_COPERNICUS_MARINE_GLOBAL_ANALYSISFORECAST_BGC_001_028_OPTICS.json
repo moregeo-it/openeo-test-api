@@ -1,0 +1,642 @@
+{
+  "description": "The Operational Mercator Ocean biogeochemical global ocean analysis and\nforecast system at 1/4 degree is providing 10 days of 3D global ocean\nforecasts updated weekly. The time series is aggregated in time, in order\nto reach a two full year's time series sliding window. This product\nincludes daily and monthly mean files of biogeochemical parameters\n(chlorophyll, nitrate, phosphate, silicate, dissolved oxygen, dissolved\niron, primary production, phytoplankton, zooplankton, PH, and surface\npartial pressure of carbon dioxide) over the global ocean. The global\nocean output files are displayed with a 1/4 degree horizontal resolution\nwith regular longitude/latitude equirectangular projection.\nThese products are provided on 50 vertical levels with\ndepths ranging from 0.49m to 5727.92m.\n<br><br> This dataset consists of diffuse attenuation\ncoefficient of light in sea water.\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-01-01T00:00:00Z",
+          "2025-09-26T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "gee:categories": [
+    "oceans"
+  ],
+  "gee:interval": {
+    "interval": 1,
+    "type": "cadence",
+    "unit": "day"
+  },
+  "gee:terms_of_use": "The data is provided free of charge by the Copernicus Marine Service.\nUsers must acknowledge the Copernicus Marine Service as the data source\nwhen using the data. More details on the terms of use can be found on\nthe [Copernicus Marine Service website](https://marine.copernicus.eu/user-corner/service-commitments-and-licence).\n",
+  "gee:type": "image_collection",
+  "id": "COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_BGC_001_028/OPTICS",
+  "keywords": [
+    "copernicus",
+    "daily",
+    "forecast",
+    "marine",
+    "ocean",
+    "oceans"
+  ],
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_OPTICS.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_OPTICS",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_BGC_001_028/OPTICS in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_OPTICS_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_OPTICS#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Copernicus",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://marine.copernicus.eu/"
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_OPTICS"
+    }
+  ],
+  "sci:citation": "E.U. Copernicus Marine Service Information.\n[https://doi.org/10.48670/moi-00015](https://doi.org/10.48670/moi-00015)\n",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "eo:bands": [
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 1, 0.4940m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth1"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 2, 1.5414m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth2"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 3, 2.6457m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth3"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 4, 3.8195m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth4"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 5, 5.0782m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth5"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 6, 6.4406m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth6"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 7, 7.9296m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth7"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 8, 9.5730m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth8"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 9, 11.4050m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth9"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 10, 13.4671m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth10"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 11, 15.8101m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth11"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 12, 18.4956m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth12"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 13, 21.5988m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth13"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 14, 25.2114m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth14"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 15, 29.4447m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth15"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 16, 34.4342m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth16"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 17, 40.3441m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth17"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 18, 47.3737m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth18"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 19, 55.7643m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth19"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 20, 65.8073m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth20"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 21, 77.8539m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth21"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 22, 92.3261m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth22"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 23, 109.7293m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth23"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 24, 130.6660m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth24"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 25, 155.8507m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth25"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 26, 186.1256m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth26"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 27, 222.4752m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth27"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 28, 266.0403m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth28"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 29, 318.1274m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth29"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 30, 380.2130m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth30"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 31, 453.9377m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth31"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 32, 541.0889m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth32"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 33, 643.5668m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth33"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 34, 763.3331m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth34"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 35, 902.3393m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth35"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 36, 1062.4397m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth36"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 37, 1245.2911m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth37"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 38, 1452.2510m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth38"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 39, 1684.2844m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth39"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 40, 1941.8934m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth40"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 41, 2225.0779m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth41"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 42, 2533.3362m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth42"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 43, 2865.7026m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth43"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 44, 3220.8203m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth44"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 45, 3597.0320m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth45"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 46, 3992.4839m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth46"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 47, 4405.2241m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth47"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 48, 4833.2905m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth48"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 49, 5274.7842m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth49"
+      },
+      {
+        "description": "diffuse attenuation coeff of light in sea water (depth 50, 5727.9165m)",
+        "gee:units": "m^-1",
+        "name": "kd_depth50"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "Global BGC OPTICS Forecast - kd",
+        "image_visualization": {
+          "band_vis": {
+            "bands": [
+              "kd_depth1"
+            ],
+            "max": [
+              0.1
+            ],
+            "min": [
+              0
+            ],
+            "palette": [
+              "black",
+              "blue",
+              "cyan",
+              "green",
+              "yellow",
+              "red",
+              "white"
+            ]
+          }
+        },
+        "lookat": {
+          "lat": 73.63,
+          "lon": -140.5,
+          "zoom": 2
+        }
+      }
+    ],
+    "gsd": [
+      27750
+    ],
+    "kd_depth1": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth10": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth11": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth12": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth13": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth14": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth15": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth16": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth17": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth18": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth19": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth2": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth20": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth21": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth22": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth23": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth24": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth25": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth26": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth27": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth28": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth29": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth3": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth30": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth31": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth32": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth33": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth34": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth35": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth36": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth37": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth38": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth39": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth4": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth40": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth41": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth42": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth43": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth44": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth45": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth46": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth47": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth48": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth49": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth5": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth50": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth6": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth7": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth8": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    },
+    "kd_depth9": {
+      "gee:estimated_range": true,
+      "maximum": 0.478,
+      "minimum": 0
+    }
+  },
+  "title": "Copernicus Global Ocean Bio-Geo-Chemical Forecast - OPTICS",
+  "type": "Collection",
+  "gee:status": "ready"
+}
