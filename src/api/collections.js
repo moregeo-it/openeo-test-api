@@ -132,6 +132,19 @@ export default class Data {
 			id = req.params['*'].replace(/\/items$/, '');
 		}
 
+		const limit = parseInt(req.query.limit, 10) || 10;
+		const offset = parseInt(req.query.offset, 10) || 0;
+
+		// Apply limit and offset
+		exampleFeatures = exampleFeatures.slice(offset, offset + limit + 1);
+
+		let hasNextPage = false;
+		// We requested one additional image to check if there is a next page
+		if (exampleFeatures.length > limit) {
+			hasNextPage = true;
+			exampleFeatures.pop();
+		}
+
 		// Replace links in example features to have correct IDs
 		exampleFeatures = exampleFeatures.map(f => {
 			const newFeature = Object.assign({}, f);
@@ -178,6 +191,25 @@ export default class Data {
 				type: "application/json"
 			}
 		]
+		if (offset > 0) {
+			links.push({
+				rel: "first",
+				href: API.getUrl(`/collections/${id}/items?limit=${limit}&offset=0`),
+				type: "application/geo+json"
+			});
+			links.push({
+				rel: "prev",
+				href: API.getUrl(`/collections/${id}/items?limit=${limit}&offset=${Math.max(0, offset - limit)}`),
+				type: "application/geo+json"
+			});
+		}
+		if (hasNextPage) {
+			links.push({
+				rel: "next",
+				href: API.getUrl(`/collections/${id}/items?limit=${limit}&offset=${offset + limit}`),
+				type: "application/geo+json"
+			});
+		}
 
 		res.json({
 			type: "FeatureCollection",
