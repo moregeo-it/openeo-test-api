@@ -1,4 +1,3 @@
-import Utils from "../utils/utils.js";
 import FileFormat, { EPSGCODE_PARAMETER, SCALE_PARAMETER } from "./fileformat.js";
 
 export default class GTiffFormat extends FileFormat {

@@ -8,7 +8,7 @@ import PNG from 'pngjs';
 export default class load_collection extends GeeProcess {
 	async loadTestImageFromFile() {
 		const __filename = fileURLToPath(import.meta.url)
-    	const __dirname = path.dirname(__filename)
+		const __dirname = path.dirname(__filename)
 		// load testimage.png from disk
 		const filePath = path.join(__dirname, '../../storage/testimage.png')
 		const fileBuffer = fs.readFileSync(filePath);

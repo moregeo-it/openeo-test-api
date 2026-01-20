@@ -18,7 +18,7 @@ const GeeResults = {
 	// Returns AxiosResponse (object) or URL (string)
 	async retrieve() {
 		const __filename = fileURLToPath(import.meta.url);
-    	const __dirname = path.dirname(__filename);
+		const __dirname = path.dirname(__filename);
 		const filePath = path.join(__dirname, '../../../storage/testimage.png');
 		const fileBuffer = new Readable();
 		const file = await fs.readFile(filePath);

@@ -1,4 +1,3 @@
-import Utils from "../utils/utils.js";
 import BitmapLike from "./bitmap.js";
 
 export default class GifFormat extends BitmapLike {

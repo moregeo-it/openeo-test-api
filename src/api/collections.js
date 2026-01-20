@@ -262,12 +262,12 @@ export default class Data {
 		res.json(feature);
 	}
 
-	async getThumbnailById(req, res) {
+	async getThumbnailById() {
 		// GEE integration removed - thumbnail generation via Google Earth Engine is no longer available
 		throw new Errors.Internal({message: 'GEE integration has been removed. Thumbnail generation is not available.'});
 	}
 
-	async getAssetById(req, res) {
+	async getAssetById() {
 		// GEE integration removed - asset download via Google Earth Engine is no longer available
 		throw new Errors.Internal({message: 'GEE integration has been removed. Asset download is not available.'});
 	}

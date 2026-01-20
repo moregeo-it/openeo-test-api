@@ -211,7 +211,7 @@ export default class JobsAPI {
 			obj.href = API.getUrl("/storage/" + job.token + "/" + obj.href);
 			return obj;
 		};
-    const stacpath = this.storage.getJobFile(job._id, 'stac.json');
+		const stacpath = this.storage.getJobFile(job._id, 'stac.json');
 		const item = await fse.readJSON(stacpath);
 
 		if (publish) {
@@ -334,7 +334,7 @@ export default class JobsAPI {
 		// const budget = req.body.budget || null;
 		// ToDo: Validate data, handle budget and plan input #73
 		const id = Utils.timeId();
-    	const log_level = Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel);
+		const log_level = Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel);
 
 		const response = await runSync(this.context, req.user, id, req.body.process, log_level);
 		
