@@ -1,11 +1,14 @@
 version: '3'
 services:
-  openeo-gee-driver:
+  openeo-test-api:
     build:
       context: .
       dockerfile: DOCKERFILE
-    image: openeo-gee:0.3.0
-    container_name: openeo-earthengine-driver
+    image: openeo-test-api:latest
+    environment:
+      USERNAME: "testuser"
+      PASSWORD: "testpassword"
+    container_name: openeo-test-api
     ports:
-      - "80:80"
+      - "80:8080"
       - "443:443"

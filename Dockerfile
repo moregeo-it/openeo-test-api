@@ -4,8 +4,8 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 8080
 EXPOSE 443
 
 RUN npm install
-CMD ["npm", "run", "up"]
+CMD ["sh", "./start.sh"]

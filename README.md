@@ -39,3 +39,25 @@ To allow testing the full functionality of the API, it is recommended to set up 
 ## Usage
 
 In the testing suite of your choice you may connect the client to be tested to the API after starting the server using `npm start`. By default the endpoint will listen at `http://127.0.0.1:8080`
+
+## Docker
+Create the docker image using:
+
+```sh
+docker build -t openeo-test-api .
+```
+
+`docker-compose.yml` contains environment variables to define a test-user. Adjust these in accordance to your test definition.
+
+Run the docker container using:
+
+```sh
+docker compose up
+```
+
+In the directory of the `docker-compose.yml` file.
+To take down the docker container, run:
+
+```sh
+docker compose down
+```

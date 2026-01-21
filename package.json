@@ -7,6 +7,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "nodemon src/server.js --trace-warnings",
+		"startScript": "./start.sh",
 		"start": "node src/server.js",
 		"up": "pm2 start src/server.js",
 		"down": "pm2 stop src/server.js",

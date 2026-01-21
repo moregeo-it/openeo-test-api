@@ -5,35 +5,67 @@ import { createInterface } from 'node:readline/promises';
 const serverContext = new ServerContext();
 const users = serverContext.users();
 
-const rl = createInterface({
-	input: process.stdin,
-	output: process.stdout
-});
 const stop = (code) => {
-	rl.close();
 	process.exit(code);
 }
 
-const username = await rl.question('Enter a username: ');
-if (username && username.length < 4) {
+// Get username and password from command line arguments or interactive prompt
+let username, password, email;
+const args = process.argv.slice(2);
+
+if (args.length >= 2) {
+	// Use command line arguments
+	username = args[0];
+	password = args[1];
+	email = args[2] || null;
+} else {
+	// Use interactive prompts
+	const rl = createInterface({
+		input: process.stdin,
+		output: process.stdout
+	});
+	
+	const closeRl = () => {
+		rl.close();
+	}
+	
+	username = await rl.question('Enter a username: ');
+	if (!username || username.length < 4) {
+		console.error("Username must be at least 4 characters long.");
+		closeRl();
+		stop(1);
+	}
+	
+	password = await rl.question('Enter a password: ');
+	if (!password || password.length < 4) {
+		console.error("Password must be at least 4 characters long.");
+		closeRl();
+		stop(1);
+	}
+	
+	email = await rl.question('Enter an email address (optional): ');
+	if (!email || email.length < 6) {
+		email = null;
+	}
+	
+	closeRl();
+}
+
+// Validate username and password
+if (!username || username.length < 4) {
 	console.error("Username must be at least 4 characters long.");
 	stop(1);
 }
+
 const exists = await users.exists(username);
 if (exists) {
 	console.error("User with the given name already exists.");
 	stop(1);
 }
 
-const password = await rl.question('Enter a password: ');
-if (password && password.length < 4) {
+if (!password || password.length < 4) {
 	console.error("Password must be at least 4 characters long.");
 	stop(1);
-}
-
-let email = await rl.question('Enter an email address (optional): ');
-if (!email || email.length < 6) {
-	email = null;
 }
 
 try {
