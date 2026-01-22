@@ -19,10 +19,7 @@ export default class UserStore {
 		this.oidcIssuer = 'https://oidc.dummy.foobar';
 		this.oidcScopes = [
 			"openid",
-			"email",
-			"https://oidc.dummy.foobar/auth/earthengine",
-			// "https://www.googleapis.com/auth/cloud-platform",
-			// "https://www.googleapis.com/auth/devstorage.full_control"
+			"email"
 		];
 	}
 

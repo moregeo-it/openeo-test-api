@@ -208,8 +208,6 @@ const Utils = {
 	extensionToMediaType(ext) {
 		ext = this.getFileExtension(ext);
 		switch(ext.toLowerCase()) {
-			case 'gif':
-				return 'image/gif';
 			case 'png':
 				return 'image/png';
 			case 'jpg':
@@ -217,9 +215,6 @@ const Utils = {
 				return 'image/jpeg';
 			case 'json':
 				return 'application/json';
-			case 'tif':
-			case 'tiff':
-				return 'image/tiff; application=geotiff';
 			default:
 				return 'application/octet-stream';
 		}
