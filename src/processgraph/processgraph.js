@@ -1,4 +1,4 @@
-import { ProcessGraph, ProcessGraphError } from '@openeo/js-processgraphs';
+import { ProcessGraph } from '@openeo/js-processgraphs';
 import GeeJsonSchemaValidator from './jsonschema.js';
 import GeeProcessGraphNode from './node.js';
 import Errors from '../utils/errors.js';
@@ -59,15 +59,6 @@ export default class GeeProcessGraph extends ProcessGraph {
 		if (process) {
 			return await process.validate(node, this.context);
 		}
-	}
-
-	async execute(args = null) {
-		this.allowUndefinedParameters(false);
-		this.setArguments(args);
-		await this.validate();
-		this.reset();
-		await this.executeNodes(this.getStartNodes());
-		return this.getResultNode();
 	}
 
 	async executeNode(node) {
