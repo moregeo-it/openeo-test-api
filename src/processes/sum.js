@@ -1,10 +1,11 @@
 import GeeProcess from '../processgraph/process.js';
-import GeeProcessing from './utils/processing.js';
 
 export default class sum extends GeeProcess {
 
 	executeSync(node) {
-		return GeeProcessing.reduceNumericalFunction(node, 'sum', (x, y) => x + y);
+		let x = node.getArgument("x", undefined);
+		let y = node.getArgument("y", undefined);
+		return Math.sum(x, y);
 	}
 
 }

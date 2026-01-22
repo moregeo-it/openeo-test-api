@@ -1,5 +1,4 @@
 import GeeProcess from '../processgraph/process.js';
-import GeeProcessing from './utils/processing.js';
 
 export default class clip extends GeeProcess {
 
@@ -17,7 +16,8 @@ export default class clip extends GeeProcess {
   executeSync(node) {
     const min = node.getArgument('min');
     const max = node.getArgument('max');
-    return GeeProcessing.applyUnaryNumericalFunction(node, data => clip.process(data, min, max));
+    const data = node.getArgument('x');
+    return this.process(data, min, max)
   }
 
 }
