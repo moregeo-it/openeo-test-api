@@ -140,15 +140,14 @@ export default class Data {
 		const limit = parseInt(req.query.limit, 10) || 10;
 		const offset = parseInt(req.query.offset, 10) || 0;
 
-		// Apply limit and offset
-		exampleFeatures = exampleFeatures.slice(offset, offset + limit + 1);
-
-		let hasNextPage = false;
-		// We requested one additional image to check if there is a next page
-		if (exampleFeatures.length > limit) {
-			hasNextPage = true;
-			exampleFeatures.pop();
+		let hasNextPage = true;
+		// for next page
+		if (exampleFeatures.length <= offset+limit){
+			hasNextPage = false;
 		}
+
+		// Apply limit and offset
+		exampleFeatures = exampleFeatures.slice(offset, offset + limit);
 
 		// Replace links in example features to have correct IDs
 		exampleFeatures = exampleFeatures.map(f => {
