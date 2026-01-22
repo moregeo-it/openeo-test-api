@@ -18,7 +18,7 @@ const GeeResults = {
 	// Returns AxiosResponse (object) or URL (string)
 	async retrieve(context, dc, logger) {
 		const format = dc?.getOutputFormat() || 'OTHERS';
-		if (format == 'JSON') {
+		if (format === 'JSON') {
 			const data = await dc.getData();
 			const fileBuffer = new Readable();
 			fileBuffer.push(JSON.stringify(data));

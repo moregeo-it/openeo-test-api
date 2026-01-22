@@ -29,7 +29,6 @@ export default class load_collection extends GeeProcess {
 
 	async executeSync(node) {
 		const id = node.getArgument('id');
-		const collection = node.getContext().getCollection(id);
 
 		let data
 		data = await this.loadTestImageFromFile();
