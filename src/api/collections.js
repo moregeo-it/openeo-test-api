@@ -30,10 +30,6 @@ export default class Data {
 		server.addEndpoint('get', '/collections/{collection_id}/queryables', this.getCollectionQueryables.bind(this));
 		server.addEndpoint('get', '/collections/{collection_id}/items', this.getCollectionItems.bind(this));
 		server.addEndpoint('get', '/collections/{collection_id}/items/{item_id}', this.getCollectionItemById.bind(this));
-		if (this.context.stacAssetDownloadSize > 0) {
-			server.addEndpoint('get', ['/assets/{asset_id}', '/assets/*'], this.getAssetById.bind(this));
-		}
-		server.addEndpoint('get', ['/thumbnails/{asset_id}', '/thumbnails/*'], this.getThumbnailById.bind(this));
 
 		const a = Date.now();
 		const num = await this.catalog.loadCatalog();
@@ -270,16 +266,6 @@ export default class Data {
 		]
 
 		res.json(feature);
-	}
-
-	async getThumbnailById() {
-		// GEE integration removed - thumbnail generation via Google Earth Engine is no longer available
-		throw new Errors.Internal({message: 'GEE integration has been removed. Thumbnail generation is not available.'});
-	}
-
-	async getAssetById() {
-		// GEE integration removed - asset download via Google Earth Engine is no longer available
-		throw new Errors.Internal({message: 'GEE integration has been removed. Asset download is not available.'});
 	}
 
 }
