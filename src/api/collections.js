@@ -132,6 +132,11 @@ export default class Data {
 			id = req.params['*'].replace(/\/items$/, '');
 		}
 
+		const collection = this.catalog.getData(id, true);
+		if (collection === null) {
+			throw new Errors.CollectionNotFound();
+		}
+
 		const limit = parseInt(req.query.limit, 10) || 10;
 		const offset = parseInt(req.query.offset, 10) || 0;
 
