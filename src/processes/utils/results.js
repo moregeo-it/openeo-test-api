@@ -16,23 +16,39 @@ const GeeResults = {
 	},
 
 	// Returns AxiosResponse (object) or URL (string)
-	async retrieve() {
-		const __filename = fileURLToPath(import.meta.url);
-		const __dirname = path.dirname(__filename);
-		const filePath = path.join(__dirname, '../../../storage/testimage.png');
-		const fileBuffer = new Readable();
-		const file = await fs.readFile(filePath);
-		fileBuffer.push(file);
-		fileBuffer.push(null);
+	async retrieve(context, dc, logger) {
+		const format = dc?.getOutputFormat() || 'OTHERS';
+		if (format == 'JSON') {
+			const data = await dc.getData();
+			const fileBuffer = new Readable();
+			fileBuffer.push(JSON.stringify(data));
+			fileBuffer.push(null); //somehow null needs to be pushed or the api crashes.
+			
+			return {
+				data: fileBuffer,
+				headers: {
+					'content-type': 'application/json'
+				}
+			};
+		}
+		else {
+			const __filename = fileURLToPath(import.meta.url);
+			const __dirname = path.dirname(__filename);
+			const filePath = path.join(__dirname, '../../../storage/testimage.png');
+			const fileBuffer = new Readable();
+			const file = await fs.readFile(filePath);
+			fileBuffer.push(file);
+			fileBuffer.push(null);
 
-		const response = {
-			data: fileBuffer,
-			headers: {
-				'content-type': 'image/png'
-			}
-		};
+			const response = {
+				data: fileBuffer,
+				headers: {
+					'content-type': 'image/png'
+				}
+			};
 
-		return response;
+			return response;
+		}
 	}
 
 };
