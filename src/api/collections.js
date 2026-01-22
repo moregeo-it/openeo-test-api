@@ -225,6 +225,7 @@ export default class Data {
 	}
 
 	async getCollectionItemById(req, res) {
+		let exampleFeatures = exampleItems.features; // Use imported example features
 		let cid = req.params.collection_id;
 		let id = req.params.item_id;
 		// Get the ID if this was a redirect from the /collections/{collection_id} endpoint
@@ -234,7 +235,12 @@ export default class Data {
 			id = match[2];
 		}
 
-		const features = this.exampleFeatures.filter(f => f.id === id);
+		const collection = this.catalog.getData(cid, true);
+		if (collection === null) {
+			throw new Errors.CollectionNotFound();
+		}
+
+		const features = exampleFeatures.filter(f => f.id === id);
 		if (features.length === 0) {
 			throw new Errors.ItemNotFound();
 		}
