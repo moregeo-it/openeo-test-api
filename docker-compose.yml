@@ -3,7 +3,7 @@ services:
   openeo-test-api:
     build:
       context: .
-      dockerfile: DOCKERFILE
+      dockerfile: Dockerfile
     image: openeo-test-api:latest
     environment:
       USERNAME: "testuser"
