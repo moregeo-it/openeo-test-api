@@ -93,7 +93,8 @@ export default class BitmapLike extends FileFormat {
   }
 
   async retrieve(dc) {
-    return true
+    // Bitmap export is not supported in this context.
+    throw new Error('FeatureUnsupported');
   }
 
 }
