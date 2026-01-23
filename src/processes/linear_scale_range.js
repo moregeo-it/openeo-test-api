@@ -9,7 +9,7 @@ export default class linear_scale_range extends GeeProcess {
     const outputMin = node.getArgument('outputMin', 0);
     const outputMax = node.getArgument('outputMax', 1);
     const data = node.getArgument('x');
-    const clipped = clip.process(data, inputMin, inputMax);
+    const clipped = Math.max(inputMin, Math.min(inputMax, data));
     // Linear scale: ((x - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin
     const scaled = ((clipped - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin;
     return scaled;
