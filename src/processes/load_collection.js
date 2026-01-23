@@ -3,10 +3,10 @@ import DataCube from '../datacube/datacube.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import PNG from 'pngjs';
+import { PNG } from 'pngjs';
 
 export default class load_collection extends GeeProcess {
-	async loadTestImageFromFile() {
+	loadTestImageFromFile() {
 		const __filename = fileURLToPath(import.meta.url)
 		const __dirname = path.dirname(__filename)
 		// load testimage.png from disk
@@ -14,7 +14,7 @@ export default class load_collection extends GeeProcess {
 		const fileBuffer = fs.readFileSync(filePath);
 		
 		return new Promise((resolve, reject) => {
-			const png = new PNG.PNG();
+			const png = new PNG();
 			png.parse(fileBuffer, (err, data) => {
 				if (err) {
 					reject(err);
@@ -28,8 +28,6 @@ export default class load_collection extends GeeProcess {
 	}
 
 	async executeSync(node) {
-		const id = node.getArgument('id');
-
 		let data
 		data = await this.loadTestImageFromFile();
 		
