@@ -32,9 +32,28 @@ const GeeResults = {
 			};
 		}
 		else {
+			let contentType;
+			let extension;
+			switch (format) {
+				case 'PNG':
+					contentType = 'image/png';
+					extension = '.png';
+					break;
+				case 'JPEG':
+				case 'JPG':
+					contentType = 'image/jpeg';
+					extension = '.jpg';
+					break;
+				default:
+					// Preserve previous behavior for unknown formats.
+					contentType = 'image/png';
+					extension = '.png';
+					break;
+			}
+
 			const __filename = fileURLToPath(import.meta.url);
 			const __dirname = path.dirname(__filename);
-			const filePath = path.join(__dirname, '../../../storage/testimage.png');
+			const filePath = path.join(__dirname, `../../../storage/testimage${extension}`);
 			const fileBuffer = new Readable();
 			const file = await fs.readFile(filePath);
 			fileBuffer.push(file);
@@ -43,7 +62,7 @@ const GeeResults = {
 			const response = {
 				data: fileBuffer,
 				headers: {
-					'content-type': 'image/png'
+					'content-type': contentType
 				}
 			};
 
