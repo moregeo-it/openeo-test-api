@@ -1,5 +1,5 @@
 {
-  "EarthEngineError": {
+  "ProcessingError": {
     "message": "Process '{process}' reports: {message}"
   },
   "LabelMismatch": {

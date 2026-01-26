@@ -10,8 +10,6 @@ export default async function run(config, storage, user, query, xyz) {
   try {
     const rect = storage.calculateXYZRect(...xyz);
     const context = config.processingContext(user);
-    // Update user id to the user id, which stored the job.
-    // See https://github.com/Open-EO/openeo-earthengine-driver/issues/19
     context.setUserId(service.user_id);
 
     const pg = new ProcessGraph(service.process, context, logger);

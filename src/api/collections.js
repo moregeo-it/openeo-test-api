@@ -8,19 +8,6 @@ export default class Data {
 	constructor(context) {
 		this.context = context;
 		this.catalog = context.collections();
-
-		this.geeSourceCatalogLink = {
-			href: 'https://earthengine-stac.storage.googleapis.com/catalog/catalog.json',
-			rel: 'alternate',
-			type: 'application/json',
-			title: 'Machine-readable Earth Engine Data Catalog'
-		};
-		this.geeBrowsableCatalogLink = {
-			rel: 'alternate',
-			href: 'https://developers.google.com/earth-engine/datasets/catalog/',
-			type: 'text/html',
-			title: 'Human-readable Earth Engine Data Catalog'
-		};
 	}
 
 	async beforeServerStart(server) {
@@ -73,9 +60,7 @@ export default class Data {
 					href: API.getUrl("/stac"),
 					title: "STAC API",
 					type: "application/json"
-				},
-				this.geeBrowsableCatalogLink,
-				this.geeSourceCatalogLink
+				}
 			]
 		});
 	}

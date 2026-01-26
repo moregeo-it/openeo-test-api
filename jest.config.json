@@ -7,7 +7,7 @@
 		"default",
 		[
 			"./node_modules/jest-html-reporter",
-			{ "pageTitle": "Test Report for openeo-earthengine-driver" }
+			{ "pageTitle": "Test Report for openeo-test-api" }
 		]
 	],
 	"transform": {},

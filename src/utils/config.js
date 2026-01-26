@@ -14,9 +14,9 @@ export default class Config {
 		this.apiPath = "/";
 		this.apiVersion = "1.2.0";
 
-		this.id = "openeo-earthengine-driver";
-		this.title = "Google Earth Engine";
-		this.description = "This is the Google Earth Engine Driver for openEO.";
+		this.id = "openeo-test-api";
+		this.title = "Test API";
+		this.description = "This is a test API for openEO.";
 
 		this.port = 80;
 		this.exposePort = null;

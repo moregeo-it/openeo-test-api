@@ -3,7 +3,6 @@ import path from 'path';
 import ProcessGraph from '../../processgraph/processgraph.js';
 import GeeResults from '../../processes/utils/results.js';
 import Utils from '../../utils/utils.js';
-import GTiff from '../../utils/gtiff.js';
 import sizeOf from "image-size";
 const packageInfo = Utils.require('../../package.json');
 
@@ -89,10 +88,6 @@ async function createSTAC(storage, job, results) {
     const { name: key } = path.parse(filepath);
     const stat = await fse.stat(filepath);
     const mediaType = Utils.extensionToMediaType(filepath);
-    let geotiffImage = null;
-    if (mediaType.startsWith("image/tiff; application=geotiff")) {
-      geotiffImage = await GTiff.load(filepath);
-    }
     let asset = {
       href: path.relative(folder, filepath),
       roles: ["data"],
@@ -135,12 +130,6 @@ async function createSTAC(storage, job, results) {
       const extent = datacube.getSpatialExtent();
       let wgs84Extent = extent;
       asset["proj:epsg"] = crs;
-      if (geotiffImage) {
-        const transform = GTiff.getGeoTransform(geotiffImage);
-        if (transform) {
-          asset["proj:transform"] = transform;
-        }
-      }
       if (crs !== 4326) {
         asset["proj:bbox"] = [
           extent.west, extent.south, extent.east, extent.north
@@ -156,10 +145,6 @@ async function createSTAC(storage, job, results) {
 
     if (datacube.hasBands()) {
       const bands = datacube.getBands();
-      if (geotiffImage) {
-        stac_extensions.push("https://stac-extensions.github.io/raster/v1.1.0/schema.json");
-        asset["raster:bands"] = await GTiff.getBands(geotiffImage, bands);
-      }
       asset["eo:bands"] = bands.map(band => {
         return {
           name: band
