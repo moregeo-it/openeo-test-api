@@ -45,6 +45,10 @@
 		"message": "Collection '{identifier}' does not exist.",
 		"http": 404
 	},
+	"ItemNotFound": {
+		"message": "Item '{identifier}' does not exist.",
+		"http": 404
+	},
 	"StorageFailure": {
 		"message": "Unable to store files due to a server error. Please try again later or contact our support.",
 		"http": 500

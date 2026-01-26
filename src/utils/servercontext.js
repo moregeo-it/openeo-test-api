@@ -37,7 +37,7 @@ export default class ServerContext extends Config {
 	storedProcessGraphs() {
 		return this.processGraphStore;
 	}
-
+	
 	collections() {
 		return this.dataCatalog;
 	}

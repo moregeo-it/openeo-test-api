@@ -1,20 +1,21 @@
 {
-	"name": "@openeo/earthengine-driver",
-	"version": "1.1.0-dev20240712",
+	"name": "@openeo/test-api",
+	"version": "1.1.0-dev20260126",
 	"stac_version": "1.0.0",
-	"description": "An openEO driver for Google Earth Engine.",
+	"description": "A test API for openEO.",
 	"main": "src/server.js",
 	"type": "module",
 	"scripts": {
 		"dev": "nodemon src/server.js --trace-warnings",
-		"up": "npm run sync && pm2 start src/server.js",
+		"startScript": "./start.sh",
+		"start": "node src/server.js",
+		"up": "pm2 start src/server.js",
 		"down": "pm2 stop src/server.js",
-		"sync": "node src/sync.js",
 		"adduser": "node src/adduser.js",
 		"deluser": "node src/deluser.js",
 		"users": "node src/users.js",
 		"stats": "node src/stats.js",
-		"test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --detectOpenHandles",
+		"test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --verbose --detectOpenHandles",
 		"debug": "node --nolazy --inspect src/server.js",
 		"lint": "eslint src/"
 	},
@@ -22,11 +23,11 @@
 	"license": "Apache-2.0",
 	"homepage": "http://openeo.org",
 	"bugs": {
-		"url": "https://github.com/Open-EO/openeo-earthengine-editor/issues"
+		"url": "https://github.com/moregeo-it/openeo-test-api/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Open-EO/openeo-earthengine-editor.git"
+		"url": "https://github.com/moregeo-it/openeo-test-api.git"
 	},
 	"devDependencies": {
 		"eslint": "^8.56.0",
@@ -37,8 +38,6 @@
 		"pm2": "^5.3.0"
 	},
 	"dependencies": {
-		"@google-cloud/storage": "^7.7.0",
-		"@google/earthengine": "^0.1.385",
 		"@openeo/js-commons": "^1.5.0",
 		"@openeo/js-processgraphs": "^1.4.1",
 		"@seald-io/nedb": "^4.0.4",
@@ -47,9 +46,8 @@
 		"check-disk-space": "^3.4.0",
 		"epsg-index": "^2.0.0",
 		"fs-extra": "^11.2.0",
-		"geotiff": "^2.1.3",
 		"image-size": "^1.2.0",
-		"luxon": "^3.4.4",
+		"pngjs": "^7.0.0",
 		"proj4": "^2.10.0",
 		"restify": "^11.1.0"
 	},

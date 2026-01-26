@@ -1,0 +1,642 @@
+{
+  "description": "The Operational Mercator Ocean biogeochemical global ocean analysis and\nforecast system at 1/4 degree is providing 10 days of 3D global ocean\nforecasts updated weekly. The time series is aggregated in time, in order\nto reach a two full year's time series sliding window. This product\nincludes daily and monthly mean files of biogeochemical parameters\n(chlorophyll, nitrate, phosphate, silicate, dissolved oxygen, dissolved\niron, primary production, phytoplankton, zooplankton, PH, and surface\npartial pressure of carbon dioxide) over the global ocean. The global\nocean output files are displayed with a 1/4 degree horizontal resolution\nwith regular longitude/latitude equirectangular projection.\nThese products are provided on 50 vertical levels with\ndepths ranging from 0.49m to 5727.92m.\n<br><br> This dataset consists of total zooplankton\nconcentration.\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-01-01T00:00:00Z",
+          "2025-09-26T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "gee:categories": [
+    "oceans"
+  ],
+  "gee:interval": {
+    "interval": 1,
+    "type": "cadence",
+    "unit": "day"
+  },
+  "gee:terms_of_use": "The data is provided free of charge by the Copernicus Marine Service.\nUsers must acknowledge the Copernicus Marine Service as the data source\nwhen using the data. More details on the terms of use can be found on\nthe [Copernicus Marine Service website](https://marine.copernicus.eu/user-corner/service-commitments-and-licence).\n",
+  "gee:type": "image_collection",
+  "id": "COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_BGC_001_028/PLANKTON",
+  "keywords": [
+    "copernicus",
+    "daily",
+    "forecast",
+    "marine",
+    "ocean",
+    "oceans"
+  ],
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_PLANKTON.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_PLANKTON",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_BGC_001_028/PLANKTON in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_PLANKTON_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_PLANKTON#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Copernicus",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://marine.copernicus.eu/"
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_PLANKTON"
+    }
+  ],
+  "sci:citation": "E.U. Copernicus Marine Service Information.\n[https://doi.org/10.48670/moi-00015](https://doi.org/10.48670/moi-00015)\n",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "eo:bands": [
+      {
+        "description": "Total Zooplankton (depth 1, 0.4940m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth1"
+      },
+      {
+        "description": "Total Zooplankton (depth 2, 1.5414m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth2"
+      },
+      {
+        "description": "Total Zooplankton (depth 3, 2.6457m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth3"
+      },
+      {
+        "description": "Total Zooplankton (depth 4, 3.8195m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth4"
+      },
+      {
+        "description": "Total Zooplankton (depth 5, 5.0782m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth5"
+      },
+      {
+        "description": "Total Zooplankton (depth 6, 6.4406m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth6"
+      },
+      {
+        "description": "Total Zooplankton (depth 7, 7.9296m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth7"
+      },
+      {
+        "description": "Total Zooplankton (depth 8, 9.5730m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth8"
+      },
+      {
+        "description": "Total Zooplankton (depth 9, 11.4050m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth9"
+      },
+      {
+        "description": "Total Zooplankton (depth 10, 13.4671m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth10"
+      },
+      {
+        "description": "Total Zooplankton (depth 11, 15.8101m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth11"
+      },
+      {
+        "description": "Total Zooplankton (depth 12, 18.4956m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth12"
+      },
+      {
+        "description": "Total Zooplankton (depth 13, 21.5988m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth13"
+      },
+      {
+        "description": "Total Zooplankton (depth 14, 25.2114m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth14"
+      },
+      {
+        "description": "Total Zooplankton (depth 15, 29.4447m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth15"
+      },
+      {
+        "description": "Total Zooplankton (depth 16, 34.4342m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth16"
+      },
+      {
+        "description": "Total Zooplankton (depth 17, 40.3441m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth17"
+      },
+      {
+        "description": "Total Zooplankton (depth 18, 47.3737m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth18"
+      },
+      {
+        "description": "Total Zooplankton (depth 19, 55.7643m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth19"
+      },
+      {
+        "description": "Total Zooplankton (depth 20, 65.8073m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth20"
+      },
+      {
+        "description": "Total Zooplankton (depth 21, 77.8539m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth21"
+      },
+      {
+        "description": "Total Zooplankton (depth 22, 92.3261m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth22"
+      },
+      {
+        "description": "Total Zooplankton (depth 23, 109.7293m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth23"
+      },
+      {
+        "description": "Total Zooplankton (depth 24, 130.6660m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth24"
+      },
+      {
+        "description": "Total Zooplankton (depth 25, 155.8507m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth25"
+      },
+      {
+        "description": "Total Zooplankton (depth 26, 186.1256m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth26"
+      },
+      {
+        "description": "Total Zooplankton (depth 27, 222.4752m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth27"
+      },
+      {
+        "description": "Total Zooplankton (depth 28, 266.0403m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth28"
+      },
+      {
+        "description": "Total Zooplankton (depth 29, 318.1274m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth29"
+      },
+      {
+        "description": "Total Zooplankton (depth 30, 380.2130m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth30"
+      },
+      {
+        "description": "Total Zooplankton (depth 31, 453.9377m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth31"
+      },
+      {
+        "description": "Total Zooplankton (depth 32, 541.0889m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth32"
+      },
+      {
+        "description": "Total Zooplankton (depth 33, 643.5668m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth33"
+      },
+      {
+        "description": "Total Zooplankton (depth 34, 763.3331m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth34"
+      },
+      {
+        "description": "Total Zooplankton (depth 35, 902.3393m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth35"
+      },
+      {
+        "description": "Total Zooplankton (depth 36, 1062.4397m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth36"
+      },
+      {
+        "description": "Total Zooplankton (depth 37, 1245.2911m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth37"
+      },
+      {
+        "description": "Total Zooplankton (depth 38, 1452.2510m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth38"
+      },
+      {
+        "description": "Total Zooplankton (depth 39, 1684.2844m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth39"
+      },
+      {
+        "description": "Total Zooplankton (depth 40, 1941.8934m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth40"
+      },
+      {
+        "description": "Total Zooplankton (depth 41, 2225.0779m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth41"
+      },
+      {
+        "description": "Total Zooplankton (depth 42, 2533.3362m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth42"
+      },
+      {
+        "description": "Total Zooplankton (depth 43, 2865.7026m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth43"
+      },
+      {
+        "description": "Total Zooplankton (depth 44, 3220.8203m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth44"
+      },
+      {
+        "description": "Total Zooplankton (depth 45, 3597.0320m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth45"
+      },
+      {
+        "description": "Total Zooplankton (depth 46, 3992.4839m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth46"
+      },
+      {
+        "description": "Total Zooplankton (depth 47, 4405.2241m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth47"
+      },
+      {
+        "description": "Total Zooplankton (depth 48, 4833.2905m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth48"
+      },
+      {
+        "description": "Total Zooplankton (depth 49, 5274.7842m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth49"
+      },
+      {
+        "description": "Total Zooplankton (depth 50, 5727.9165m)",
+        "gee:units": "mmol/m^3",
+        "name": "zooc_depth50"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "Global BGC PLANKTON Forecast - zooc",
+        "image_visualization": {
+          "band_vis": {
+            "bands": [
+              "zooc_depth1"
+            ],
+            "max": [
+              3
+            ],
+            "min": [
+              0
+            ],
+            "palette": [
+              "black",
+              "blue",
+              "cyan",
+              "green",
+              "yellow",
+              "red",
+              "white"
+            ]
+          }
+        },
+        "lookat": {
+          "lat": 73.63,
+          "lon": -140.5,
+          "zoom": 2
+        }
+      }
+    ],
+    "gsd": [
+      27750
+    ],
+    "zooc_depth1": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth10": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth11": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth12": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth13": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth14": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth15": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth16": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth17": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth18": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth19": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth2": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth20": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth21": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth22": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth23": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth24": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth25": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth26": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth27": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth28": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth29": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth3": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth30": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth31": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth32": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth33": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth34": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth35": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth36": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth37": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth38": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth39": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth4": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth40": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth41": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth42": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth43": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth44": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth45": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth46": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth47": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth48": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth49": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth5": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth50": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth6": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth7": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth8": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    },
+    "zooc_depth9": {
+      "gee:estimated_range": true,
+      "maximum": 5,
+      "minimum": 0
+    }
+  },
+  "title": "Copernicus Global Ocean Bio-Geo-Chemical Forecast - PLANKTON",
+  "type": "Collection",
+  "gee:status": "ready"
+}

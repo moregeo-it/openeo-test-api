@@ -1,0 +1,278 @@
+{
+  "description": "The In Situ TAC is a distributed centre organized around 7 oceanographic\nregions: the global ocean and the 6 EUROGOOS regional alliances. It involves\n14 partners from 11 countries in Europe. It doesn't deploy any observing\nsystem and relies on data, exclusively funded by other sources than\nCopernicus Marine Service.\n\nRegarding the production of global ocean products like the present one,\nactivities among partners are organized according to the expertise and\nbackground in data management for operational oceanography. Drifter data\nin this collection come from two main sources: near-surface velocity\nmeasurements (15 m depth) from the French project Coriolis, part of the\nDBCP's Global Drifter Program, and drifter data retrieved from the OGS\nMediterranean drifter dataset. The latter includes raw data from various\nresearch institutions and international data centers, processed using\ntechniques described in Menna et al. (2017, 2018). The drifters have\nvarying drogue depths, mostly between 0 and 15 m, but ranging from 0 to\n300 m.\n\nFor more details refer to this\n[user manual](https://documentation.marine.copernicus.eu/PUM/CMEMS-INS-PUM-013-048.pdf)\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2025-03-28T00:00:00Z",
+          null
+        ]
+      ]
+    }
+  },
+  "gee:bq_table_name": "earth-engine-public-data.insitu_nrt_currents.drifter_latest",
+  "gee:categories": [
+    "oceans"
+  ],
+  "gee:skip_featureview_generation": true,
+  "gee:terms_of_use": "The data is provided free of charge by the Copernicus Marine Service.\nUsers must acknowledge the Copernicus Marine Service as the data source\nwhen using the data. More details on the terms of use can be found on\nthe [Copernicus Marine Service website](https://marine.copernicus.eu/user-corner/service-commitments-and-licence).\n",
+  "gee:type": "bigquery_table",
+  "id": "COPERNICUS/MARINE/INSITU_MULTI_4KM/DRIFTER",
+  "keywords": [
+    "copernicus",
+    "currents",
+    "insitu",
+    "marine",
+    "ocean",
+    "oceans"
+  ],
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_MARINE_INSITU_MULTI_4KM_DRIFTER.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_MARINE_INSITU_MULTI_4KM_DRIFTER",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/MARINE/INSITU_MULTI_4KM/DRIFTER in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_MARINE_INSITU_MULTI_4KM_DRIFTER_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_INSITU_MULTI_4KM_DRIFTER#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Copernicus",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://marine.copernicus.eu/"
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_INSITU_MULTI_4KM_DRIFTER"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "gee:schema": [
+      {
+        "description": "datetime of the observation",
+        "name": "TIME",
+        "type": "DATETIME"
+      },
+      {
+        "description": "Quality control flag for TIME.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "TIME_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Number of Depth levels",
+        "name": "DEPTH",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Depth of the observation. (m)",
+        "name": "DEPH",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for DEPH.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "DEPH_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Temperature 20-30 cm beneath the sea surface. (Degrees Celsius)\n",
+        "name": "TEMP",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for TEMP.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "TEMP_QC",
+        "type": "INT"
+      },
+      {
+        "description": "West-East sea water velocity at the drogue depth from the drifter\nposition (m/s)\n",
+        "name": "EWCT",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for EWCT.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "EWCT_QC",
+        "type": "INT"
+      },
+      {
+        "description": "South-North sea water velocity at the drogue depth from the\ndrifter position (m/s)\n",
+        "name": "NSCT",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for NSCT.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "NSCT_QC",
+        "type": "INT"
+      },
+      {
+        "description": "North component of the 6-hour integrated wind stress from ECMWF model\ninterpolated at the drifter's position (N/m^2)\n",
+        "name": "WSTN_MODEL",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for WSTN_MODEL.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "WSTN_MODEL_QC",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "East component of the 6-hour integrated wind stress from ECMWF model\ninterpolated at the drifter's position (N/m^2)\n",
+        "name": "WSTE_MODEL",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for WSTE_MODEL.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "WSTE_MODEL_QC",
+        "type": "INT"
+      },
+      {
+        "description": "South-North 6-hour integrated 10-m wind component from ECMWF model\ninterpolated at the drifter's position (m/s)\n",
+        "name": "WSPN_MODEL",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for WSPN_MODEL.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "WSPN_MODEL_QC",
+        "type": "INT"
+      },
+      {
+        "description": "West-East 6-hour integrated 10-m wind component from ECMWF model\ninterpolated at the drifter's position (m/s)\n",
+        "name": "WSPE_MODEL",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for WSPE_MODEL.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "WSPE_MODEL_QC",
+        "type": "INT"
+      },
+      {
+        "description": "West-East wind slippage correction (m/s)",
+        "name": "EWCT_WS",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for EWCT_WS.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "EWCT_WS_QC",
+        "type": "INT"
+      },
+      {
+        "description": "South-North wind slippage correction (m/s)",
+        "name": "NSCT_WS",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Quality control flag for NSCT_WS.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "NSCT_WS_QC",
+        "type": "DOUBLE"
+      },
+      {
+        "description": "Wind slippage correction processing method (Dimensionless)\n\n* 0: Optimal mode, it is considered that the drifter trajectory is\nlonger than 30 days\n* 1: Mean, the first/last days of the trajectory are completed using\nthe mean value over the nearest 7 days.\n* 2: Undefined for drifters with trajectories shorter than 30 days.\n",
+        "name": "WS_TYPE_OF_PROCESSING",
+        "type": "INT"
+      },
+      {
+        "description": "Platform code relative to each measurement",
+        "name": "PLATFORM_CODE",
+        "type": "STRING"
+      },
+      {
+        "description": "Tests of drogue loss results. It contains the 3 flags value for the\n3 tests in a float format [SAW]\n\n  * [S] submersion test\n  * [A] acceleration not done\n  * [W] wind-currents correlation\n\nIt's a three-character string where each character is one of the\nfollowing digits:\n\n  * 0: Drogue probably missing\n  * 1: Test not performed or not relevant (case for some MO_TS_DC\n  platforms)\n  * 2: Weak probability of drogue presence\n  * 3: Strong probability of drogue presence\n",
+        "name": "CURRENT_TEST",
+        "type": "STRING"
+      },
+      {
+        "description": "Quality control flag for CURRENT_TEST.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "CURRENT_TEST_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Reference to the data center.",
+        "name": "DC_REFERENCE",
+        "type": "STRING"
+      },
+      {
+        "description": "Quality control flag for POSITION.\n\n* 0: No QC was performed\n* 1: good\n* 2: probably good\n* 3: Bad data that are potentially correctable\n* 4: Bad data\n* 5: value changed\n* 6: Not used\n* 7: nominal\n* 8: interpolated\n* 9: Missing value\n\nNote that a valid value for the corresponding variable has a QC bit\nequal to 1, 2, 5, 7, or 8.\n",
+        "name": "POSITION_QC",
+        "type": "INT"
+      },
+      {
+        "description": "Trajectory identifier",
+        "name": "TRAJECTORY",
+        "type": "STRING"
+      },
+      {
+        "description": "Geographic location of the observation.",
+        "name": "geometry",
+        "type": "GEOMETRY"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "Sea Water Temperature",
+        "image_visualization": {
+          "band_names": [
+            "TEMP"
+          ],
+          "max": 25,
+          "min": 18,
+          "palette": [
+            "d7191c",
+            "fdae61",
+            "ffffbf",
+            "abd9e9",
+            "2c7bb6"
+          ]
+        },
+        "lookat": {
+          "lat": 30.2,
+          "lon": -100.5,
+          "zoom": 3
+        }
+      }
+    ]
+  },
+  "title": "Copernicus Global In-situ Observations of Ocean Currents - Drifter",
+  "type": "Collection",
+  "gee:status": "ready"
+}

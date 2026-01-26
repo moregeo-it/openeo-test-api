@@ -9,12 +9,8 @@ export default class UsersAPI {
 	}
 
 	beforeServerStart(server) {
-		if (this.context.serviceAccountCredentialsFile) {
-			server.addEndpoint('get', '/credentials/basic', this.getCredentialsBasic.bind(this));
-		}
-		if (this.context.googleAuthClients) {
-			server.addEndpoint('get', '/credentials/oidc', this.getCredentialsOidc.bind(this));
-		}
+		server.addEndpoint('get', '/credentials/basic', this.getCredentialsBasic.bind(this));
+		server.addEndpoint('get', '/credentials/oidc', this.getCredentialsOidc.bind(this));
 		server.addEndpoint('get', '/me', this.getUserInfo.bind(this));
 
 		return Promise.resolve();
@@ -56,10 +52,10 @@ export default class UsersAPI {
 	}
 
 	async getCredentialsBasic(req, res) {
-		if (!this.context.serviceAccountCredentialsFile) {
-			throw new Errors.FeatureUnsupported();
-		}
-		else if (!req.authorization.scheme) {
+		//if (!this.context.serviceAccountCredentialsFile) {
+		//	throw new Errors.FeatureUnsupported();
+		//}else
+		if (!req.authorization.scheme) {
 			throw new Errors.AuthenticationRequired();
 		}
 		else if (req.authorization.scheme !== 'Basic') {
@@ -82,24 +78,7 @@ export default class UsersAPI {
 			user_id: req.user._id,
 			name: req.user.name,
 			email: req.user.email || null,
-			budget: null,
-			links: [
-				{
-					href: "https://code.earthengine.google.com",
-					rel: "editor",
-					title: "Earth Engine Code Editor"
-				},
-				{
-					href: "https://developers.google.com/earth-engine/datasets/",
-					rel: "datasets",
-					title: "Earth Engine Catalog"
-				},
-				{
-					href: "https://earthengine.google.com/faq/",
-					rel: "about",
-					title: "Earth Engine FAQ"
-				}
-			]
+			budget: null
 		};
 		if (this.context.diskUsagePath !== null) {
 			try {

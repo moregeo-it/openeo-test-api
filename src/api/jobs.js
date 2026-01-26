@@ -5,8 +5,8 @@ import Errors from '../utils/errors.js';
 import ProcessGraph from '../processgraph/processgraph.js';
 import Logs from '../models/logs.js';
 import runBatchJob from './worker/batchjob.js';
-import runSync, { getResultLogs } from './worker/sync.js';
 import fse from 'fs-extra';
+import runSync, { getResultLogs } from './worker/sync.js';
 
 export default class JobsAPI {
 
@@ -211,7 +211,7 @@ export default class JobsAPI {
 			obj.href = API.getUrl("/storage/" + job.token + "/" + obj.href);
 			return obj;
 		};
-    const stacpath = this.storage.getJobFile(job._id, 'stac.json');
+		const stacpath = this.storage.getJobFile(job._id, 'stac.json');
 		const item = await fse.readJSON(stacpath);
 
 		if (publish) {
@@ -334,10 +334,10 @@ export default class JobsAPI {
 		// const budget = req.body.budget || null;
 		// ToDo: Validate data, handle budget and plan input #73
 		const id = Utils.timeId();
-    const log_level = Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel);
+		const log_level = Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel);
 
 		const response = await runSync(this.context, req.user, id, req.body.process, log_level);
-
+		
 		res.header('Content-Type', response?.headers?.['content-type'] || 'application/octet-stream');
 		res.header('OpenEO-Costs', 0);
 		const monitorUrl = API.getUrl('/result/logs/' + id) + '?log_level=' + log_level;

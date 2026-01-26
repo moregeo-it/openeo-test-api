@@ -2,7 +2,6 @@ import Utils from '../utils/utils.js';
 import fse from 'fs-extra';
 import path from 'path';
 import ItemStore from './itemstore.js';
-import { Storage } from '@google-cloud/storage';
 import API from '../utils/API.js';
 
 const STAC_EXTENSIONS = {
@@ -130,54 +129,7 @@ export default class DataCatalog {
 		return Utils.size(this.collections);
 	}
 
-	async updateCatalog(force = false) {
-		await fse.ensureDir(this.dataFolder);
-
-		const syncTimeFile = this.dataFolder + 'sync.txt';
-		if (!force) {
-			let syncTime;
-			try {
-				syncTime = parseInt(await fse.readFile(syncTimeFile, 'utf8'), 10);
-			} catch (e) {
-				syncTime = 0;
-			}
-			const expiryTime = Date.now() - 24 * 60 * 60 * 1000; // Expiry time: A day
-			if (syncTime > expiryTime) {
-				return;
-			}
-		}
-
-		await this.itemCache.clear();
-
-		const storage = new Storage({
-			keyFile: this.serverContext.serviceAccountCredentialsFile || null
-		});
-		const bucket = storage.bucket('earthengine-stac');
-		const prefix = 'catalog/';
-		const data = await bucket.getFiles({ prefix });
-
-		await fse.emptyDir(this.dataFolder);
-		const promises = data[0].map(async file => {
-			if (file.name.endsWith('catalog.json') || !file.name.endsWith('.json')) {
-				return;
-			}
-			const destination = this.dataFolder + path.basename(path.dirname(file.name)) + '_' + path.basename(file.name);
-			await file.download({ destination, validation: 'md5' });
-			try {
-				await fse.readJSON(destination);
-			} catch (e) {
-				if (await fse.exists(destination)) {
-					fse.unlink(destination);
-				}
-				console.error("Received invalid JSON file: " + destination);
-			}
-		});
-		await Promise.all(promises);
-		await fse.writeFile(syncTimeFile, Date.now().toString());
-	}
-
 	async loadCatalog() {
-		await this.updateCatalog();
 		return await this.readLocalCatalog();
 	}
 

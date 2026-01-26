@@ -1,0 +1,1142 @@
+{
+  "description": "The Operational Mercator Ocean biogeochemical global ocean analysis and\nforecast system at 1/4 degree is providing 10 days of 3D global ocean\nforecasts updated weekly. The time series is aggregated in time, in order\nto reach a two full year's time series sliding window. This product\nincludes daily and monthly mean files of biogeochemical parameters\n(chlorophyll, nitrate, phosphate, silicate, dissolved oxygen, dissolved\niron, primary production, phytoplankton, zooplankton, PH, and surface\npartial pressure of carbon dioxide) over the global ocean. The global\nocean output files are displayed with a 1/4 degree horizontal resolution\nwith regular longitude/latitude equirectangular projection.\nThese products are provided on 50 vertical levels with\ndepths ranging from 0.49m to 5727.92m.\n<br><br> This dataset consists of pH and dissolved\ninorganic carbon.\n",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-01-01T00:00:00Z",
+          "2025-09-19T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "gee:categories": [
+    "oceans"
+  ],
+  "gee:interval": {
+    "interval": 1,
+    "type": "cadence",
+    "unit": "day"
+  },
+  "gee:terms_of_use": "The data is provided free of charge by the Copernicus Marine Service.\nUsers must acknowledge the Copernicus Marine Service as the data source\nwhen using the data. More details on the terms of use can be found on\nthe [Copernicus Marine Service website](https://marine.copernicus.eu/user-corner/service-commitments-and-licence).\n",
+  "gee:type": "image_collection",
+  "id": "COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_BGC_001_028/CAR",
+  "keywords": [
+    "copernicus",
+    "daily",
+    "forecast",
+    "marine",
+    "ocean",
+    "oceans"
+  ],
+  "license": "CC-BY-4.0",
+  "links": [
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_CAR.json",
+      "rel": "self",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/COPERNICUS/catalog.json",
+      "rel": "parent",
+      "type": "application/json"
+    },
+    {
+      "href": "https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+      "rel": "root",
+      "type": "application/json"
+    },
+    {
+      "code": "JavaScript",
+      "href": "https://code.earthengine.google.com/?scriptPath=Examples:Datasets/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_CAR",
+      "rel": "related",
+      "title": "Run the example for COPERNICUS/MARINE/GLOBAL_ANALYSISFORECAST_BGC_001_028/CAR in the Earth Engine Code Editor",
+      "type": "text/html"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/images/COPERNICUS/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_CAR_sample.png",
+      "rel": "preview",
+      "type": "image/png"
+    },
+    {
+      "href": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_CAR#terms-of-use",
+      "rel": "license",
+      "type": "text/html"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Copernicus",
+      "roles": [
+        "licensor",
+        "producer"
+      ],
+      "url": "https://marine.copernicus.eu/"
+    },
+    {
+      "name": "Google Earth Engine",
+      "roles": [
+        "host"
+      ],
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_MARINE_GLOBAL_ANALYSISFORECAST_BGC_001_028_CAR"
+    }
+  ],
+  "sci:citation": "E.U. Copernicus Marine Service Information.\n[https://doi.org/10.48670/moi-00015](https://doi.org/10.48670/moi-00015)\n",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
+  ],
+  "stac_version": "1.0.0",
+  "summaries": {
+    "dissic_depth1": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth10": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth11": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth12": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth13": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth14": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth15": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth16": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth17": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth18": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth19": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth2": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth20": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth21": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth22": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth23": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth24": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth25": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth26": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth27": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth28": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth29": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth3": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth30": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth31": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth32": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth33": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth34": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth35": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth36": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth37": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth38": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth39": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth4": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth40": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth41": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth42": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth43": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth44": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth45": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth46": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth47": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth48": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth49": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth5": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth50": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth6": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth7": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth8": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "dissic_depth9": {
+      "gee:estimated_range": true,
+      "maximum": 10.358,
+      "minimum": 0.1
+    },
+    "eo:bands": [
+      {
+        "description": "Ocean pH (depth 1, 0.4940m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth1"
+      },
+      {
+        "description": "Ocean pH (depth 2, 1.5414m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth2"
+      },
+      {
+        "description": "Ocean pH (depth 3, 2.6457m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth3"
+      },
+      {
+        "description": "Ocean pH (depth 4, 3.8195m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth4"
+      },
+      {
+        "description": "Ocean pH (depth 5, 5.0782m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth5"
+      },
+      {
+        "description": "Ocean pH (depth 6, 6.4406m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth6"
+      },
+      {
+        "description": "Ocean pH (depth 7, 7.9296m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth7"
+      },
+      {
+        "description": "Ocean pH (depth 8, 9.5730m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth8"
+      },
+      {
+        "description": "Ocean pH (depth 9, 11.4050m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth9"
+      },
+      {
+        "description": "Ocean pH (depth 10, 13.4671m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth10"
+      },
+      {
+        "description": "Ocean pH (depth 11, 15.8101m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth11"
+      },
+      {
+        "description": "Ocean pH (depth 12, 18.4956m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth12"
+      },
+      {
+        "description": "Ocean pH (depth 13, 21.5988m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth13"
+      },
+      {
+        "description": "Ocean pH (depth 14, 25.2114m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth14"
+      },
+      {
+        "description": "Ocean pH (depth 15, 29.4447m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth15"
+      },
+      {
+        "description": "Ocean pH (depth 16, 34.4342m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth16"
+      },
+      {
+        "description": "Ocean pH (depth 17, 40.3441m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth17"
+      },
+      {
+        "description": "Ocean pH (depth 18, 47.3737m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth18"
+      },
+      {
+        "description": "Ocean pH (depth 19, 55.7643m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth19"
+      },
+      {
+        "description": "Ocean pH (depth 20, 65.8073m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth20"
+      },
+      {
+        "description": "Ocean pH (depth 21, 77.8539m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth21"
+      },
+      {
+        "description": "Ocean pH (depth 22, 92.3261m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth22"
+      },
+      {
+        "description": "Ocean pH (depth 23, 109.7293m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth23"
+      },
+      {
+        "description": "Ocean pH (depth 24, 130.6660m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth24"
+      },
+      {
+        "description": "Ocean pH (depth 25, 155.8507m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth25"
+      },
+      {
+        "description": "Ocean pH (depth 26, 186.1256m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth26"
+      },
+      {
+        "description": "Ocean pH (depth 27, 222.4752m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth27"
+      },
+      {
+        "description": "Ocean pH (depth 28, 266.0403m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth28"
+      },
+      {
+        "description": "Ocean pH (depth 29, 318.1274m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth29"
+      },
+      {
+        "description": "Ocean pH (depth 30, 380.2130m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth30"
+      },
+      {
+        "description": "Ocean pH (depth 31, 453.9377m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth31"
+      },
+      {
+        "description": "Ocean pH (depth 32, 541.0889m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth32"
+      },
+      {
+        "description": "Ocean pH (depth 33, 643.5668m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth33"
+      },
+      {
+        "description": "Ocean pH (depth 34, 763.3331m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth34"
+      },
+      {
+        "description": "Ocean pH (depth 35, 902.3393m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth35"
+      },
+      {
+        "description": "Ocean pH (depth 36, 1062.4397m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth36"
+      },
+      {
+        "description": "Ocean pH (depth 37, 1245.2911m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth37"
+      },
+      {
+        "description": "Ocean pH (depth 38, 1452.2510m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth38"
+      },
+      {
+        "description": "Ocean pH (depth 39, 1684.2844m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth39"
+      },
+      {
+        "description": "Ocean pH (depth 40, 1941.8934m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth40"
+      },
+      {
+        "description": "Ocean pH (depth 41, 2225.0779m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth41"
+      },
+      {
+        "description": "Ocean pH (depth 42, 2533.3362m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth42"
+      },
+      {
+        "description": "Ocean pH (depth 43, 2865.7026m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth43"
+      },
+      {
+        "description": "Ocean pH (depth 44, 3220.8203m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth44"
+      },
+      {
+        "description": "Ocean pH (depth 45, 3597.0320m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth45"
+      },
+      {
+        "description": "Ocean pH (depth 46, 3992.4839m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth46"
+      },
+      {
+        "description": "Ocean pH (depth 47, 4405.2241m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth47"
+      },
+      {
+        "description": "Ocean pH (depth 48, 4833.2905m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth48"
+      },
+      {
+        "description": "Ocean pH (depth 49, 5274.7842m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth49"
+      },
+      {
+        "description": "Ocean pH (depth 50, 5727.9165m)",
+        "gee:units": "Dimensionless",
+        "name": "ph_depth50"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 1, 0.4940m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth1"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 2, 1.5414m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth2"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 3, 2.6457m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth3"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 4, 3.8195m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth4"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 5, 5.0782m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth5"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 6, 6.4406m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth6"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 7, 7.9296m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth7"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 8, 9.5730m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth8"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 9, 11.4050m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth9"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 10, 13.4671m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth10"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 11, 15.8101m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth11"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 12, 18.4956m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth12"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 13, 21.5988m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth13"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 14, 25.2114m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth14"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 15, 29.4447m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth15"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 16, 34.4342m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth16"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 17, 40.3441m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth17"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 18, 47.3737m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth18"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 19, 55.7643m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth19"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 20, 65.8073m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth20"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 21, 77.8539m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth21"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 22, 92.3261m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth22"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 23, 109.7293m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth23"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 24, 130.6660m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth24"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 25, 155.8507m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth25"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 26, 186.1256m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth26"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 27, 222.4752m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth27"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 28, 266.0403m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth28"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 29, 318.1274m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth29"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 30, 380.2130m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth30"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 31, 453.9377m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth31"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 32, 541.0889m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth32"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 33, 643.5668m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth33"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 34, 763.3331m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth34"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 35, 902.3393m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth35"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 36, 1062.4397m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth36"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 37, 1245.2911m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth37"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 38, 1452.2510m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth38"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 39, 1684.2844m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth39"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 40, 1941.8934m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth40"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 41, 2225.0779m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth41"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 42, 2533.3362m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth42"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 43, 2865.7026m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth43"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 44, 3220.8203m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth44"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 45, 3597.0320m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth45"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 46, 3992.4839m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth46"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 47, 4405.2241m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth47"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 48, 4833.2905m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth48"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 49, 5274.7842m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth49"
+      },
+      {
+        "description": "Dissolved Inorganic Carbon (depth 50, 5727.9165m)",
+        "gee:units": "mol/m^3",
+        "name": "dissic_depth50"
+      }
+    ],
+    "gee:visualizations": [
+      {
+        "display_name": "Global BGC CAR Forecast",
+        "image_visualization": {
+          "band_vis": {
+            "bands": [
+              "ph_depth1"
+            ],
+            "max": [
+              8.2
+            ],
+            "min": [
+              8
+            ],
+            "palette": [
+              "black",
+              "blue",
+              "cyan",
+              "green",
+              "yellow",
+              "red",
+              "white"
+            ]
+          }
+        },
+        "lookat": {
+          "lat": 73.63,
+          "lon": -140.5,
+          "zoom": 2
+        }
+      }
+    ],
+    "gsd": [
+      27750
+    ],
+    "ph_depth1": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth10": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth11": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth12": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth13": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth14": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth15": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth16": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth17": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth18": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth19": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth2": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth20": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth21": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth22": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth23": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth24": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth25": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth26": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth27": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth28": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth29": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth3": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth30": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth31": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth32": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth33": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth34": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth35": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth36": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth37": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth38": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth39": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth4": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth40": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth41": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth42": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth43": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth44": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth45": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth46": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth47": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth48": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth49": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth5": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth50": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth6": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth7": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth8": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    },
+    "ph_depth9": {
+      "gee:estimated_range": true,
+      "maximum": 8.6,
+      "minimum": 6.1
+    }
+  },
+  "title": "Copernicus Global Ocean Bio-Geo-Chemical Forecast - CAR",
+  "type": "Collection",
+  "gee:status": "ready"
+}

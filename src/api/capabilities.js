@@ -79,31 +79,8 @@ export default class CapabilitiesAPI {
 					type: "application/vnd.oai.openapi"
 				},
 				{
-					rel: 'about',
-					href: 'https://earthengine.google.com/',
-					title: 'Google Earth Engine Homepage'
-				},
-				{
-					rel: 'create-form',
-					href: 'https://earthengine.google.com/signup/',
-					type: 'text/html',
-					title: 'Sign Up for Google Earth Engine'
-				},
-				{
-					rel: 'terms-of-service',
-					href: 'https://earthengine.google.com/terms/',
-					type: 'text/html',
-					title: 'Google Earth Engine Terms of Service'
-				},
-				{
-					rel: 'privacy-policy',
-					href: 'https://policies.google.com/privacy',
-					type: 'text/html',
-					title: 'Google Privacy Policy'
-				},
-				{
 					rel: 'related',
-					href: 'https://github.com/Open-EO/openeo-earthengine-driver',
+					href: 'https://github.com/moregeo-it/openeo-test-api',
 					title: 'GitHub repository'
 				},
 				{

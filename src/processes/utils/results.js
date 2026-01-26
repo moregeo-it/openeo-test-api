@@ -1,31 +1,9 @@
-import GeeTypes from './types.js';
-import HttpUtils from '../../utils/http.js';
+import { fileURLToPath } from 'url';
+import { promises as fs } from "fs";
+import path from 'path';
+import { Readable } from 'stream';
 
 const GeeResults = {
-
-	toImageOrCollection(ee, logger, data, allowMultiple = false) {
-		const eeData = GeeTypes.toEE(ee, logger, data);
-		if (eeData instanceof ee.Image) {
-			return eeData;
-		}
-		else if (eeData instanceof ee.ImageCollection) {
-			if (allowMultiple) {
-				return eeData;
-			}
-			else {
-				logger.warn("Compositing the image collection to a single image using `ee.Image.mosaic()`.");
-				return data.mosaic();
-			}
-		}
-		else if (eeData instanceof ee.Number || eeData instanceof ee.Array) {
-			return ee.Image(eeData);
-		}
-		else {
-			const eeType = GeeTypes.getEarthEngineType(ee, data);
-			throw new Error(`Can't convert ${eeType} to ImageCollection or Image.`);
-		}
-	},
-
 	getFileExtension(dc, config) {
 		const format = dc.getOutputFormat();
 		const parameters = dc.getOutputFormatParameters();
@@ -39,19 +17,57 @@ const GeeResults = {
 
 	// Returns AxiosResponse (object) or URL (string)
 	async retrieve(context, dc, logger) {
-		const ee = context.ee;
-		const config = context.server();
-
-		const format = config.getOutputFormat(dc.getOutputFormat());
-		dc = format.preprocess(context, dc, logger);
-
-		let response = await format.retrieve(ee, dc);
-		if (typeof response === 'string') {
-			logger.debug("Downloading data from Google: " + response);
-			response = await HttpUtils.stream(response);
+		const format = dc?.getOutputFormat() || 'OTHERS';
+		if (format === 'JSON') {
+			const data = await dc.getData();
+			const fileBuffer = new Readable();
+			fileBuffer.push(JSON.stringify(data));
+			fileBuffer.push(null); //somehow null needs to be pushed or the api crashes.
+			
+			return {
+				data: fileBuffer,
+				headers: {
+					'content-type': 'application/json'
+				}
+			};
 		}
+		else {
+			let contentType;
+			let extension;
+			switch (format) {
+				case 'PNG':
+					contentType = 'image/png';
+					extension = '.png';
+					break;
+				case 'JPEG':
+				case 'JPG':
+					contentType = 'image/jpeg';
+					extension = '.jpg';
+					break;
+				default:
+					// Preserve previous behavior for unknown formats.
+					contentType = 'image/png';
+					extension = '.png';
+					break;
+			}
 
-		return response;
+			const __filename = fileURLToPath(import.meta.url);
+			const __dirname = path.dirname(__filename);
+			const filePath = path.join(__dirname, `../../../storage/testimage${extension}`);
+			const fileBuffer = new Readable();
+			const file = await fs.readFile(filePath);
+			fileBuffer.push(file);
+			fileBuffer.push(null);
+
+			const response = {
+				data: fileBuffer,
+				headers: {
+					'content-type': contentType
+				}
+			};
+
+			return response;
+		}
 	}
 
 };

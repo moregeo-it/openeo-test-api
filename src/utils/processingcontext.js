@@ -1,47 +1,15 @@
-import Utils from './utils.js';
-import fse from 'fs-extra';
-
 export default class ProcessingContext {
 
 	constructor(serverContext, user = null) {
 		this.serverContext = serverContext;
 		this.user = user;
 		this.userId = user ? user._id : null;
-		this.ee = Utils.require('@google/earthengine');
-		this.eePrivateKey = null;
 	}
 
-	async connectGee(forcePrivateKey = false) {
-		const user = this.getUser();
-		const ee = this.ee;
-		if (!forcePrivateKey && typeof this.userId === 'string' && this.userId.startsWith("google-")) {
-			console.log("Authenticate via user token");
-			const expires = 59 * 60;
-			// todo auth: get expiration from token and set more parameters #82
-			ee.apiclient.setAuthToken(null, 'Bearer', user.token, expires, [], null, false, false);
-		}
-		else if (this.serverContext.serviceAccountCredentialsFile) {
-			console.log("Authenticate via private key");
-			if (!this.eePrivateKey) {
-				this.eePrivateKey = await fse.readJSON(this.serverContext.serviceAccountCredentialsFile);
-			}
-			if (!Utils.isObject(this.eePrivateKey)) {
-				console.error("ERROR: GEE private key not found.");
-			}
-			await new Promise((resolve, reject) => {
-				ee.data.authenticateViaPrivateKey(
-					this.eePrivateKey,
-					() => resolve(),
-					error => reject("ERROR: GEE Authentication failed: " + error.message)
-				);
-			});
-		}
-		else {
-			throw new Error("No authentication method available, must have at least a private key configured.");
-		}
-
-		await ee.initialize();
-		return ee;
+	async connectGee() {
+		// GEE integration removed - this method is no longer functional
+		console.warn("connectGee() called but GEE integration has been removed");
+		return null;
 	}
 
 	server() {

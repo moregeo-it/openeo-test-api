@@ -1,12 +1,10 @@
 import Dimension from './dimension.js';
 import Utils from '../utils/utils.js';
-import GeeProcessing from '../processes/utils/processing.js';
 import Errors from '../utils/errors.js';
 
 export default class DataCube {
 
-	constructor(ee, data = undefined) {
-		this.ee = ee;
+	constructor(data = undefined) {
 		// Cache the data type for less overhead, especially for ee.ComputedObject
 		this.dimensions = {};
 		this.output = {
@@ -161,15 +159,6 @@ export default class DataCube {
 			north: y.max(),
 			crs: this.getCrs()
 		};
-	}
-
-	// returns: array
-	getEarthEngineBands() {
-		let bands = this.getBands();
-		if (bands.length === 0) {
-			bands.push(GeeProcessing.BAND_PLACEHOLDER);
-		}
-		return bands;
 	}
 
 	// returns: array

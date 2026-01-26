@@ -65,7 +65,7 @@ const HttpUtils = {
 						} catch (e) {
 							// invalid JSON
 						}
-						reject(new Errors.EarthEngineError({
+						reject(new Errors.ProcessingError({
 							message,
 							process
 						}))
