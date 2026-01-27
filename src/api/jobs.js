@@ -300,20 +300,6 @@ export default class JobsAPI {
 		await pg.validate();
 
 		// ToDo: Validate further data #73
-		//filter processing parameters from req.body
-		const processing_parameter_keys = Object.keys(req.body).filter(param => this._isProcesssingParameter(param));
-		const processing_parameters = processing_parameter_keys.map(param => {
-			return {
-				name: param,
-				value: req.body[param]
-			};
-		})
-		for (const param of processing_parameters) {
-			if (param.value === null || typeof param.value === 'undefined') {
-				processing_parameters.pop(param);
-			}
-		}
-
 		const data = {
 			title: req.body.title || null,
 			description: req.body.description || null,
@@ -327,7 +313,7 @@ export default class JobsAPI {
 			user_id: req.user._id,
 			token: Utils.generateHash(64),
 			log_level: Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel),
-			processing_parameters: processing_parameters
+			processing_parameters: this._filterProcessingParameters(req)
 		};
 		const db = this.storage.database();
 		const job = await db.insertAsync(data);
@@ -339,13 +325,30 @@ export default class JobsAPI {
 		res.redirect(201, API.getUrl('/jobs/' + job._id), Utils.noop);
 	}
 
-	_isProcesssingParameter(param_id) {
-		//search for parameter in processingParametersList
-		for (const param of processingParametersList) {
-			if (param.name === param_id) {
-				return true;
+	_filterProcessingParameters(req){
+		function _isProcesssingParameter(param_id) {
+			//search for parameter in processingParametersList
+			for (const param of processingParametersList) {
+				if (param.name === param_id) {
+					return true;
+				}
 			}
 		}
+		const processing_parameter_keys = Object.keys(req.body).filter(
+			param => _isProcesssingParameter(param)
+		);
+		const processing_parameters = processing_parameter_keys.map(param => {
+			return {
+				name: param,
+				value: req.body[param]
+			};
+		})
+		for (const param of processing_parameters) {
+			if (param.value === null || typeof param.value === 'undefined') {
+				processing_parameters.pop(param);
+			}
+		}
+		return processing_parameters
 	}
 
 	async postSyncResult(req, res) {
