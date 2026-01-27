@@ -7,6 +7,7 @@ import ProcessesAPI from './api/processes.js';
 import ProcessGraphsAPI from './api/storedprocessgraphs.js';
 import ServicesAPI from './api/services.js';
 import UsersAPI from './api/users.js';
+import UdfRuntimesApi from './api/udf.js';
 
 import API from './utils/API.js';
 import ServerContext from './utils/servercontext.js';
@@ -39,6 +40,7 @@ class Server {
 		this.api.services = new ServicesAPI(this.serverContext);
 		this.api.users = new UsersAPI(this.serverContext);
 		this.api.processGraphs = new ProcessGraphsAPI(this.serverContext);
+		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
 
 		this.startServer();
 	}
