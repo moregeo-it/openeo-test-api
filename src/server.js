@@ -8,6 +8,7 @@ import ProcessGraphsAPI from './api/storedprocessgraphs.js';
 import ServicesAPI from './api/services.js';
 import UsersAPI from './api/users.js';
 import UdfRuntimesApi from './api/udf.js';
+import ProcessingParametersAPI from './api/processingparameters.js';
 
 import API from './utils/API.js';
 import ServerContext from './utils/servercontext.js';
@@ -41,6 +42,7 @@ class Server {
 		this.api.users = new UsersAPI(this.serverContext);
 		this.api.processGraphs = new ProcessGraphsAPI(this.serverContext);
 		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
+		this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
 
 		this.startServer();
 	}
