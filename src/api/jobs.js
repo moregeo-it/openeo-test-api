@@ -7,6 +7,7 @@ import Logs from '../models/logs.js';
 import runBatchJob from './worker/batchjob.js';
 import fse from 'fs-extra';
 import runSync, { getResultLogs } from './worker/sync.js';
+import { processingParametersList } from './processingparameters.js';
 
 export default class JobsAPI {
 
@@ -311,7 +312,8 @@ export default class JobsAPI {
 			budget: req.body.budget || null,
 			user_id: req.user._id,
 			token: Utils.generateHash(64),
-			log_level: Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel)
+			log_level: Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel),
+			processing_parameters: this._filterProcessingParameters(req)
 		};
 		const db = this.storage.database();
 		const job = await db.insertAsync(data);
@@ -321,6 +323,32 @@ export default class JobsAPI {
 
 		res.header('OpenEO-Identifier', job._id);
 		res.redirect(201, API.getUrl('/jobs/' + job._id), Utils.noop);
+	}
+
+	_filterProcessingParameters(req){
+		function _isProcesssingParameter(param_id) {
+			//search for parameter in processingParametersList
+			for (const param of processingParametersList) {
+				if (param.name === param_id) {
+					return true;
+				}
+			}
+		}
+		const processing_parameter_keys = Object.keys(req.body).filter(
+			param => _isProcesssingParameter(param)
+		);
+		const processing_parameters = processing_parameter_keys.map(param => {
+			return {
+				name: param,
+				value: req.body[param]
+			};
+		})
+		for (const param of processing_parameters) {
+			if (param.value === null || typeof param.value === 'undefined') {
+				processing_parameters.pop(param);
+			}
+		}
+		return processing_parameters
 	}
 
 	async postSyncResult(req, res) {
@@ -357,6 +385,11 @@ export default class JobsAPI {
 			costs: job.costs || 0,
 			budget: job.budget || null
 		};
+		if (job.processing_parameters) {
+			for (const param of job.processing_parameters) {
+				response[param.name] = param.value;
+			}
+		}
 		if (full) {
 			response.process = job.process;
 			response.links = [];

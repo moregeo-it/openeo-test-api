@@ -40,10 +40,10 @@ export default class UsersAPI {
 		res.send({
 			"providers": [
 				{
-					id: "google",
+					id: "sample",
 					issuer: this.storage.oidcIssuer,
-					title: "Google",
-					description: "Login with your Google Earth Engine account.",
+					title: "Sample OIDC Provider",
+					description: "Login with your OIDC provider account.",
 					scopes: this.storage.oidcScopes,
 					default_clients: this.context.googleAuthClients
 				}
