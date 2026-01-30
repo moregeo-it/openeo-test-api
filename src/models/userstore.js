@@ -203,6 +203,13 @@ export default class UserStore {
 
 	async authenticateOidc(token) {
 		//not yet implemented
+		token = Utils.parseJwt(token)
+		if (token.iss === undefined){
+			throw new Errors.AuthenticationRequired({
+				reason: 'Token invalid. Unknown issuer'
+			});	
+		}
+		const issuer = token.iss
 		throw new Errors.AuthenticationRequired({
 			reason: 'Token invalid or expired.'
 		});
