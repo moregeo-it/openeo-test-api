@@ -133,6 +133,7 @@ export default class CapabilitiesAPI {
 // CQL2 (for Item and Collection Filter)
 // 			"http://www.opengis.net/spec/cql2/1.0/conf/cql2-text",
 // 			"http://www.opengis.net/spec/cql2/1.0/conf/basic-cql2",
+				"https://api.openeo.org/1.3.0/authentication/jwt",
 			]
 		};
 	}	
