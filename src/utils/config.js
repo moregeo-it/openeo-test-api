@@ -68,6 +68,13 @@ export default class Config {
 			this[c] = config[c];
 		}
 
+		// look for environment variables
+		for(const c in config) {
+			if (process.env[c] != undefined){
+				this[c] = process.env[c]
+			}
+		}
+
 		this.ssl.exposePort = this.ssl.exposePort || this.ssl.port;
 		this.exposePort = this.exposePort || this.port;
 	}
