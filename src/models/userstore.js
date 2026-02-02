@@ -216,8 +216,11 @@ export default class UserStore {
 	}
 
 	async checkAuthToken(apiToken) {
-		let user;
+		if(this.serverContext.legacyTokens){
+			return this.checkLegacyToken(apitoken)
+		}
 
+		let user;
 		try {
 			user = await this.authenticateBasic(apiToken)
 		} catch(error) {
@@ -228,6 +231,35 @@ export default class UserStore {
 			}
 		}
 		return user
+	}
+
+	async checkLegacyToken(apiToken) {
+		const parts = apiToken.split('/', 3);
+		if (parts.length !== 3) {
+			throw new Errors.AuthenticationRequired({
+				reason: 'Token format invalid.'
+			});
+		}
+		const [type, provider, token] = parts;
+
+		if (type === 'basic') {
+			return this.authenticateBasic(token);
+		}
+		else if (type === 'oidc') {
+			if (provider === 'google') {
+				return this.authenticateOidc(token);
+			}
+			else {
+				throw new Errors.AuthenticationRequired({
+					reason: 'Identity provider not supported.'
+				});
+			}
+		}
+		else {
+			throw new Errors.AuthenticationRequired({
+				reason: 'Authentication method not supported.'
+			});
+		}
 	}
 
 	async getOidcUserInfoEndpoint() {

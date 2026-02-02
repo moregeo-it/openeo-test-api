@@ -44,6 +44,11 @@ class Server {
 		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
 		this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
 
+		if(this.serverContext.legacyTokens){
+			console.info('Using legacy token format')
+		}
+		
+
 		this.startServer();
 	}
 
