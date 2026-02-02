@@ -217,7 +217,7 @@ export default class UserStore {
 
 	async checkAuthToken(apiToken) {
 		if(this.serverContext.legacyTokens){
-			return this.checkLegacyToken(apitoken)
+			return this.checkLegacyToken(apiToken)
 		}
 
 		let user;
