@@ -38,7 +38,10 @@ class Server {
 		this.api.processes = new ProcessesAPI(this.serverContext);
 		this.api.files = new FilesAPI(this.serverContext);
 		this.api.jobs = new JobsAPI(this.serverContext);
-		this.api.services = new ServicesAPI(this.serverContext);
+		if(this.serverContext.servesWebServices){
+			this.api.services = new ServicesAPI(this.serverContext);
+			console.info('Service web services')
+		}
 		this.api.users = new UsersAPI(this.serverContext);
 		this.api.processGraphs = new ProcessGraphsAPI(this.serverContext);
 		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);

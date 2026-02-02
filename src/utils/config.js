@@ -19,7 +19,8 @@ export default class Config {
 			"port": Number,
 			"exposePort": Number,
 			"defaultLogLevel": String,
-			"stacAssedDownloadSize": Number
+			"stacAssedDownloadSize": Number,
+			"servesWebServices": Boolean,
 		}	
 
 		// Set default that can be overriden by the config.json
@@ -30,6 +31,8 @@ export default class Config {
 		this.apiPath = "/";
 		this.apiVersion = "1.2.0";
 		this.legacyTokens = false;
+
+		this.servesWebServices = true;
 
 		this.id = "openeo-test-api";
 		this.title = "Test API";
