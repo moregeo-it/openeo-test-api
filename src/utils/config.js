@@ -22,6 +22,7 @@ export default class Config {
 			"stacAssedDownloadSize": Number,
 			"webServicesEndpoint": Boolean,
 			"filesEndpoint": Boolean,
+			"userDefinedFunctions": Boolean,
 			"processingParameters": Boolean,
 			"processGraphsEndpoint": Boolean
 		}	
@@ -37,6 +38,7 @@ export default class Config {
 
 		this.webServicesEndpoint = true;
 		this.filesEndpoint = true;
+		this.userDefinedFunctions = true;
 		this.processingParameters = true;
 
 		this.id = "openeo-test-api";

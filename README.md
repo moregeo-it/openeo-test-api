@@ -25,15 +25,16 @@ There are several important configuration options in the file [config.json](conf
   * `certificate`: If you want to create an HTTPS server, pass in a PEM-encoded certificate. Otherwise set to `null`.
 
 To turn off certain endpoints, edit the following flags in the [config.json](config.json) file:
-* web-services `/services`: 
+* Web-services `/services`: 
   * set `"webServicesEndpoint": false`
-* files `/files`: 
+* Files `/files`: 
   * set `"filesEndpoint": false`
-* process-graphs `/process_graphs`: 
+* User-defined process-graphs `/process_graphs`: 
   * set `"processGraphsEndpoint": false`
-* processing-parameters extension `/processing_parameters`: 
+* [Processing-parameters extension](https://api.openeo.org/extensions/processing-parameters/0.1.0) `/processing_parameters`: 
   * set `"processingParameters": false`
-
+* [UDF Framework](https://open-eo.github.io/openeo-udf/) `/udf_runtimes`
+  * set `"userDefinedFunctions": false`
 Any of these configuration options can be overridden using environment variables. For example:
 ```bash
 WEBSERVICESENDPOINT=false PORT=8081 npm start

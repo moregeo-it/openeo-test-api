@@ -42,7 +42,10 @@ class Server {
 			this.api.processGraphsEndpoint = new ProcessGraphsAPI(this.serverContext);
 			console.info('Using User-Defined Processes')
 		}
-		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
+		if(this.serverContext.userDefinedFunctions){
+			this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
+			console.info('Using UDF')
+		}
 		if(this.serverContext.processingParameters){
 			this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
 			console.info('Using processing parameters')
