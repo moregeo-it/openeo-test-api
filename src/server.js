@@ -36,16 +36,20 @@ class Server {
 		this.api.capabilities = new CapabilitiesAPI(this.serverContext);
 		this.api.collections = new CollectionsAPI(this.serverContext);
 		this.api.processes = new ProcessesAPI(this.serverContext);
-		this.api.files = new FilesAPI(this.serverContext);
 		this.api.jobs = new JobsAPI(this.serverContext);
-		if(this.serverContext.servesWebServices){
-			this.api.services = new ServicesAPI(this.serverContext);
-			console.info('Service web services')
-		}
 		this.api.users = new UsersAPI(this.serverContext);
 		this.api.processGraphs = new ProcessGraphsAPI(this.serverContext);
 		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
 		this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
+		if(this.serverContext.webServiceEndpoint){
+			this.api.services = new ServicesAPI(this.serverContext);
+			console.info('Using web services endpoint')
+		}
+		if(this.serverContext.fileEndpoint){
+			this.api.files = new FilesAPI(this.serverContext);
+			console.info('Using files endpoint')
+		}
+
 
 		if(this.serverContext.legacyTokens){
 			console.info('Using legacy token format')
