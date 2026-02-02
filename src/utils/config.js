@@ -20,8 +20,9 @@ export default class Config {
 			"exposePort": Number,
 			"defaultLogLevel": String,
 			"stacAssedDownloadSize": Number,
-			"webServiceEndpoint": Boolean,
-			"fileEndpoint": Boolean,
+			"webServicesEndpoint": Boolean,
+			"filesEndpoint": Boolean,
+			"processingParameters": Boolean,
 		}	
 
 		// Set default that can be overriden by the config.json
@@ -33,8 +34,9 @@ export default class Config {
 		this.apiVersion = "1.2.0";
 		this.legacyTokens = false;
 
-		this.webServiceEndpoint = true;
-		this.fileEndpoint = true;
+		this.webServicesEndpoint = true;
+		this.filesEndpoint = true;
+		this.processingParameters = true;
 
 		this.id = "openeo-test-api";
 		this.title = "Test API";

@@ -40,12 +40,15 @@ class Server {
 		this.api.users = new UsersAPI(this.serverContext);
 		this.api.processGraphs = new ProcessGraphsAPI(this.serverContext);
 		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
-		this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
-		if(this.serverContext.webServiceEndpoint){
+		if(this.serverContext.processingParameters){
+			this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
+			console.info('Using processing parameters')
+		}
+		if(this.serverContext.webServicesEndpoint){
 			this.api.services = new ServicesAPI(this.serverContext);
 			console.info('Using web services endpoint')
 		}
-		if(this.serverContext.fileEndpoint){
+		if(this.serverContext.filesEndpoint){
 			this.api.files = new FilesAPI(this.serverContext);
 			console.info('Using files endpoint')
 		}

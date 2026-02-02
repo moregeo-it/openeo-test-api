@@ -128,7 +128,6 @@ export default class CapabilitiesAPI {
 //			"https://api.stacspec.org/v1.0.0-rc.1/collection-search#sort",
 				"http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core",
 				"http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson",
-				"https://api.openeo.org/extensions/processing-parameters/0.1.0",
 // CQL2 (for Item and Collection Filter)
 // 			"http://www.opengis.net/spec/cql2/1.0/conf/cql2-text",
 // 			"http://www.opengis.net/spec/cql2/1.0/conf/basic-cql2",
@@ -136,6 +135,9 @@ export default class CapabilitiesAPI {
 
 		if (!this.context.legacyTokens) {
 			conformanceList.push("https://api.openeo.org/1.3.0/authentication/jwt")
+
+		if (this.context.processingParameters) {
+			conformanceList.push("https://api.openeo.org/extensions/processing-parameters/0.1.0")
 		}
 
 		return {
