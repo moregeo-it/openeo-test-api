@@ -23,6 +23,7 @@ export default class Config {
 			"webServicesEndpoint": Boolean,
 			"filesEndpoint": Boolean,
 			"processingParameters": Boolean,
+			"processGraphsEndpoint": Boolean
 		}	
 
 		// Set default that can be overriden by the config.json
