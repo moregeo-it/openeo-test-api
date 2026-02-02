@@ -20,6 +20,7 @@ export default class Config {
 			"exposePort": Number,
 			"defaultLogLevel": String,
 			"stacAssedDownloadSize": Number,
+			"batchJobsEndpoint": Boolean,
 			"webServicesEndpoint": Boolean,
 			"filesEndpoint": Boolean,
 			"userDefinedFunctions": Boolean,
@@ -36,6 +37,7 @@ export default class Config {
 		this.apiVersion = "1.2.0";
 		this.legacyTokens = false;
 
+		this.batchJobsEndpoint = true;
 		this.webServicesEndpoint = true;
 		this.filesEndpoint = true;
 		this.userDefinedFunctions = true;

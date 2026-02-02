@@ -25,6 +25,8 @@ There are several important configuration options in the file [config.json](conf
   * `certificate`: If you want to create an HTTPS server, pass in a PEM-encoded certificate. Otherwise set to `null`.
 
 To turn off certain endpoints, edit the following flags in the [config.json](config.json) file:
+* Batch-Jobs `/jobs`: 
+  * set `"batchJobsEndpoint": false`
 * Web-services `/services`: 
   * set `"webServicesEndpoint": false`
 * Files `/files`: 

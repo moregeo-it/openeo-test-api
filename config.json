@@ -26,8 +26,10 @@
 	"otherVersions": [],
 	"authClients": [],
 	"legacyTokens": false,
+	"batchJobsEndpoint": true,
 	"webServicesEndpoint": true,
 	"filesEndpoint": true,
+	"processGraphsEndpoint": true,
 	"processingParameters": true,
-	"processGraphsEndpoint": true
+	"userDefinedFunctions": true
 }
