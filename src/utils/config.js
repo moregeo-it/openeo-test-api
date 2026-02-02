@@ -6,6 +6,22 @@ import Utils from "./utils.js";
 export default class Config {
 
 	constructor() {
+		this.environmentVariableNames = [
+			"debug",
+			"production",
+			"hostname",
+			"apiPath",
+			"apiVersion",
+			"legacyTokens",
+			"id",
+			"title",
+			"description",
+			"port",
+			"exposePort",
+			"defaultLogLevel",
+			"stacAssedDownloadSize"
+		]	
+
 		// Set default that can be overriden by the config.json
 		this.debug = false;
 		this.production = false;
@@ -69,9 +85,9 @@ export default class Config {
 		}
 
 		// look for environment variables
-		for(const c in config) {
-			if (process.env[c] != undefined){
-				this[c] = process.env[c]
+		for(const c of this.environmentVariableNames) {
+			if (process.env[c] != undefined || process.env[c.toUpperCase()] != undefined ){
+				this[c] = process.env[c] || process.env[c.toUpperCase()]
 			}
 		}
 
