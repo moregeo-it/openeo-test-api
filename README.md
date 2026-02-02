@@ -6,7 +6,7 @@ Based on the openEO backend driver for [Google Earth Engine](https://earthengine
 
 This API implements **openEO API version 1.2.0**.
 
-## Setting up an instance
+## Setting up an Instance
 
 The driver is written in [Node.js](https://nodejs.org/) and requires a Node.js version between v20.0.0 and v23.11.1.
 Install Node.js and npm according to the official documentation of each software package.
@@ -24,11 +24,26 @@ There are several important configuration options in the file [config.json](conf
   * `key`: If you want to create an HTTPS server, pass in a private key. Otherwise set to `null`.
   * `certificate`: If you want to create an HTTPS server, pass in a PEM-encoded certificate. Otherwise set to `null`.
 
-### Starting up the server
+To turn off certain endpoints, edit the following flags in the [config.json](config.json) file:
+* web-services `/services`: 
+  * set `"webServicesEndpoint": false`
+* files `/files`: 
+  * set `"filesEndpoint": false`
+* process-graphs `/process_graphs`: 
+  * set `"processGraphsEndpoint": false`
+* processing-parameters extension `/processing_parameters`: 
+  * set `"processingParameters": false`
+
+Any of these configuration options can be overridden using environment variables. For example:
+```bash
+WEBSERVICESENDPOINT=false PORT=8081 npm start
+```
+
+### Starting up the Server
 
 After configuration, the API can be started. Run `npm start` to start the server.
 
-#### User management
+#### User Management
 
 To allow testing the full functionality of the API, it is recommended to set up user accounts before starting.
 

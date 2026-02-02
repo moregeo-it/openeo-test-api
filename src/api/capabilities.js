@@ -133,9 +133,11 @@ export default class CapabilitiesAPI {
 // 			"http://www.opengis.net/spec/cql2/1.0/conf/basic-cql2",
 			]
 
+
 		if (!this.context.legacyTokens) {
 			conformanceList.push("https://api.openeo.org/1.3.0/authentication/jwt")
-
+		}
+		
 		if (this.context.processingParameters) {
 			conformanceList.push("https://api.openeo.org/extensions/processing-parameters/0.1.0")
 		}

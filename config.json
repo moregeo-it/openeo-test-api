@@ -25,5 +25,9 @@
 	},
 	"otherVersions": [],
 	"authClients": [],
-	"legacyTokens": false
+	"legacyTokens": false,
+	"webServicesEndpoint": true,
+	"filesEndpoint": true,
+	"processingParameters": true,
+	"processGraphsEndpoint": true
 }
