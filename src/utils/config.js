@@ -6,6 +6,7 @@ import Utils from "./utils.js";
 export default class Config {
 
 	constructor() {
+<<<<<<< HEAD
 		this.environmentVariables = {
 			"debug": Boolean,
 			"production": Boolean,
@@ -21,6 +22,23 @@ export default class Config {
 			"defaultLogLevel": String,
 			"stacAssedDownloadSize": Number
 		}	
+=======
+		this.environmentVariableNames = [
+			"debug",
+			"production",
+			"hostname",
+			"apiPath",
+			"apiVersion",
+			"legacyTokens",
+			"id",
+			"title",
+			"description",
+			"port",
+			"exposePort",
+			"defaultLogLevel",
+			"stacAssedDownloadSize"
+		]	
+>>>>>>> 4270d27 (improve environmentVariable checking)
 
 		// Set default that can be overriden by the config.json
 		this.debug = false;
