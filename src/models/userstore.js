@@ -246,14 +246,9 @@ export default class UserStore {
 			return this.authenticateBasic(token);
 		}
 		else if (type === 'oidc') {
-			if (provider === 'google') {
-				return this.authenticateOidc(token);
-			}
-			else {
-				throw new Errors.AuthenticationRequired({
-					reason: 'Identity provider not supported.'
-				});
-			}
+			throw new Errors.AuthenticationRequired({
+				reason: 'Authentication method not supported.'
+			});
 		}
 		else {
 			throw new Errors.AuthenticationRequired({
@@ -284,7 +279,7 @@ export default class UserStore {
 		}
 		else {
 			throw new Errors.Internal({
-				message: 'Can not retrieve user information from Google.'
+				message: 'Can not retrieve user information from OIDC provider.'
 			});
 		}
 	}

@@ -19,7 +19,7 @@ import restify from 'restify';
 class Server {
 
 	constructor() {
-		console.info('Initializing openEO Google Earth Engine driver...');
+		console.info('Initializing openEO test api...');
 
 		this.http_server = null;
 		this.https_server = null;

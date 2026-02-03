@@ -45,7 +45,7 @@ export default class Config {
 		};
 
 		this.serviceAccountCredentialsFile = null;
-		this.googleAuthClients = [];
+		this.authClients = [];
 
 		this.currency = null;
 		this.plans = {
