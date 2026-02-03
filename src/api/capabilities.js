@@ -111,8 +111,7 @@ export default class CapabilitiesAPI {
 	}
 
 	_conformanceList() {
-		return {
-			"conformsTo": [
+		const conformanceList = [
 				"https://api.openeo.org/1.2.0",
 				"https://api.stacspec.org/v1.0.0/core",
 				"https://api.stacspec.org/v1.0.0/collections",
@@ -134,6 +133,13 @@ export default class CapabilitiesAPI {
 // 			"http://www.opengis.net/spec/cql2/1.0/conf/cql2-text",
 // 			"http://www.opengis.net/spec/cql2/1.0/conf/basic-cql2",
 			]
+
+		if (!this.context.legacyTokens) {
+			conformanceList.push("https://api.openeo.org/1.3.0/authentication/jwt")
+		}
+
+		return {
+			"conformsTo": conformanceList
 		};
 	}	
 

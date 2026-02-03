@@ -19,7 +19,7 @@ import restify from 'restify';
 class Server {
 
 	constructor() {
-		console.info('Initializing openEO Google Earth Engine driver...');
+		console.info('Initializing openEO test api...');
 
 		this.http_server = null;
 		this.https_server = null;
@@ -43,6 +43,11 @@ class Server {
 		this.api.processGraphs = new ProcessGraphsAPI(this.serverContext);
 		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
 		this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
+
+		if(this.serverContext.legacyTokens){
+			console.info('Using legacy token format')
+		}
+		
 
 		this.startServer();
 	}

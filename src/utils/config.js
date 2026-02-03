@@ -6,6 +6,22 @@ import Utils from "./utils.js";
 export default class Config {
 
 	constructor() {
+		this.environmentVariables = {
+			"debug": Boolean,
+			"production": Boolean,
+			"hostname": String,
+			"apiPath": String,
+			"apiVersion": String,
+			"legacyTokens": Boolean,
+			"id": String,
+			"title": String,
+			"description": String,
+			"port": Number,
+			"exposePort": Number,
+			"defaultLogLevel": String,
+			"stacAssedDownloadSize": Number
+		}	
+
 		// Set default that can be overriden by the config.json
 		this.debug = false;
 		this.production = false;
@@ -13,6 +29,7 @@ export default class Config {
 		this.hostname = "127.0.0.1";
 		this.apiPath = "/";
 		this.apiVersion = "1.2.0";
+		this.legacyTokens = false;
 
 		this.id = "openeo-test-api";
 		this.title = "Test API";
@@ -28,7 +45,7 @@ export default class Config {
 		};
 
 		this.serviceAccountCredentialsFile = null;
-		this.googleAuthClients = [];
+		this.authClients = [];
 
 		this.currency = null;
 		this.plans = {
@@ -65,6 +82,24 @@ export default class Config {
 		const config = Utils.require('../../config.json');
 		for(const c in config) {
 			this[c] = config[c];
+		}
+
+		// look for environment variables
+		for(const c in this.environmentVariables) {
+			if (process.env[c] != undefined || process.env[c.toUpperCase()] != undefined ){
+				let variable = process.env[c] || process.env[c.toUpperCase()]
+				switch(this.environmentVariables[c]){
+					case String:
+						break;
+					case Boolean:
+						variable = (variable.toLowerCase() === 'true');
+						break;
+					case Number:
+						variable = Number.parseFloat(variable)
+						break;
+				}
+				this[c] = variable
+			}
 		}
 
 		this.ssl.exposePort = this.ssl.exposePort || this.ssl.port;

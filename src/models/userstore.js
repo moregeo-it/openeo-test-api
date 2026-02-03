@@ -201,20 +201,39 @@ export default class UserStore {
 		return user;
 	}
 
-	async authenticateGoogle(token) {
-		const userInfo = await this.getOidcUserInfo(token);
-		const userData = this.emptyUser(false);
-		userData._id = "google_" + userInfo.sub;
-		userData.name = userInfo.name || userInfo.email || null;
-		userData.email = userInfo.email || null;
-		userData.token = token;
-		// Googles tokens are valid for roughly an hour, so we set it slightly lower
-		userData.token_valid_until = Utils.getTimestamp() + 59 * 60;
-		// todo auth: database handling for less OIDC userInfo requests #82
-		return userData;
+	async authenticateOidc(token) {
+		//not yet implemented
+		token = Utils.parseJwt(token)
+		if (token.iss === undefined){
+			throw new Errors.AuthenticationRequired({
+				reason: 'Token invalid. Unknown issuer'
+			});	
+		}
+		const issuer = token.iss
+		throw new Errors.AuthenticationRequired({
+			reason: 'Token invalid or expired.'
+		});
 	}
 
 	async checkAuthToken(apiToken) {
+		if(this.serverContext.legacyTokens){
+			return this.checkLegacyToken(apiToken)
+		}
+
+		let user;
+		try {
+			user = await this.authenticateBasic(apiToken)
+		} catch(error) {
+			if (error.message === 'Token invalid or expired.') {
+				user = this.authenticateOidc
+			} else {
+				throw error
+			}
+		}
+		return user
+	}
+
+	async checkLegacyToken(apiToken) {
 		const parts = apiToken.split('/', 3);
 		if (parts.length !== 3) {
 			throw new Errors.AuthenticationRequired({
@@ -227,14 +246,9 @@ export default class UserStore {
 			return this.authenticateBasic(token);
 		}
 		else if (type === 'oidc') {
-			if (provider === 'google') {
-				return this.authenticateGoogle(token);
-			}
-			else {
-				throw new Errors.AuthenticationRequired({
-					reason: 'Identity provider not supported.'
-				});
-			}
+			throw new Errors.AuthenticationRequired({
+				reason: 'Authentication method not supported.'
+			});
 		}
 		else {
 			throw new Errors.AuthenticationRequired({
@@ -265,7 +279,7 @@ export default class UserStore {
 		}
 		else {
 			throw new Errors.Internal({
-				message: 'Can not retrieve user information from Google.'
+				message: 'Can not retrieve user information from OIDC provider.'
 			});
 		}
 	}

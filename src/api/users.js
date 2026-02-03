@@ -33,7 +33,7 @@ export default class UsersAPI {
 	}
 
 	async getCredentialsOidc(req, res) {
-		if (!this.context.googleAuthClients) {
+		if (!this.context.authClients) {
 			throw new Errors.FeatureUnsupported();
 		}
 
@@ -45,7 +45,7 @@ export default class UsersAPI {
 					title: "Sample OIDC Provider",
 					description: "Login with your OIDC provider account.",
 					scopes: this.storage.oidcScopes,
-					default_clients: this.context.googleAuthClients
+					default_clients: this.context.authClients
 				}
 			]
 		});

@@ -31,7 +31,7 @@ if (exists) {
 	onlyData = onlyDataMap[keepAccount];
 }
 else {
-	console.warn('User might be a Google User, trying to delete the corresponding data');
+	console.warn('Trying to delete the corresponding data');
 }
 
 try {

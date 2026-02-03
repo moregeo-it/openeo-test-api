@@ -24,5 +24,6 @@
 		]
 	},
 	"otherVersions": [],
-	"googleAuthClients": []
+	"authClients": [],
+	"legacyTokens": false
 }
