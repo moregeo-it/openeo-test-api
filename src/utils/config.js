@@ -19,7 +19,14 @@ export default class Config {
 			"port": Number,
 			"exposePort": Number,
 			"defaultLogLevel": String,
-			"stacAssedDownloadSize": Number
+			"stacAssedDownloadSize": Number,
+			"batchJobsEndpoint": Boolean,
+			"webServicesEndpoint": Boolean,
+			"filesEndpoint": Boolean,
+			"userDefinedFunctions": Boolean,
+			"processingParameters": Boolean,
+			"processGraphsEndpoint": Boolean,
+			"synchronousProcessing": Boolean
 		}	
 
 		// Set default that can be overriden by the config.json
@@ -30,6 +37,14 @@ export default class Config {
 		this.apiPath = "/";
 		this.apiVersion = "1.2.0";
 		this.legacyTokens = false;
+
+		this.batchJobsEndpoint = true;
+		this.webServicesEndpoint = true;
+		this.filesEndpoint = true;
+		this.userDefinedFunctions = true;
+		this.processingParameters = true;
+		this.processGraphsEndpoint = true;
+		this.synchronousProcessing = true;
 
 		this.id = "openeo-test-api";
 		this.title = "Test API";

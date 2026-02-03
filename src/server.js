@@ -36,13 +36,29 @@ class Server {
 		this.api.capabilities = new CapabilitiesAPI(this.serverContext);
 		this.api.collections = new CollectionsAPI(this.serverContext);
 		this.api.processes = new ProcessesAPI(this.serverContext);
-		this.api.files = new FilesAPI(this.serverContext);
-		this.api.jobs = new JobsAPI(this.serverContext);
-		this.api.services = new ServicesAPI(this.serverContext);
 		this.api.users = new UsersAPI(this.serverContext);
-		this.api.processGraphs = new ProcessGraphsAPI(this.serverContext);
-		this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
-		this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
+		this.api.jobs = new JobsAPI(this.serverContext);
+		if(this.serverContext.processingParameters){
+			this.api.processGraphsEndpoint = new ProcessGraphsAPI(this.serverContext);
+			console.info('Using User-Defined Processes')
+		}
+		if(this.serverContext.userDefinedFunctions){
+			this.api.udfRuntimes = new UdfRuntimesApi(this.serverContext);
+			console.info('Using UDF')
+		}
+		if(this.serverContext.processingParameters){
+			this.api.processingParameters = new ProcessingParametersAPI(this.serverContext);
+			console.info('Using processing parameters')
+		}
+		if(this.serverContext.webServicesEndpoint){
+			this.api.services = new ServicesAPI(this.serverContext);
+			console.info('Using web services endpoint')
+		}
+		if(this.serverContext.filesEndpoint){
+			this.api.files = new FilesAPI(this.serverContext);
+			console.info('Using files endpoint')
+		}
+
 
 		if(this.serverContext.legacyTokens){
 			console.info('Using legacy token format')
