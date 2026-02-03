@@ -24,9 +24,11 @@ There are several important configuration options in the file [config.json](conf
   * `key`: If you want to create an HTTPS server, pass in a private key. Otherwise set to `null`.
   * `certificate`: If you want to create an HTTPS server, pass in a PEM-encoded certificate. Otherwise set to `null`.
 
-To turn off certain endpoints, edit the following flags in the [config.json](config.json) file:
+To disable certain endpoints, edit the following flags in the [config.json](config.json) file:
 * Batch-Jobs `/jobs`: 
   * set `"batchJobsEndpoint": false`
+* Synchronous processing `/result`:
+  * set `"synchronousProcessing": false`
 * Web-services `/services`: 
   * set `"webServicesEndpoint": false`
 * Files `/files`: 
@@ -41,6 +43,13 @@ Any of these configuration options can be overridden using environment variables
 ```bash
 WEBSERVICESENDPOINT=false PORT=8081 npm start
 ```
+
+To use the bearer token format prior to openEO specification 1.3.0, edit the following flag in the [config.json](config.json) file:
+
+* set `"legacyTokens": true`,
+or start the api with the environment variable `legacytokens=true`.
+
+This may be necessary for clients that don't yet support the 1.3.0 specification.
 
 ### Starting up the Server
 
