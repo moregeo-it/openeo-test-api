@@ -31,5 +31,6 @@
 	"filesEndpoint": true,
 	"processGraphsEndpoint": true,
 	"processingParameters": true,
-	"userDefinedFunctions": true
+	"userDefinedFunctions": true,
+	"synchronousProcessing": true
 }

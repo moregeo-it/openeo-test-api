@@ -17,8 +17,13 @@ export default class JobsAPI {
 	}
 
 	async beforeServerStart(server) {
-		server.addEndpoint('post', '/result', this.postSyncResult.bind(this));
-		server.addEndpoint('get', '/result/logs/{id}', this.getSyncLogFile.bind(this), false);
+		if(this.context.synchronousProcessing){
+			server.addEndpoint('post', '/result', this.postSyncResult.bind(this));
+			server.addEndpoint('get', '/result/logs/{id}', this.getSyncLogFile.bind(this), false);
+			
+			server.addEndpoint('get', '/results/{token}', this.getJobResultsByToken.bind(this), false);
+			console.info('Using synchronous processing')
+		}
 
 		server.addEndpoint('post', '/jobs', this.postJob.bind(this));
 		server.addEndpoint('get', '/jobs', this.getJobs.bind(this));
@@ -31,7 +36,7 @@ export default class JobsAPI {
 		server.addEndpoint('post', '/jobs/{job_id}/results', this.postJobResults.bind(this));
 		server.addEndpoint('delete', '/jobs/{job_id}/results', this.deleteJobResults.bind(this));
 
-		server.addEndpoint('get', '/results/{token}', this.getJobResultsByToken.bind(this), false);
+		
 		server.addEndpoint('get', '/storage/{token}/{file}', this.getStorageFile.bind(this), false);
 		server.addEndpoint('head', '/storage/{token}/{file}', this.getStorageFile.bind(this), false);
 	}

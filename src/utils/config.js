@@ -25,7 +25,8 @@ export default class Config {
 			"filesEndpoint": Boolean,
 			"userDefinedFunctions": Boolean,
 			"processingParameters": Boolean,
-			"processGraphsEndpoint": Boolean
+			"processGraphsEndpoint": Boolean,
+			"synchronousProcessing": Boolean
 		}	
 
 		// Set default that can be overriden by the config.json
@@ -42,6 +43,8 @@ export default class Config {
 		this.filesEndpoint = true;
 		this.userDefinedFunctions = true;
 		this.processingParameters = true;
+		this.processGraphsEndpoint = true;
+		this.synchronousProcessing = true;
 
 		this.id = "openeo-test-api";
 		this.title = "Test API";
