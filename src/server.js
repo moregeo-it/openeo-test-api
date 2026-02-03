@@ -37,10 +37,7 @@ class Server {
 		this.api.collections = new CollectionsAPI(this.serverContext);
 		this.api.processes = new ProcessesAPI(this.serverContext);
 		this.api.users = new UsersAPI(this.serverContext);
-		if(this.serverContext.batchJobsEndpoint){
-			this.api.jobs = new JobsAPI(this.serverContext);
-			console.info('Using batch jobs endpoint')
-		}
+		this.api.jobs = new JobsAPI(this.serverContext);
 		if(this.serverContext.processingParameters){
 			this.api.processGraphsEndpoint = new ProcessGraphsAPI(this.serverContext);
 			console.info('Using User-Defined Processes')

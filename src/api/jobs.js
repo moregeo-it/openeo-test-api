@@ -25,20 +25,23 @@ export default class JobsAPI {
 			console.info('Using synchronous processing')
 		}
 
-		server.addEndpoint('post', '/jobs', this.postJob.bind(this));
-		server.addEndpoint('get', '/jobs', this.getJobs.bind(this));
-		server.addEndpoint('get', '/jobs/{job_id}', this.getJob.bind(this));
-		server.addEndpoint('patch', '/jobs/{job_id}', this.patchJob.bind(this));
-		server.addEndpoint('delete', '/jobs/{job_id}', this.deleteJob.bind(this));
+		if(this.context.batchJobsEndpoint){
+			server.addEndpoint('post', '/jobs', this.postJob.bind(this));
+			server.addEndpoint('get', '/jobs', this.getJobs.bind(this));
+			server.addEndpoint('get', '/jobs/{job_id}', this.getJob.bind(this));
+			server.addEndpoint('patch', '/jobs/{job_id}', this.patchJob.bind(this));
+			server.addEndpoint('delete', '/jobs/{job_id}', this.deleteJob.bind(this));
 
-		server.addEndpoint('get', '/jobs/{job_id}/logs', this.getJobLogs.bind(this));
-		server.addEndpoint('get', '/jobs/{job_id}/results', this.getJobResults.bind(this));
-		server.addEndpoint('post', '/jobs/{job_id}/results', this.postJobResults.bind(this));
-		server.addEndpoint('delete', '/jobs/{job_id}/results', this.deleteJobResults.bind(this));
+			server.addEndpoint('get', '/jobs/{job_id}/logs', this.getJobLogs.bind(this));
+			server.addEndpoint('get', '/jobs/{job_id}/results', this.getJobResults.bind(this));
+			server.addEndpoint('post', '/jobs/{job_id}/results', this.postJobResults.bind(this));
+			server.addEndpoint('delete', '/jobs/{job_id}/results', this.deleteJobResults.bind(this));
 
-		
-		server.addEndpoint('get', '/storage/{token}/{file}', this.getStorageFile.bind(this), false);
-		server.addEndpoint('head', '/storage/{token}/{file}', this.getStorageFile.bind(this), false);
+			
+			server.addEndpoint('get', '/storage/{token}/{file}', this.getStorageFile.bind(this), false);
+			server.addEndpoint('head', '/storage/{token}/{file}', this.getStorageFile.bind(this), false);
+			console.info('Using batch jobs endpoint')
+		}
 	}
 
 	async getStorageFile(req, res) {
