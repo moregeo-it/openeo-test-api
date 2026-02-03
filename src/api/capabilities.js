@@ -111,7 +111,7 @@ export default class CapabilitiesAPI {
 	}
 
 	_conformanceList() {
-		let conformanceList = [
+		const conformanceList = [
 				"https://api.openeo.org/1.2.0",
 				"https://api.stacspec.org/v1.0.0/core",
 				"https://api.stacspec.org/v1.0.0/collections",
