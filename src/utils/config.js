@@ -20,6 +20,7 @@ export default class Config {
 			"exposePort": Number,
 			"defaultLogLevel": String,
 			"stacAssedDownloadSize": Number,
+			"legacyTokens": Boolean,
 			"batchJobsEndpoint": Boolean,
 			"webServicesEndpoint": Boolean,
 			"filesEndpoint": Boolean,
