@@ -105,21 +105,23 @@ export default class DataCatalog {
 		this.itemCache = new ItemStore();
 	}
 
-	async readLocalCatalog() {
-		await fse.ensureDir(this.dataFolder);
-		this.collections = {};
-		const files = await fse.readdir(this.dataFolder, { withFileTypes: true });
+	async _processDirectory(dirPath, isPrivate){
+		if (!("collections" in  this)){
+			return
+		}
+
+		const files = await fse.readdir(dirPath, { withFileTypes: true });
 
 		let promises = files.map(async (file) => {
 			const name = path.basename(file.name);
 			if (file.isFile() && name.endsWith('.json')) {
 				try {
-					const obj = await fse.readJSON(this.dataFolder + name);
+					const obj = await fse.readJSON(dirPath + name);
 					if (obj.type !== 'Collection') {
 						return;
 					}
 					const collection = this.fixCollectionOnce(obj);
-					collection.private = false;
+					collection.private = isPrivate;
 					if (this.supportedGeeTypes.includes(collection['gee:type'])) {
 						this.collections[collection.id] = collection;
 					}
@@ -129,28 +131,16 @@ export default class DataCatalog {
 			}
 		});
 		await Promise.all(promises);
-		
-		// add private files
-		const privateFiles = await fse.readdir(this.privateDataFolder, { withFileTypes: true })
-		const privatePromises = privateFiles.map( async (file) => {
-			const name = path.basename(file.name);
-			if (file.isFile() && name.endsWith('.json')) {
-				try {
-					const obj = await fse.readJSON(this.privateDataFolder + name);
-					if (obj.type !== 'Collection') {
-						return;
-					}
-					const collection = this.fixCollectionOnce(obj);
-					collection.private = true;
-					if (this.supportedGeeTypes.includes(collection['gee:type'])) {
-						this.collections[collection.id] = collection;
-					}
-				} catch (error) {
-					console.error(error);
-				}
-			}
-		})
-		await Promise.all(privatePromises)
+
+	}
+
+	async readLocalCatalog() {
+		await fse.ensureDir(this.dataFolder);
+		await fse.ensureDir(this.privateDataFolder);
+		this.collections = {};
+
+		await this._processDirectory(this.dataFolder, false)
+		await this._processDirectory(this.privateDataFolder, true)
 
 		return Utils.size(this.collections)
 	}
@@ -172,7 +162,8 @@ export default class DataCatalog {
 			"title" : "Queryables",
 			"type" : "object",
 			"properties" : {},
-			"additionalProperties": false
+			"additionalProperties": false,
+			"private": collection.private
 		};
 		if (!Array.isArray(geeSchemas)) {
 			return jsonSchema;

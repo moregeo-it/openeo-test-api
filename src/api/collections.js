@@ -114,11 +114,11 @@ export default class Data {
 			throw new Errors.CollectionNotFound();
 		}
 
-		if (!isAuthenticated && collection.private){
+		if (!isAuthenticated && queryables.private){
 			throw new Errors.AuthenticationRequired();
 		}
 
-		delete collection.private;
+		delete queryables.private;
 		res.json(queryables);
 	}
 
