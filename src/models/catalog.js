@@ -98,6 +98,7 @@ export default class DataCatalog {
 
 	constructor(context) {
 		this.dataFolder = 'storage/collections/';
+		this.privateDataFolder = 'storage/collections/private';
 		this.collections = {};
 		this.supportedGeeTypes = ['image', 'image_collection'];
 		this.serverContext = context;
@@ -133,7 +134,7 @@ export default class DataCatalog {
 		return await this.readLocalCatalog();
 	}
 
-	getSchema(id) {
+	getSchema(id, isAuthenticated=false) {
 		const collection = this.getData(id, true);
 		if (!collection) {
 			return null;
@@ -163,7 +164,7 @@ export default class DataCatalog {
 		return jsonSchema;
 	}
 
-	getData(id = null, withSchema = false) {
+	getData(id = null, withSchema = false, isAuthenticated = false) {
 		if (id !== null) {
 			if (typeof this.collections[id] !== 'undefined') {
 				return this.updateCollection(this.collections[id], withSchema);
