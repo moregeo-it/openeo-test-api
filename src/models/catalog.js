@@ -98,7 +98,7 @@ export default class DataCatalog {
 
 	constructor(context) {
 		this.dataFolder = 'storage/collections/';
-		this.privateDataFolder = 'storage/collections/private';
+		this.privateDataFolder = 'storage/collections/private/';
 		this.collections = {};
 		this.supportedGeeTypes = ['image', 'image_collection'];
 		this.serverContext = context;
@@ -109,7 +109,8 @@ export default class DataCatalog {
 		await fse.ensureDir(this.dataFolder);
 		this.collections = {};
 		const files = await fse.readdir(this.dataFolder, { withFileTypes: true });
-		const promises = files.map(async (file) => {
+
+		let promises = files.map(async (file) => {
 			const name = path.basename(file.name);
 			if (file.isFile() && name.endsWith('.json')) {
 				try {
@@ -118,6 +119,7 @@ export default class DataCatalog {
 						return;
 					}
 					const collection = this.fixCollectionOnce(obj);
+					collection.private = false;
 					if (this.supportedGeeTypes.includes(collection['gee:type'])) {
 						this.collections[collection.id] = collection;
 					}
@@ -127,14 +129,37 @@ export default class DataCatalog {
 			}
 		});
 		await Promise.all(promises);
-		return Utils.size(this.collections);
+		
+		// add private files
+		const privateFiles = await fse.readdir(this.privateDataFolder, { withFileTypes: true })
+		const privatePromises = privateFiles.map( async (file) => {
+			const name = path.basename(file.name);
+			if (file.isFile() && name.endsWith('.json')) {
+				try {
+					const obj = await fse.readJSON(this.privateDataFolder + name);
+					if (obj.type !== 'Collection') {
+						return;
+					}
+					const collection = this.fixCollectionOnce(obj);
+					collection.private = true;
+					if (this.supportedGeeTypes.includes(collection['gee:type'])) {
+						this.collections[collection.id] = collection;
+					}
+				} catch (error) {
+					console.error(error);
+				}
+			}
+		})
+		await Promise.all(privatePromises)
+
+		return Utils.size(this.collections)
 	}
 
-	async loadCatalog() {
-		return await this.readLocalCatalog();
+	async loadCatalog(includePrivate) {
+		return await this.readLocalCatalog(includePrivate);
 	}
 
-	getSchema(id, isAuthenticated=false) {
+	getSchema(id) { 
 		const collection = this.getData(id, true);
 		if (!collection) {
 			return null;
@@ -164,7 +189,7 @@ export default class DataCatalog {
 		return jsonSchema;
 	}
 
-	getData(id = null, withSchema = false, isAuthenticated = false) {
+	getData(id = null, withSchema = false) {
 		if (id !== null) {
 			if (typeof this.collections[id] !== 'undefined') {
 				return this.updateCollection(this.collections[id], withSchema);

@@ -27,7 +27,9 @@ export default class Data {
 	async getCollections(req, res) {
 		const isAuthenticated = Boolean(req.user._id)
 
-		const data = this.catalog.getData(isAuthenticated=isAuthenticated).map(c => {
+		let data = this.catalog.getData().filter( 
+			c => (isAuthenticated || !c.private)
+		).map(c => {
 			return {
 				stac_version: c.stac_version,
 				stac_extensions: [],
@@ -42,7 +44,6 @@ export default class Data {
 				links: c.links
 			};
 		});
-
 
 		res.json({
 			collections: data,
@@ -86,11 +87,16 @@ export default class Data {
 			return await this.getCollectionItemById(req, res);
 		}
 
-		const collection = this.catalog.getData(id, isAuthenticated=isAuthenticated);
+		const collection = this.catalog.getData(id)
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}
 
+		if (!isAuthenticated && collection.private){
+			throw new Errors.AuthenticationRequired();
+		}
+
+		delete collection.private;
 		res.json(collection);
 	}
 
@@ -108,6 +114,11 @@ export default class Data {
 			throw new Errors.CollectionNotFound();
 		}
 
+		if (!isAuthenticated && collection.private){
+			throw new Errors.AuthenticationRequired();
+		}
+
+		delete collection.private;
 		res.json(queryables);
 	}
 
@@ -121,9 +132,14 @@ export default class Data {
 			id = req.params['*'].replace(/\/items$/, '');
 		}
 
-		const collection = this.catalog.getData(id, true, isAuthenticated=isAuthenticated);
+		const collection = this.catalog.getData(id, true)
+
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
+		}
+
+		if (!isAuthenticated && collection.private){
+			throw new Errors.AuthenticationRequired();
 		}
 
 		const limit = parseInt(req.query.limit, 10) || 10;
@@ -226,9 +242,14 @@ export default class Data {
 			id = match[2];
 		}
 
-		const collection = this.catalog.getData(cid, true, isAuthenticated=isAuthenticated);
+		const collection = this.catalog.getData(cid, true)
+
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
+		}
+
+		if (!isAuthenticated && collection.private){
+			throw new Errors.AuthenticationRequired();
 		}
 
 		const features = exampleFeatures.filter(f => f.id === id);
