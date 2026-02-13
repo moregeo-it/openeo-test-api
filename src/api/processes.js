@@ -8,12 +8,15 @@ export default class Processes {
 		server.addEndpoint('get', '/processes', this.getProcesses.bind(this));
 
 		const a = Date.now();
-		const num = await this.registry.addFromFolder('./src/processes/');
+		const numPublic = await this.registry.addFromFolder('./src/processes/');
+		const numPrivate = await this.registry.addFromFolder('./src/processes/private/');
 		console.log(`Loaded ${num} processes (${Date.now()-a} ms)`);
-		return num;
+		return numPublic + numPrivate;
 	}
 
 	async getProcesses(req, res) {
+		const isAuthenticated = Boolean(req.user._id)
+
 		res.json({
 			processes: this.registry.namespace('backend'),
 			links: []
