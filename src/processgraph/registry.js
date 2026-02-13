@@ -17,14 +17,18 @@ export default class GeeProcessRegistry extends ProcessRegistry {
 			.map(file => this.addFromFile(path.basename(file, '.js')));
 
 		await Promise.all(promises);
-		return Utils.size(this.namespace('backend'));
+		return Utils.size(this.namespace('backend')) + Utils.size(this.namespace('private_backend'));
 	}
 
 	async addFromFile(id) {
 		const spec = await fse.readJSON('src/processes/' + id + '.json');
 		delete spec.process_graph;
 
-		this.add(spec, 'backend');
+		if (spec.categories.includes("private")){
+			this.add(spec, 'private_backend')
+		} else {
+			this.add(spec, 'backend');
+		}
 
 		const impl = await import('../processes/' + id + '.js');
 		this.implementations[id] = impl.default;
