@@ -25,7 +25,7 @@ export default class Data {
 	}
 
 	async getCollections(req, res) {
-		const isAuthenticated = Boolean(req.user._id)
+		const isAuthenticated = Boolean(req.user._id);
 
 		let data = this.catalog.getData({includePrivate: isAuthenticated}).map(c => {
 			return {
@@ -67,7 +67,7 @@ export default class Data {
 	}
 
 	async getCollectionById(req, res) {
-		const isAuthenticated = Boolean(req.user._id)
+		const isAuthenticated = Boolean(req.user._id);
 
 		const id = req.params['*'];
 		if (id.length === 0) {
@@ -94,7 +94,7 @@ export default class Data {
 	}
 
 	async getCollectionQueryables(req, res) {
-		const isAuthenticated = Boolean(req.user._id)
+		const isAuthenticated = Boolean(req.user._id);
 
 		let id = req.params.collection_id;
 		// Get the ID if this was a redirect from the /collections/{collection_id} endpoint
@@ -112,7 +112,7 @@ export default class Data {
 	}
 
 	async getCollectionItems(req, res) {
-		const isAuthenticated = Boolean(req.user._id)
+		const isAuthenticated = Boolean(req.user._id);
 
 		let exampleFeatures = exampleItems.features; // Use imported example features
 		let id = req.params.collection_id;
@@ -121,7 +121,7 @@ export default class Data {
 			id = req.params['*'].replace(/\/items$/, '');
 		}
 
-		const collection = this.catalog.getData({id, includePrivate: isAuthenticated});
+		const collection = this.catalog.getData({id, withSchema: true, includePrivate: isAuthenticated});
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}
@@ -214,7 +214,7 @@ export default class Data {
 	}
 
 	async getCollectionItemById(req, res) {
-		const isAuthenticated = Boolean(req.user._id)
+		const isAuthenticated = Boolean(req.user._id);
 
 		let exampleFeatures = exampleItems.features; // Use imported example features
 		let cid = req.params.collection_id;
@@ -226,7 +226,7 @@ export default class Data {
 			id = match[2];
 		}
 
-		const collection = this.catalog.getData({id: cid, includePrivate: isAuthenticated});
+		const collection = this.catalog.getData({id: cid, withSchema: true, includePrivate: isAuthenticated});
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}
