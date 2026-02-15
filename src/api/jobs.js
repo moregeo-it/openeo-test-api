@@ -7,7 +7,7 @@ import Logs from '../models/logs.js';
 import runBatchJob from './worker/batchjob.js';
 import fse from 'fs-extra';
 import runSync, { getResultLogs } from './worker/sync.js';
-import { processingParametersList } from './processingparameters.js';
+import processingParametersList from '../models/processingParams.js';
 
 export default class JobsAPI {
 
@@ -20,7 +20,7 @@ export default class JobsAPI {
 		if(this.context.synchronousProcessing){
 			server.addEndpoint('post', '/result', this.postSyncResult.bind(this));
 			server.addEndpoint('get', '/result/logs/{id}', this.getSyncLogFile.bind(this), false);
-			
+
 			server.addEndpoint('get', '/results/{token}', this.getJobResultsByToken.bind(this), false);
 			console.info('Using synchronous processing')
 		}
@@ -37,7 +37,7 @@ export default class JobsAPI {
 			server.addEndpoint('post', '/jobs/{job_id}/results', this.postJobResults.bind(this));
 			server.addEndpoint('delete', '/jobs/{job_id}/results', this.deleteJobResults.bind(this));
 
-			
+
 			server.addEndpoint('get', '/storage/{token}/{file}', this.getStorageFile.bind(this), false);
 			server.addEndpoint('head', '/storage/{token}/{file}', this.getStorageFile.bind(this), false);
 			console.info('Using batch jobs endpoint')
@@ -373,7 +373,7 @@ export default class JobsAPI {
 		const log_level = Logs.checkLevel(req.body.log_level, this.context.defaultLogLevel);
 
 		const response = await runSync(this.context, req.user, id, req.body.process, log_level);
-		
+
 		res.header('Content-Type', response?.headers?.['content-type'] || 'application/octet-stream');
 		res.header('OpenEO-Costs', 0);
 		const monitorUrl = API.getUrl('/result/logs/' + id) + '?log_level=' + log_level;

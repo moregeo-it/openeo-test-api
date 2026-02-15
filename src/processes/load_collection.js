@@ -12,7 +12,7 @@ export default class load_collection extends GeeProcess {
 		// load testimage.png from disk
 		const filePath = path.join(__dirname, '../../storage/testimage.png')
 		const fileBuffer = fs.readFileSync(filePath);
-		
+
 		return new Promise((resolve, reject) => {
 			const png = new PNG();
 			png.parse(fileBuffer, (err, data) => {
@@ -27,10 +27,10 @@ export default class load_collection extends GeeProcess {
 		});
 	}
 
-	async executeSync(node) {
+	async executeSync(/*node*/) {
 		let data
 		data = await this.loadTestImageFromFile();
-		
+
 		const dc = new DataCube(data);
 
 		return dc;

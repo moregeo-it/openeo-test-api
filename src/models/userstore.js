@@ -207,9 +207,9 @@ export default class UserStore {
 		if (token.iss === undefined){
 			throw new Errors.AuthenticationRequired({
 				reason: 'Token invalid. Unknown issuer'
-			});	
+			});
 		}
-		const issuer = token.iss
+		// const issuer = token.iss
 		throw new Errors.AuthenticationRequired({
 			reason: 'Token invalid or expired.'
 		});
@@ -240,7 +240,7 @@ export default class UserStore {
 				reason: 'Token format invalid.'
 			});
 		}
-		const [type, provider, token] = parts;
+		const [type, , token] = parts;
 
 		if (type === 'basic') {
 			return this.authenticateBasic(token);

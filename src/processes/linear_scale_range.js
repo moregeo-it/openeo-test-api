@@ -1,5 +1,4 @@
 import GeeProcess from '../processgraph/process.js';
-import clip from './clip.js';
 
 export default class linear_scale_range extends GeeProcess {
 
