@@ -16,14 +16,14 @@ const GeeResults = {
 	},
 
 	// Returns AxiosResponse (object) or URL (string)
-	async retrieve(context, dc, logger) {
+	async retrieve(context, dc/*, logger*/) {
 		const format = dc?.getOutputFormat() || 'OTHERS';
 		if (format === 'JSON') {
 			const data = await dc.getData();
 			const fileBuffer = new Readable();
 			fileBuffer.push(JSON.stringify(data));
 			fileBuffer.push(null); //somehow null needs to be pushed or the api crashes.
-			
+
 			return {
 				data: fileBuffer,
 				headers: {

@@ -1,15 +1,13 @@
-import Errors from '../utils/errors.js';
-
 export default class UdfRuntimesApi {
     constructor(context) {
         this.context = context;
     }
-    
+
     beforeServerStart(server) {
         server.addEndpoint('get', '/udf_runtimes', this.listUdfRuntimes.bind(this));
         return Promise.resolve();
     }
-    
+
     async listUdfRuntimes(req, res) {
         // for now return hardcoded runtimes
         res.json(
@@ -165,5 +163,5 @@ export default class UdfRuntimesApi {
                     }
                 }
             });
-    }   
+    }
 }

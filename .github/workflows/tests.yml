@@ -1,4 +1,4 @@
-name: Run Tests
+name: Basic checks
 on: [push, pull_request]
 jobs:
   deploy:
@@ -6,15 +6,17 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 17 # minimum req. version right now
           - lts/*
           - latest
     steps:
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: npm install
       - run: npm run lint
-      - run: npm run sync
       - run: npm test
+      - run: npm run adduser testuser testpassword
+      - run: npm run users
+      - run: npm run stats
+      - run: npm run up && npm run down

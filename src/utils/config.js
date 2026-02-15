@@ -20,7 +20,6 @@ export default class Config {
 			"exposePort": Number,
 			"defaultLogLevel": String,
 			"stacAssedDownloadSize": Number,
-			"legacyTokens": Boolean,
 			"batchJobsEndpoint": Boolean,
 			"webServicesEndpoint": Boolean,
 			"filesEndpoint": Boolean,
@@ -28,7 +27,7 @@ export default class Config {
 			"processingParameters": Boolean,
 			"processGraphsEndpoint": Boolean,
 			"synchronousProcessing": Boolean
-		}	
+		}
 
 		// Set default that can be overriden by the config.json
 		this.debug = false;
@@ -102,7 +101,7 @@ export default class Config {
 
 		// look for environment variables
 		for(const c in this.environmentVariables) {
-			if (process.env[c] != undefined || process.env[c.toUpperCase()] != undefined ){
+			if (typeof process.env[c] !== 'undefined' || typeof process.env[c.toUpperCase()] !== 'undefined' ){
 				let variable = process.env[c] || process.env[c.toUpperCase()]
 				switch(this.environmentVariables[c]){
 					case String:

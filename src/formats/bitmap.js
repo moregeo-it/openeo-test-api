@@ -92,7 +92,7 @@ export default class BitmapLike extends FileFormat {
     return renderer === 'filmstrip';
   }
 
-  async retrieve(dc) {
+  async retrieve(/*dc*/) {
     // Bitmap export is not supported in this context.
     throw new Error('FeatureUnsupported');
   }
