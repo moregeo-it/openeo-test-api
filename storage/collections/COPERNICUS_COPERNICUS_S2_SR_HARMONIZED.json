@@ -394,7 +394,7 @@
         "name": "MSK_CLASSI_SNOW_ICE"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Accuracy of Aerosol Optical thickness model",
         "name": "AOT_RETRIEVAL_ACCURACY",

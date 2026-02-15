@@ -408,7 +408,7 @@
       "maximum": 5,
       "minimum": 0
     },
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Land cover class names",
         "name": "discrete_classification_class_names",

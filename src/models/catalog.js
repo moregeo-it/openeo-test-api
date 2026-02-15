@@ -99,7 +99,6 @@ export default class DataCatalog {
 	constructor(context) {
 		this.dataFolder = 'storage/collections/';
 		this.collections = {};
-		this.supportedGeeTypes = ['image', 'image_collection'];
 		this.serverContext = context;
 		this.itemCache = new ItemStore();
 	}
@@ -107,19 +106,18 @@ export default class DataCatalog {
 	async readLocalCatalog() {
 		await fse.ensureDir(this.dataFolder);
 		this.collections = {};
+
 		const files = await fse.readdir(this.dataFolder, { withFileTypes: true });
 		const promises = files.map(async (file) => {
 			const name = path.basename(file.name);
 			if (file.isFile() && name.endsWith('.json')) {
 				try {
-					const obj = await fse.readJSON(this.dataFolder + name);
+					const obj = await fse.readJSON(path.join(this.dataFolder, name));
 					if (obj.type !== 'Collection') {
 						return;
 					}
 					const collection = this.fixCollectionOnce(obj);
-					if (this.supportedGeeTypes.includes(collection['gee:type'])) {
-						this.collections[collection.id] = collection;
-					}
+					this.collections[collection.id] = collection;
 				} catch (error) {
 					console.error(error);
 				}
@@ -133,13 +131,13 @@ export default class DataCatalog {
 		return await this.readLocalCatalog();
 	}
 
-	getSchema(id) {
-		const collection = this.getData(id, true);
+	getSchema(id, includePrivate = false) {
+		const collection = this.getData({id, includePrivate});
 		if (!collection) {
 			return null;
 		}
 
-		const geeSchemas = collection.summaries['gee:schema'] || [];
+		const queryables = collection.summaries['queryables'] || [];
 		const jsonSchema = {
 			"$schema" : "https://json-schema.org/draft/2019-09/schema",
 			"$id" : API.getUrl(`/collections/${id}/queryables`),
@@ -148,11 +146,11 @@ export default class DataCatalog {
 			"properties" : {},
 			"additionalProperties": false
 		};
-		if (!Array.isArray(geeSchemas)) {
+		if (!Array.isArray(queryables)) {
 			return jsonSchema;
 		}
 
-		for(const geeSchema of geeSchemas) {
+		for(const geeSchema of queryables) {
 			const s = {
 				description: geeSchema.description || ""
 			};
@@ -163,36 +161,30 @@ export default class DataCatalog {
 		return jsonSchema;
 	}
 
-	getData(id = null, withSchema = false) {
+	getData({id = null, withSchema = false, includePrivate = false} = {}) {
 		if (id !== null) {
-			if (typeof this.collections[id] !== 'undefined') {
-				return this.updateCollection(this.collections[id], withSchema);
+			const collection = this.collections[id];
+			if (collection && (includePrivate || !collection.private)) {
+				return this.updateCollection(collection, withSchema);
 			}
-			else {
-				return null;
-			}
+			return null;
 		}
 		else {
-			return Object.values(this.collections).map(c => this.updateCollection(c, withSchema));
+			return Object.values(this.collections)
+				.filter(c => includePrivate || !c.private)
+				.map(c => this.updateCollection(c, withSchema));
 		}
-	}
-
-	getImageVisualization(id) {
-		const c = this.getData(id);
-		if (Array.isArray(c.summaries['gee:visualizations'])) {
-			let vis = c.summaries['gee:visualizations'];
-			if (vis.length > 0) {
-				return vis[0].image_visualization || null;
-			}
-		}
-		return null;
 	}
 
 	updateCollection(c, withSchema = false) {
 		c = Object.assign({}, c);
+		// Handle queryables
 		if (!withSchema) {
-			c.summaries = Utils.omitFromObject(c.summaries, ['gee:schema']);
+			c.summaries = Utils.omitFromObject(c.summaries, ['queryables']);
 		}
+		// Remove private flag from output
+		delete c.private;
+		// Update links
 		c.links = c.links.slice(0);
 		c.links = c.links.map(l => {
 			l = Object.assign({}, l);
@@ -246,7 +238,7 @@ export default class DataCatalog {
 			bbox = Utils.geoJsonBbox(geometry, true);
 		}
 
-		const geeSchemas = collection.summaries['gee:schema'] || [];
+		const geeSchemas = collection.summaries['queryables'] || [];
 		const stacPropertyMapping = {};
 		for (const schema of geeSchemas) {
 			if (schema.stac_name) {

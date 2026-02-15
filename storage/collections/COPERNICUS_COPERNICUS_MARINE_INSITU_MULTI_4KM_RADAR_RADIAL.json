@@ -91,7 +91,7 @@
   ],
   "stac_version": "1.0.0",
   "summaries": {
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Datetime of the observation",
         "name": "TIME",

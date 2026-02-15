@@ -757,7 +757,7 @@
         "name": "quality_flags"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Sentinel Application Platform (SNAP) version",
         "name": "SNAP_Graph_Processing_Framework_GPF_vers",

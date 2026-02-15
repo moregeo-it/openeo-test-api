@@ -169,7 +169,7 @@
         "name": "vsi"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "For observations in the past, the number of hours between the\nobservation and run times.\n",
         "name": "lag_hours",

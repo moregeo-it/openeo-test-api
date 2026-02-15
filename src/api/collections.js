@@ -25,7 +25,9 @@ export default class Data {
 	}
 
 	async getCollections(req, res) {
-		const data = this.catalog.getData().map(c => {
+		const isAuthenticated = Boolean(req.user._id);
+
+		let data = this.catalog.getData({includePrivate: isAuthenticated}).map(c => {
 			return {
 				stac_version: c.stac_version,
 				stac_extensions: [],
@@ -40,7 +42,6 @@ export default class Data {
 				links: c.links
 			};
 		});
-
 
 		res.json({
 			collections: data,
@@ -66,6 +67,8 @@ export default class Data {
 	}
 
 	async getCollectionById(req, res) {
+		const isAuthenticated = Boolean(req.user._id);
+
 		const id = req.params['*'];
 		if (id.length === 0) {
 			// Redirect to correct route
@@ -82,7 +85,7 @@ export default class Data {
 			return await this.getCollectionItemById(req, res);
 		}
 
-		const collection = this.catalog.getData(id);
+		const collection = this.catalog.getData({id, includePrivate: isAuthenticated});
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}
@@ -91,21 +94,26 @@ export default class Data {
 	}
 
 	async getCollectionQueryables(req, res) {
+		const isAuthenticated = Boolean(req.user._id);
+
 		let id = req.params.collection_id;
 		// Get the ID if this was a redirect from the /collections/{collection_id} endpoint
 		if (req.params['*'] && !id) {
 			id = req.params['*'].replace(/\/queryables$/, '');
 		}
 
-		const queryables = this.catalog.getSchema(id);
-		if (queryables === null) {
+		const collection = this.catalog.getData({id, includePrivate: isAuthenticated});
+		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}
 
+		const queryables = this.catalog.getSchema(id, isAuthenticated);
 		res.json(queryables);
 	}
 
 	async getCollectionItems(req, res) {
+		const isAuthenticated = Boolean(req.user._id);
+
 		let exampleFeatures = exampleItems.features; // Use imported example features
 		let id = req.params.collection_id;
 		// Get the ID if this was a redirect from the /collections/{collection_id} endpoint
@@ -113,7 +121,7 @@ export default class Data {
 			id = req.params['*'].replace(/\/items$/, '');
 		}
 
-		const collection = this.catalog.getData(id, true);
+		const collection = this.catalog.getData({id, withSchema: true, includePrivate: isAuthenticated});
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}
@@ -206,6 +214,8 @@ export default class Data {
 	}
 
 	async getCollectionItemById(req, res) {
+		const isAuthenticated = Boolean(req.user._id);
+
 		let exampleFeatures = exampleItems.features; // Use imported example features
 		let cid = req.params.collection_id;
 		let id = req.params.item_id;
@@ -216,7 +226,7 @@ export default class Data {
 			id = match[2];
 		}
 
-		const collection = this.catalog.getData(cid, true);
+		const collection = this.catalog.getData({id: cid, withSchema: true, includePrivate: isAuthenticated});
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}

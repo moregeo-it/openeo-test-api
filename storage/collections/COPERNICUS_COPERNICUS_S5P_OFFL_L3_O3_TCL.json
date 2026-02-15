@@ -128,7 +128,7 @@
         "name": "qa_value"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "The algorithm version used in L2 processing. It is separate from the\nprocessor (framework) version, to accommodate different release\nschedules for different products.\n",
         "name": "ALGORITHM_VERSION",
