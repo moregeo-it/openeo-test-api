@@ -194,7 +194,7 @@
         "name": "VMXL"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "For observations in the future, the number of hours between the\nobservation and run times.\n",
         "name": "forecast_hours",

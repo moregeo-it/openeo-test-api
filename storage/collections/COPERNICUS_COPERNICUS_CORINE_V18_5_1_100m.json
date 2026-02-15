@@ -1,4 +1,5 @@
 {
+  "private": true,
   "description": "The CORINE (coordination of information on the environment) Land Cover\n(CLC) inventory was initiated in 1985 to standardize data collection on land\nin Europe to support environmental policy development. The project is\ncoordinated by the European Environment Agency (EEA) in the frame of the EU\nCopernicus programme and implemented by national teams. The number of\nparticipating countries has increased over time currently including 33 (EEA)\nmember countries and six cooperating countries (EEA39) with a total area of\nover 5.8M km2.\n\nThe reference year of the first CLC inventory was 1990 and the first update\ncreated in 2000. Later, the update cycle has become 6 years. Satellite\nimagery provides the geometrical and thematic basis for mapping with in-situ\ndata as essential ancillary information. The basic technical parameters of\nCLC (i.e. 44 classes in nomenclature, 25 hectares minimum mapping unit\n(MMU), and 100 meters minimum mapping width) have not changed since the\nbeginning, therefore the results of the different inventories are\ncomparable.\n",
   "extent": {
     "spatial": {
@@ -26,7 +27,7 @@
   "gee:status": "deprecated",
   "gee:terms_of_use": "Access to data is based on a principle of full, open, and free access as\nestablished by the Copernicus data and information policy Regulation (EU)\nNo 1159/2013 of 12 July 2013. For more information visit:\n[https://land.copernicus.eu/pan-european/corine-land-cover/clc-2012?tab=metadata](https://land.copernicus.eu/pan-european/corine-land-cover/clc-2012?tab=metadata).\n",
   "gee:type": "image_collection",
-  "id": "COPERNICUS/CORINE/V18_5_1/100m",
+  "id": "COPERNICUS/CORINE/V18_5_1/100m/private",
   "keywords": [
     "clc",
     "copernicus",
@@ -351,7 +352,7 @@
         "name": "landcover"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Land cover class names",
         "name": "landcover_class_names",

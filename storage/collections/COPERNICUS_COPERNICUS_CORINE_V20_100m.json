@@ -354,7 +354,7 @@
         "name": "landcover"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Land cover class names",
         "name": "landcover_class_names",

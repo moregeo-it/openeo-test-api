@@ -27,9 +27,7 @@ export default class Data {
 	async getCollections(req, res) {
 		const isAuthenticated = Boolean(req.user._id)
 
-		let data = this.catalog.getData().filter( 
-			c => (isAuthenticated || !c.private)
-		).map(c => {
+		let data = this.catalog.getData({includePrivate: isAuthenticated}).map(c => {
 			return {
 				stac_version: c.stac_version,
 				stac_extensions: [],
@@ -87,38 +85,29 @@ export default class Data {
 			return await this.getCollectionItemById(req, res);
 		}
 
-		const collection = this.catalog.getData(id)
+		const collection = this.catalog.getData({id, includePrivate: isAuthenticated});
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}
 
-		if (!isAuthenticated && collection.private){
-			throw new Errors.AuthenticationRequired();
-		}
-
-		delete collection.private;
 		res.json(collection);
 	}
 
 	async getCollectionQueryables(req, res) {
 		const isAuthenticated = Boolean(req.user._id)
-		
+
 		let id = req.params.collection_id;
 		// Get the ID if this was a redirect from the /collections/{collection_id} endpoint
 		if (req.params['*'] && !id) {
 			id = req.params['*'].replace(/\/queryables$/, '');
 		}
 
-		const queryables = this.catalog.getSchema(id);
-		if (queryables === null) {
+		const collection = this.catalog.getData({id, includePrivate: isAuthenticated});
+		if (collection === null) {
 			throw new Errors.CollectionNotFound();
 		}
 
-		if (!isAuthenticated && queryables.private){
-			throw new Errors.AuthenticationRequired();
-		}
-
-		delete queryables.private;
+		const queryables = this.catalog.getSchema(id, isAuthenticated);
 		res.json(queryables);
 	}
 
@@ -132,14 +121,9 @@ export default class Data {
 			id = req.params['*'].replace(/\/items$/, '');
 		}
 
-		const collection = this.catalog.getData(id, true)
-
+		const collection = this.catalog.getData({id, includePrivate: isAuthenticated});
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
-		}
-
-		if (!isAuthenticated && collection.private){
-			throw new Errors.AuthenticationRequired();
 		}
 
 		const limit = parseInt(req.query.limit, 10) || 10;
@@ -242,14 +226,9 @@ export default class Data {
 			id = match[2];
 		}
 
-		const collection = this.catalog.getData(cid, true)
-
+		const collection = this.catalog.getData({id: cid, includePrivate: isAuthenticated});
 		if (collection === null) {
 			throw new Errors.CollectionNotFound();
-		}
-
-		if (!isAuthenticated && collection.private){
-			throw new Errors.AuthenticationRequired();
 		}
 
 		const features = exampleFeatures.filter(f => f.id === id);

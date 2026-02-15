@@ -170,7 +170,7 @@
         "name": "SO2_column_number_density_15km"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "The algorithm version used in L2 processing. It is separate from the\nprocessor (framework) version, to accommodate different release\nschedules for different products.\n",
         "name": "ALGORITHM_VERSION",

@@ -164,7 +164,7 @@
         "name": "angle"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Name of the country where the facility is located. This element is configurable within the IPF.",
         "name": "GRD_Post_Processing_facility_country",

@@ -15,12 +15,11 @@ export default class Processes {
 
 	async getProcesses(req, res) {
 		const isAuthenticated = Boolean(req.user._id);
-
-		let processes = this.registry.namespace('backend');
-		if (isAuthenticated) {
-			processes = processes.concat(this.registry.namespace('private_backend'));
+		let processes = this.registry
+			.namespace('backend');
+		if (!isAuthenticated) {
+			processes = processes.filter(p => this.registry.implementations[p.id]?.private !== true);
 		}
-
 		res.json({
 			processes: processes,
 			links: []

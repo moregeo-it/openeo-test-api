@@ -474,7 +474,7 @@
         "name": "landcover"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Array of cropland landcover classification names.",
         "name": "landcover_class_names",

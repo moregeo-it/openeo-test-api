@@ -287,7 +287,7 @@
         "name": "MSK_CLASSI_SNOW_ICE"
       }
     ],
-    "gee:schema": [
+    "queryables": [
       {
         "description": "Granule-specific cloudy pixel percentage taken from the original metadata",
         "name": "CLOUDY_PIXEL_PERCENTAGE",
