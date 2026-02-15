@@ -14,6 +14,7 @@ export default class UserStore {
 
 		this.tokenDb = DB.load('token');
 		this.tokenValidity = 24*60*60;
+		this.secret = context.secret || Utils.generateHash();
 
 		this.oidcUserInfoEndpoint = null;
 		this.oidcIssuer = 'https://oidc.dummy.foobar';
@@ -89,7 +90,7 @@ export default class UserStore {
 		// Insert new token
 		const tokenData = {
 			user: user._id,
-			token: Utils.generateHash(),
+			token: Utils.createJwt(this.secret, this.oidcIssuer, user._id),
 			validity: Utils.getTimestamp() + this.tokenValidity
 		};
 		await this.tokenDb.insert(tokenData);
@@ -179,16 +180,32 @@ export default class UserStore {
 		return await this.db.insertAsync(userData);
 	}
 
-	async authenticateBasic(token) {
+	async checkJwtToken(token) {
 		const query = {
 			token,
 			validity: { $gt: Utils.getTimestamp() }
 		};
-
 		const tokenFromDB = await this.tokenDb.findOneAsync(query);
 		if (tokenFromDB === null) {
 			throw new Errors.AuthenticationRequired({
 				reason: 'Token invalid or expired.'
+			});
+		}
+
+		const jwt = Utils.verifyJwt(token, this.secret);
+		if (jwt === null) {
+			throw new Errors.AuthenticationRequired({
+				reason: 'Token signature or format invalid.'
+			});
+		}
+		if (jwt.header.alg !== 'HS256') {
+			throw new Errors.AuthenticationRequired({
+				reason: 'Token algorithm not supported.'
+			});
+		}
+		if (jwt.payload.iss !== this.oidcIssuer) {
+			throw new Errors.AuthenticationRequired({
+				reason: 'Token issuer invalid.'
 			});
 		}
 
@@ -198,39 +215,16 @@ export default class UserStore {
 				reason: 'User account has been removed.'
 			});
 		}
+
 		return user;
 	}
 
-	async authenticateOidc(token) {
-		//not yet implemented
-		token = Utils.parseJwt(token)
-		if (token.iss === undefined){
-			throw new Errors.AuthenticationRequired({
-				reason: 'Token invalid. Unknown issuer'
-			});
-		}
-		// const issuer = token.iss
-		throw new Errors.AuthenticationRequired({
-			reason: 'Token invalid or expired.'
-		});
-	}
-
-	async checkAuthToken(apiToken) {
+	async checkToken(apiToken) {
 		if(this.serverContext.legacyTokens){
 			return this.checkLegacyToken(apiToken)
 		}
 
-		let user;
-		try {
-			user = await this.authenticateBasic(apiToken)
-		} catch(error) {
-			if (error.message === 'Token invalid or expired.') {
-				user = this.authenticateOidc
-			} else {
-				throw error
-			}
-		}
-		return user
+		return this.checkJwtToken(apiToken);
 	}
 
 	async checkLegacyToken(apiToken) {
@@ -240,15 +234,32 @@ export default class UserStore {
 				reason: 'Token format invalid.'
 			});
 		}
-		const [type, , token] = parts;
+		const [type, provider, token] = parts;
 
-		if (type === 'basic') {
-			return this.authenticateBasic(token);
-		}
-		else if (type === 'oidc') {
-			throw new Errors.AuthenticationRequired({
-				reason: 'Authentication method not supported.'
-			});
+		if (type === 'basic' || (type === 'oidc' && provider === 'sample')) {
+			// Try JWT verification first; fall back to opaque DB lookup for legacy hash tokens
+			const jwt = Utils.verifyJwt(token, this.secret);
+			if (jwt !== null) {
+				return this.checkJwtToken(token);
+			}
+			// Legacy opaque token: validate via DB lookup only
+			const query = {
+				token,
+				validity: { $gt: Utils.getTimestamp() }
+			};
+			const tokenFromDB = await this.tokenDb.findOneAsync(query);
+			if (tokenFromDB === null) {
+				throw new Errors.AuthenticationRequired({
+					reason: 'Token invalid or expired.'
+				});
+			}
+			const user = await this.db.findOne({ _id: tokenFromDB.user });
+			if (user === null) {
+				throw new Errors.AuthenticationRequired({
+					reason: 'User account has been removed.'
+				});
+			}
+			return user;
 		}
 		else {
 			throw new Errors.AuthenticationRequired({
