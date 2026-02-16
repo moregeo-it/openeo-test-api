@@ -1,6 +1,6 @@
 {
 	"name": "@openeo/test-api",
-	"version": "1.1.0-dev20260126",
+	"version": "0.1.0",
 	"stac_version": "1.0.0",
 	"description": "A test API for openEO.",
 	"main": "src/server.js",

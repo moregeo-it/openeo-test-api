@@ -4,7 +4,7 @@ Backend-less testing API, simulating an openEO backend. For testing purposes dur
 
 Based on the openEO backend driver for [Google Earth Engine](https://earthengine.google.com/): [openeo-earthengine-driver on GitHub](https://github.com/Open-EO/openeo-earthengine-driver).
 
-This API implements **openEO API version 1.2.0**.
+This API implements **openEO API version 1.3.0**.
 
 ## Setting up an Instance
 

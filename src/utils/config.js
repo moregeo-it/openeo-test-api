@@ -35,7 +35,7 @@ export default class Config {
 
 		this.hostname = "127.0.0.1";
 		this.apiPath = "/";
-		this.apiVersion = "1.2.0";
+		this.apiVersion = "1.3.0";
 		this.legacyTokens = false;
 
 		this.batchJobsEndpoint = true;
